@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>1-fd | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="ssh fd@pwnable.kr -p2222输入密码guest  输入ls -l 查看文件 发现有三个文件fd fd.c flagcat flag 返回permission denied 权限被拒绝cat fd 出现乱码cat fd.c 出现了代码 说明是可读的   fd和fd.c文件都只有读的权限，fd为fd.c编译出来的C程序，而flag则是要运行的夺旗程序  如下:查了网上大佬说明arg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1-fd">
+<meta property="og:url" content="http://yoursite.com/2019/05/07/1-fd/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="ssh fd@pwnable.kr -p2222输入密码guest  输入ls -l 查看文件 发现有三个文件fd fd.c flagcat flag 返回permission denied 权限被拒绝cat fd 出现乱码cat fd.c 出现了代码 说明是可读的   fd和fd.c文件都只有读的权限，fd为fd.c编译出来的C程序，而flag则是要运行的夺旗程序  如下:查了网上大佬说明arg">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2019/05/07/1-fd/1-1.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/07/1-fd/1-2.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/07/1-fd/1-3.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/07/1-fd/1-4.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/07/1-fd/1-5.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/07/1-fd/1-6.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/07/1-fd/1-7.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/07/1-fd/1-8.jpg">
+<meta property="og:updated_time" content="2019-05-15T11:41:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="1-fd">
+<meta name="twitter:description" content="ssh fd@pwnable.kr -p2222输入密码guest  输入ls -l 查看文件 发现有三个文件fd fd.c flagcat flag 返回permission denied 权限被拒绝cat fd 出现乱码cat fd.c 出现了代码 说明是可读的   fd和fd.c文件都只有读的权限，fd为fd.c编译出来的C程序，而flag则是要运行的夺旗程序  如下:查了网上大佬说明arg">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/07/1-fd/1-1.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-1-fd" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/07/1-fd/" class="article-date">
+  <time datetime="2019-05-07T15:08:25.000Z" itemprop="datePublished">2019-05-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      1-fd
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ssh <a href="mailto:fd@pwnable.kr" target="_blank" rel="noopener">fd@pwnable.kr</a> -p2222<br>输入密码guest </p>
+<p><img src="./1-1.jpg" alt=" "><br>输入ls -l 查看文件 发现有三个文件fd fd.c flag<br>cat flag 返回permission denied 权限被拒绝<br>cat fd 出现乱码<br>cat fd.c 出现了代码 说明是可读的 </p>
+<blockquote>
+<p>fd和fd.c文件都只有读的权限，fd为fd.c编译出来的C程序，而flag则是要运行的夺旗程序</p>
+</blockquote>
+<p>如下:<br><img src="./1-2.jpg" alt=" "><br>查了网上大佬说明<br>argc为保存参数的数量的参数<br>argv[]是保存参数具体值的数组<br>envp是存放系统环境变量的数组<br><img src="./1-3.jpg" alt=" "><br>如果参数数量小于2 则输出pass argv[1] a number 且返回值0<br><img src="./1-4.jpg" alt=" "><br>atoi:将字符串转化为整形数据 将argv[1]转化成整形数据减去0x1234为fd的值</p>
+<p>#include &lt;unistd.h&gt;<br>ssize_t read(int fd, void *buf, size_t count);</p>
+<p>read（）会把参数fd所指的文件传送count个字节到buf指针所指的内存中。若参数count为0，则read（）不会有作用并返回0.返回值为实际读取到的字节数，如果返回0，表示已经到达文件尾或是无可读取的数据，然后文件读写位置会随读取到的字节移动</p>
+<p>read函数从打开的设备或文件中读取数据。<br><img src="./1-5.jpg" alt="图片为fd即read函数的第一个参数可以设置为某些特殊参数的"><br>明显当fd=0时 要复制给buf的值就可以从键盘输入了</p>
+<p>返回值：成功返回读取的字节数，出错返回-1并设置errno，如果在调read之前已到达文件末尾，则这次read返回0</p>
+<blockquote>
+<p>参数count<br>是请求读取的字节数，读上来的数据保存在缓冲区buf中，同时文件的当前读写位置向后移。注意这个读写位置和使用C标准I/O库时的读写位置有可能不同，这个读写位置是记在内核中的，而使用C标准I/O库时的读写位置是用户空间I/O缓冲区中的位置。比如用fgetc读一个字节，fgetc有可能从内核中预读1024个字节到I/O缓冲区中，再返回第一个字节，这时该文件在内核中记录的读写位置是1024，而在FILE结构体中记录的读写位置是1。注意返回值类型是ssize_t，表示有符号的size_t，这样既可以返回正的字节数、0（表示到达文件末尾）也可以返回负值-1（表示出错）。<br>read函数返回时，返回值说明了buf中前多少个字节是刚读上来的。有些情况下，实际读到的字节数（返回值）会小于请求读的字节数count，例如：读常规文件时，在读到count个字节之前已到达文件末尾。例如，距文件末尾还有30个字节而请求读100个字节，则read返回30，下次read将返回0。from:UltraVires<br><img src="./1-6.jpg" alt=" "><br>strcmp比较“LETMEWIN”与buf中的数据，如果相同，则返回0，若大于，则返回大于0的值，小于则返回小于0的值</p>
+<blockquote>
+<p>要使这句话生效，要么相等返回0，然后非0得1，要么小于，这个小于的也好构造，把L改成L之前的任何一个数都行<br>system(“/bin/cat flag”);<br>调用系统调用，来输出flag</p>
+</blockquote>
+</blockquote>
+<p>fd呢是拥有者是fd_pwn，而flag的拥有者也是fd_pwn，所以这个时候这个代码执行后是有权限打开flag的。<br>然后我们怎么去改这个buf的内容呢，buf是从fd中读进去的数据，所以我们要改fd，要让fd读取我们的输入，这里就是linux的io接口知识 了。<br><img src="./1-7.jpg" alt=" "><br>网上大佬测试，发现fd为4660 4661 4662时都可以使得stremp比较成立 但不知道如何来的<br>这里要输入十进制数，而不是十六进制数<br><img src="./1-8.jpg" alt=" "><br>经过证明，flag=mommy！I think I know what a file descriptor is!!</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/07/1-fd/" data-id="ck0ag4lfw0002h7th64rsu1ya" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/05/07/2-col/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          2-col
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/17/shark-reverse-2/">shark-reverse-2</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/15/C-反汇编与逆向分析学习笔记/">C++反汇编与逆向分析学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/12/easy-KeygenMe/">easy_KeygenMe</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/11/reversing-kr-easy-crack/">reversing.kr-easy_crack</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/09/tips/">tips</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

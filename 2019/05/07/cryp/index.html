@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>cryp | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="安装jre        终端 sudo apt install openjdk-8-* 密码使用学 学习书籍:深入浅出密码学   密码使用学分支: 对称算法symmetric algorithmx 明文y 密文k 密钥key space 密钥空间 非对称算法asymmetric algorithm 或 公钥算法public-key algorithm 密码协议cryptographic prot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cryp">
+<meta property="og:url" content="http://yoursite.com/2019/05/07/cryp/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="安装jre        终端 sudo apt install openjdk-8-* 密码使用学 学习书籍:深入浅出密码学   密码使用学分支: 对称算法symmetric algorithmx 明文y 密文k 密钥key space 密钥空间 非对称算法asymmetric algorithm 或 公钥算法public-key algorithm 密码协议cryptographic prot">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-05-23T09:39:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="cryp">
+<meta name="twitter:description" content="安装jre        终端 sudo apt install openjdk-8-* 密码使用学 学习书籍:深入浅出密码学   密码使用学分支: 对称算法symmetric algorithmx 明文y 密文k 密钥key space 密钥空间 非对称算法asymmetric algorithm 或 公钥算法public-key algorithm 密码协议cryptographic prot">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-cryp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/07/cryp/" class="article-date">
+  <time datetime="2019-05-07T15:34:04.000Z" itemprop="datePublished">2019-05-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      cryp
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>安装jre        终端 sudo apt install openjdk-8-*</p>
+<h1 id="密码使用学"><a href="#密码使用学" class="headerlink" title="密码使用学"></a>密码使用学</h1><ul>
+<li>学习书籍:深入浅出密码学</li>
+</ul>
+<blockquote>
+<h4 id="密码使用学分支"><a href="#密码使用学分支" class="headerlink" title="密码使用学分支:"></a>密码使用学分支:</h4><ul>
+<li>对称算法symmetric algorithm<br>x 明文<br>y 密文<br>k 密钥<br>key space 密钥空间</li>
+<li>非对称算法asymmetric algorithm 或 公钥算法public-key algorithm</li>
+<li>密码协议cryptographic protocol</li>
+</ul>
+</blockquote>
+<blockquote>
+<h5 id="替换密码-替代密码"><a href="#替换密码-替代密码" class="headerlink" title="替换密码/替代密码"></a>替换密码/替代密码</h5><p>顾名思义:用字母表中的一个字符用另一个字符替换 替换表随机<br>破解:</p>
+<ol>
+<li>蛮力攻击/穷尽密钥搜索<br>替换空间=26！～2^88</li>
+<li>字母频率分析<br>按照频率e&gt;t&gt;a去寻找高频词 很容易找到相应的替换表</li>
+</ol>
+</blockquote>
+<blockquote>
+<h5 id="模运算"><a href="#模运算" class="headerlink" title="模运算"></a>模运算</h5><p>a ≡ r mod m {r∈[0,m-1]}</p>
+<blockquote>
+<p>逆元 当且仅当gcd(a,m)=1，一个元素a∈Z存在乘法逆元a^(-1)</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<h5 id="仿射密码"><a href="#仿射密码" class="headerlink" title="仿射密码"></a>仿射密码</h5><blockquote>
+<p>假设x,y,a,b ∈Z 则<br> 加密:y=e(x)=ax+b mod 26<br> 解密:x=d(y)=a^(-1)(y-b) mod 26<br> 要保证gcd(a,26)=1 则密钥空间=ks(a)×ks(Z)=12×26=312<br> 特殊:</p>
+<blockquote>
+<p>移位密码(a=1)<br>假设x,y,k∈Z (指字母表个数) 则<br>加密:y=e(x)=x+k mod 26<br>解密:x=d(y)=y-k mod 26</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h5 id="序列密码"><a href="#序列密码" class="headerlink" title="序列密码"></a>序列密码</h5><p>单独加密每个位，通过将密钥序列中的每个位与每个明文位相加实现的</p>
+<h1 id="Hash函数"><a href="#Hash函数" class="headerlink" title="Hash函数"></a>Hash函数</h1><p>将消息或数据压缩成摘要,使得数据量变小 简单的说就是将一个任意长度为k的值经过hash()运算之后会变成一个h(k)固定长度</p>
+<blockquote>
+<p>基本需求:<br>输入长度可变<br>输出长度固定<br>对任意消息x,计算H(x)很容易<br>对于任意的哈希值h,想要找到满足H(x)=h的x在计算上不可行<br>对于任意的消息x,找到满足另一消息y,满足H(x)=H(y),在计算上不可行<br>找到任意一对满足H(x)=H(y)的消息x和y在计算上不可行<br>哈希函数的输出满足伪随机性测试标准 (伪随机性生成器:从一个初始种子值开始通过各种计算得到序列,也就是说在一定的解密函数下经过一定次数的运算还是可以得到初始值,明文)</p>
+</blockquote>
+<h3 id="算法类型"><a href="#算法类型" class="headerlink" title="算法类型:"></a>算法类型:</h3><ul>
+<li>MD5:</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/07/cryp/" data-id="ck0ag4lg9000hh7thjn2xw68y" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/05/10/c/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          c
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/07/4-flag/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">4-flag</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/17/shark-reverse-2/">shark-reverse-2</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/15/C-反汇编与逆向分析学习笔记/">C++反汇编与逆向分析学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/12/easy-KeygenMe/">easy_KeygenMe</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/11/reversing-kr-easy-crack/">reversing.kr-easy_crack</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/09/tips/">tips</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>栈 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="python学习:https://blog.csdn.net/zzq900503/article/details/80538346 栈 from 清风阁先认识几个汇编指令：  mov ax,1000 #AX=1000 传值 add ax,bx #AX=AX+BX 加 {push ax    push bx    push cx  压栈 pop ax     pop bx    pop cx} #A">
+<meta property="og:type" content="article">
+<meta property="og:title" content="栈">
+<meta property="og:url" content="http://yoursite.com/2019/05/07/栈/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="python学习:https://blog.csdn.net/zzq900503/article/details/80538346 栈 from 清风阁先认识几个汇编指令：  mov ax,1000 #AX=1000 传值 add ax,bx #AX=AX+BX 加 {push ax    push bx    push cx  压栈 pop ax     pop bx    pop cx} #A">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2019/05/07/栈/x-1.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/07/栈/x-2.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/07/栈/x-3.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/07/栈/x-4.png">
+<meta property="og:updated_time" content="2019-05-14T05:25:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="栈">
+<meta name="twitter:description" content="python学习:https://blog.csdn.net/zzq900503/article/details/80538346 栈 from 清风阁先认识几个汇编指令：  mov ax,1000 #AX=1000 传值 add ax,bx #AX=AX+BX 加 {push ax    push bx    push cx  压栈 pop ax     pop bx    pop cx} #A">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/07/栈/x-1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-栈" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/07/栈/" class="article-date">
+  <time datetime="2019-05-07T15:17:40.000Z" itemprop="datePublished">2019-05-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      栈
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>python学习:<a href="https://blog.csdn.net/zzq900503/article/details/80538346" target="_blank" rel="noopener">https://blog.csdn.net/zzq900503/article/details/80538346</a></p>
+<h2 id="栈-from-清风阁"><a href="#栈-from-清风阁" class="headerlink" title="栈 from 清风阁"></a>栈 from 清风阁</h2><p>先认识几个汇编指令：</p>
+<ul>
+<li>mov ax,1000 #AX=1000 传值</li>
+<li>add ax,bx #AX=AX+BX 加</li>
+<li>{push ax    push bx    push cx  压栈</li>
+<li>pop ax     pop bx    pop cx} #AX=CX        BX=BX     CX=AX 出栈<br><img src="x-1.png" alt=" "><img src="x-2.png" alt=" "><img src="x-3.png" alt=" "><img src="x-4.png" alt=" "><br>使用pop指令并不会删除当前栈顶的数据（只是复制，并SP=SP-2（十六进制2刚好是一个字节））<br>但是在下一次push操作后会覆盖掉这个元素<h2 id="栈顶越界"><a href="#栈顶越界" class="headerlink" title="栈顶越界"></a>栈顶越界</h2><h6 id="两种情况"><a href="#两种情况" class="headerlink" title="两种情况"></a>两种情况</h6></li>
+<li>栈满时 使用push指令</li>
+<li>栈空时 使用pop指令<blockquote>
+<p>EAX、ECX、EDX、EBX：为ax,bx,cx,dx的延伸，各为32位元<br>EAX 是”累加器”(accumulator), 它是很多加法乘法指令的缺省寄存器。<br>EBX 是”基地址”(base)寄存器, 在内存寻址时存放基地址。</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>在一次函数调用中,堆栈中将被依次压入:参数,返回地址,EBP.在函数返回时,弹出EBP,恢复堆栈到函数调用的地址,弹出返回地址到EIP以继续执行程序.</p>
+</blockquote>
+<p>#在c程序中,参数的压栈顺序是反向的.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/07/栈/" data-id="ck0ag4lgg000uh7thecwzi55l" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/05/07/3-bof/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          3-bof
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/07/2-col/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">2-col</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/17/shark-reverse-2/">shark-reverse-2</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/15/C-反汇编与逆向分析学习笔记/">C++反汇编与逆向分析学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/12/easy-KeygenMe/">easy_KeygenMe</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/11/reversing-kr-easy-crack/">reversing.kr-easy_crack</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/09/tips/">tips</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

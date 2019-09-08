@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>2-col | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="pwnable.kr 2-col过程首先建立链接 盲输入pw然后还是一样的去查找文件 发现可读文件 cat出来  if(strlen(argv[1]) != 20){        printf(“passcode length should be 20 bytes\n”);        return 0;    }从main函数中可以看出argv[]的长度不等于20时 会提示passcode的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2-col">
+<meta property="og:url" content="http://yoursite.com/2019/05/07/2-col/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="pwnable.kr 2-col过程首先建立链接 盲输入pw然后还是一样的去查找文件 发现可读文件 cat出来  if(strlen(argv[1]) != 20){        printf(“passcode length should be 20 bytes\n”);        return 0;    }从main函数中可以看出argv[]的长度不等于20时 会提示passcode的">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2019/05/07/2-col/2-1.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/07/2-col/2-2.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/07/2-col/2-3.jpg">
+<meta property="og:updated_time" content="2019-05-07T15:11:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2-col">
+<meta name="twitter:description" content="pwnable.kr 2-col过程首先建立链接 盲输入pw然后还是一样的去查找文件 发现可读文件 cat出来  if(strlen(argv[1]) != 20){        printf(“passcode length should be 20 bytes\n”);        return 0;    }从main函数中可以看出argv[]的长度不等于20时 会提示passcode的">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/07/2-col/2-1.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2-col" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/07/2-col/" class="article-date">
+  <time datetime="2019-05-07T15:11:46.000Z" itemprop="datePublished">2019-05-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      2-col
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="pwnable-kr-2-col"><a href="#pwnable-kr-2-col" class="headerlink" title="pwnable.kr 2-col"></a>pwnable.kr 2-col</h1><h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><p>首先建立链接 盲输入pw<br><img src="./2-1.jpg" alt=" "><br>然后还是一样的去查找文件 发现可读文件 cat出来<br><img src="./2-2.jpg" alt=" "></p>
+<blockquote>
+<p>if(strlen(argv[1]) != 20){<br>        printf(“passcode length should be 20 bytes\n”);<br>        return 0;<br>    }<br>从main函数中可以看出argv[]的长度不等于20时 会提示passcode的长度必须时20字节的</p>
+</blockquote>
+<blockquote>
+<p>if(hashcode == check_password( argv[1] )){<br>        system(“/bin/cat flag”);<br>        return 0;<br>    }<br>    else<br>        printf(“wrong passcode.\n”);<br>    return 0;<br>}<br>下句if说hashcode如果等于给出的argv[1]时 系统输出flag 返回值0 否则输出passcode错误</p>
+</blockquote>
+<blockquote>
+<p>unsigned long check_password(const char* p){<br>    int* ip = (int<em>)p;<br>    int i;<br>    int res=0;<br>    for(i=0; i&lt;5; i++){<br>        res += ip[i];<br>    }<br>    return res;<br>}<br>在语句中argv[]引用了password函数 看上去上面password函数里三个变量<br>for语句中说res为ip数组的和 ip数组的个数为5 而刚刚说到一共需要20个字节 则每个数组下应该就是4个字节<br><img src="./2-3.jpg" alt=" "><br>这时就会想到令前四个字节为\x00\x00\x00\x00 *4  + 0xEC09DD21 *1 这样子进行输入 失败的原因从网上查询到的是<br>\x09是HTab，输入会被阻断。<br>所以自然而然的想去改变前四个字节换成\x01</em>16+\xe8\x05\xd9\x1d<br>然后就得到flag=daddy! I just managed to create a hash collision :)</p>
+</blockquote>
+<p>↓看看大佬的描述：from 参商ck 博客园</p>
+<blockquote>
+<p>源码的逻辑是从终端运行程序，输入一个值，第一步检查其长度是否为20，然后把这个数据经过一个check_password函数变化之后进行比较，所以突破点在于check_password这个函数。<br>现在我们看看check_password这个函数：<br>unsigned long check_password(const char* p){<br>    int* ip = (int*)p;<br>    int i;<br>    int res=0;<br>    for(i=0; i&lt;5; i++){<br>        res += ip[i];<br>    }<br>    return res;</p>
+</blockquote>
+<p>函数功能是将char类型的指针，转为int类型的指针，然后在将其相加，返回这五个值的和。char类型的为1个字节，int类型指针所占为4个字节，所以这用户输入的20个字符串将被分为5个组，然后相加值为0x21DD09EC，所以我们只需要构造一个字符串，这个字符串由五个16进制数据拼接而成}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/07/2-col/" data-id="ck0ag4lfs0000h7th138r2mbk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/05/07/栈/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          栈
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/07/1-fd/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">1-fd</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/17/shark-reverse-2/">shark-reverse-2</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/15/C-反汇编与逆向分析学习笔记/">C++反汇编与逆向分析学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/12/easy-KeygenMe/">easy_KeygenMe</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/11/reversing-kr-easy-crack/">reversing.kr-easy_crack</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/09/tips/">tips</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

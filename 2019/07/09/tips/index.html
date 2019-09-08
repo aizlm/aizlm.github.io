@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>tips | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="OF overflow flag 溢出标志 操作数超出机器能表示的范围表示溢出,溢出时为1.SF sign Flag 符号标志 记录运算结果的符号,结果负时为1.ZF zero flag 零标志 运算结果等于0时为1,否则为0.CF carry flag 进位标志 最高有效位产生进位时为1,否则为0.AF auxiliary carry flag 辅助进位标志 运算时,第3位向第4位产生进位时为1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tips">
+<meta property="og:url" content="http://yoursite.com/2019/07/09/tips/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="OF overflow flag 溢出标志 操作数超出机器能表示的范围表示溢出,溢出时为1.SF sign Flag 符号标志 记录运算结果的符号,结果负时为1.ZF zero flag 零标志 运算结果等于0时为1,否则为0.CF carry flag 进位标志 最高有效位产生进位时为1,否则为0.AF auxiliary carry flag 辅助进位标志 运算时,第3位向第4位产生进位时为1">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-07-09T12:51:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="tips">
+<meta name="twitter:description" content="OF overflow flag 溢出标志 操作数超出机器能表示的范围表示溢出,溢出时为1.SF sign Flag 符号标志 记录运算结果的符号,结果负时为1.ZF zero flag 零标志 运算结果等于0时为1,否则为0.CF carry flag 进位标志 最高有效位产生进位时为1,否则为0.AF auxiliary carry flag 辅助进位标志 运算时,第3位向第4位产生进位时为1">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-tips" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/09/tips/" class="article-date">
+  <time datetime="2019-07-09T06:40:47.000Z" itemprop="datePublished">2019-07-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      tips
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>OF overflow flag 溢出标志 操作数超出机器能表示的范围表示溢出,溢出时为1.<br>SF sign Flag 符号标志 记录运算结果的符号,结果负时为1.<br>ZF zero flag 零标志 运算结果等于0时为1,否则为0.<br>CF carry flag 进位标志 最高有效位产生进位时为1,否则为0.<br>AF auxiliary carry flag 辅助进位标志 运算时,第3位向第4位产生进位时为1,否则为0.<br>PF parity flag 奇偶标志 运算结果操作数位为1的个数为偶数个时为1,否则为0.<br>DF direcion flag 方向标志 用于串处理.DF=1时,每次操作后使SI和DI减小.DF=0时则增大.<br>IF interrupt flag 中断标志 IF=1时,允许CPU响应可屏蔽中断,否则关闭中断.<br>TF trap flag 陷阱标志 用于调试单步操作.</p>
+<p>cmp    a,b          //cmp是比较的意思 !在这里假如a=1,b=2 那么就是a与b比较大小.<br>        mov a,b          //mov是赋值语句,把b的值赋给a.<br>        je/jz               //就是相等就到指定位置(也叫跳转).<br>        jne/jnz          //不相等就到指定位置.<br>        jmp             //无条件跳转.<br>        jl/jb            //若小于就跳.<br>        ja/jg         //若大于就跳.<br>        jge          //若大于等于就跳.</p>
+<ol>
+<li>当软件使用弹窗方式提示我们错误时，我们可以使用哪几种方式进行寻找关键跳？</li>
+</ol>
+<p>堆栈法、搜字符串、push窗体、搜peek message或get message<br>补充：F12堆栈暂停法，API断点法，包含所有API，泛指一切API<br>利用堆栈中记录的API进行锁定，这样回答也可以，回答者：珈蓝夜雨 ，可以这样回答<br>补充几个API:<br>模态对话框和非模态对话框<br>DialogBoxIndirect<br>DialogBoxIndirectParam(A/W)<br>CreateDialogIndirect<br>MessageBoxIndirectA<br>MessageBoxIndirectW<br>获取编辑框文本，经过算法call，弹出错误<br>GetWindowTextA<br>GetWindowTextW<br>GetDlgItemTextA<br>GetDlgItemTextW<br>GetDlgItemInt<br>利用弹出网页，谈错误</p>
+<h2 id="ShellExecute-WinExec-CreateProcess"><a href="#ShellExecute-WinExec-CreateProcess" class="headerlink" title="ShellExecute,WinExec,,CreateProcess"></a>ShellExecute,WinExec,,CreateProcess</h2><p>3 g! D- _+ |2 D6 d2 E- c: R’ {</p>
+<ol start="2">
+<li>当软件不提示我们任何错误信息时，此时我们该使用何种方式进行寻找关键跳？<br>按钮事件、窗口标题、搜peek message或get message<br>补充：例子：GetWindowTextA，SetWindowTextA，<br>API断点法，包含所有API，泛指一切API<br>可以通过工具辅助查找，DEDE，VB Decompiler，等工具<br>可以通过脚本法朝朝按钮事件，delphi，VB，按钮事件脚本<br>F12暂停法 ———————————————————-</li>
+</ol>
+<hr>
+<ol start="3">
+<li>一个软件载入OD后，查找不到字符串的原因有几种？分别是什么？<br>到文本 到字节集 到文本 到字节集 到文本 ………….、被加壳、 vm<br>补充：字符串倍加密，被加入花指令，有壳子没有脱掉，附件在dll里面，dll被加壳子<br>特殊，鸡生蛋类型，释放型，线程注入，特殊类型</li>
+</ol>
+<ul>
+<li>a2 Z2 [) {+ ]: ~</li>
+</ul>
+<ol start="4">
+<li>程序正常脱壳后为什么无法正常运行？有几种可能造成此结果？该如何解决？$ S” ?6 `2 r  h0 T” K4 q  X# G( q<br>自校验：下exit断点，nop、输入表需要修复</li>
+</ol>
+<p>补充：IAT未修复，有很多原因<br>自效验，双开OD对比<br>OEP不争取导致程序无法运行<br>注册壳子带SDK，比如ZProtect<br>附加数据，没有修复，winhex补上就ok<br>ExitProcess,ExitWindowsEx<br>7 L% O3 A  q0 T3 W&amp; m. p% o</p>
+<ol start="5">
+<li>说明什么是关键CALL，并且我们该如何寻找关键CALL？<br>被多处调用的，一般看堆栈窗口里出来用户名密码就是了<br>补充：关键call和关键跳很近，寄存器出现注册码，真注册码和假注册码对比<br>关键call，暂时想到这些</li>
+<li>修改关键跳时，什么时候使用NOP，什么时候时候JMP？&amp; X’ S. l) W. b5 P  t<br>直觉<br>补充：跟踪下去，提示错误，就跳过，如果跟踪下去( m) T2 U2 z1 a) m7 S</li>
+<li>在VB程序中，下API断点MessageBoxA为何不起作用？” U. o9 Y- Z  v4 Y# [9 W6 L1 ?<br>bp rtcMsgBox，不谢，VB把WindowsAPI吃了<br>补充：VB把WindowsAPI吃了<br>以上说法，完全错误，VB有自己一套API专用函数，和其他任何语言不相通<br>特殊情况，MessageBoxA，也是可以断下<br>纠正恒大错误认识，下API断点MessageBoxA为何不起作用？<br>不是绝对的</li>
+</ol>
+<hr>
+<ol start="8">
+<li>大部分程序关键CALL的返回值存放在哪个寄存器里？% o; W! ?- r/ j. o/ ~, i<br>EAX，返回值能放下就放，放不下就放地址，话说编译器写的程序都是这样吧，汇编语言写的就不知道了<br>补充，一般是EAX，经过特殊处理例外，非绝对<br>EAX：累加器 4 ^* u. _# _! [) g’ x<br>EBX：基址寄存器 / w9 f1 h$ h) L: z. x<br>ECX：计数器<br>EDX：数据寄存器<br>ESI：源地址指针寄存器’ d/ o! M9 Z% x, t: M1 R<br>DDI：目的地址指针寄存器’ G&amp; }8 `8 j% W, ~6 Y( M2 U<br>EBP：基址指针寄存器<br>ESP：堆栈指针寄存器 ( q; [  s/ L/ E, F; \</li>
+<li>为什么带壳的程序要运行起来去401000处？401000处是怎么回事？<br>00401000虚拟地址初始段，程序领空初始段，内存初始段，方便查找内存中字符串，只要PE文件头没改过00401000就能帮大忙<br>补充：dll应该是100010007 o- o&amp; g; `2 |” x+ {3 X/ I</li>
+<li>如何在系统领空快速返回至程序领空？<br>Alt+F9，返回用户，Ctrl+F9，执行到retn<br>补充：在堆栈中找到地址，反汇编窗口跟随<br>在代码段设置访问上设置中断 </li>
+<li>DeDe可以调试什么语言编译的软件？+ z, b6 O8 R. F4 H% O- P: R<br>Borland  Delphi？？<br>回答正确，没什么补充3 ]2 y2 j/ u3 z1 }1 G’ d&amp; n$ y1 V</li>
+<li>F8单步跟踪未启动的软件时，遇到程序跑飞该如何解决？<br>Ctrl+F2重载？F12暂停？忽略异常？<br>补充：F7进去分析<br>ANTI会让程序跑飞，壳子各种检测，OD插件设置不正确可以跑飞，正确设置OD插件即可<br>NET程序，VFP，PB，中间解释型语言，都不受OD控制，均会跑飞</li>
+</ol>
+<hr>
+<ol start="13">
+<li><p>当遇到INI类型重启验证软件时，我们可以使用什么断点进行对其拦截？’ Y+ ?! A5 e) ?4 M/ <br>bp GetPrivateProfileStringA/W<br>补充：INI初始化文件相关2 g9 e, L+ i” i: A! M<br>bp GetPrivateProfileStringA<br>bp GetPrivateProfileInt3 d( k7 A- I4 A1 x<br>bp WritePrivateProfileString<br>bp WritePrivateProfileInt<br>ReadFile CreateFile  </p>
+</li>
+<li><p>当遇到退出暗桩时，有几种方式取消这个暗桩，该如何下断？’ # [% L” Z* j0 D! w  f. {  b<br>BP ExitProcess，+BP-OLLY自带<br>$ l* Y&amp; x, _* ?% {- J- M</p>
+</li>
+<li><p>什么语言编译的程序可以使用Push窗体法？Push窗体法该如何操作？! T0 C) B$ `4 i  f+ [* c<br>试过的，C语言可以 易语言可以<br>补充：VB可以，另外我想任何语言都可以用PUSH法&amp; F% Y9 I, S, F$ ]</p>
+</li>
+<li><p>VB程序与其他大部分程序不一样，VB关键CALL下面的比较命令通常是与什么比较？<br>ebp,esp<br>补充：_vbaStrCmp  _vbaStrComp _vbaVarTstEq 8 M8 L: @- m. I</p>
+</li>
+<li><p>我们手动寻找并修复IAT的时候，IAT断首的地址应该减去谁？<br>00401000</p>
+</li>
+<li><p>万能断点都能断下什么？他能在什么平台下使用？5 ]( h* N! Q  ~* P( O2 q5 s<br>易语言按钮和时钟<br>补充：楼主回答不正确<br>有很多同学没有回答对<br>万能断点命令:bpx hmemcpy  XP可以用 有一位同学回答<br>后来学破解一般不知道这个函数<br>正确是 bpx hmemcpy是在win9x下用的，xp也可以用<br>关于这个函数说明：<br>HugeMEMoryCoPY，俗称万能断点，但在一般的编程书籍上很少提到，原因它是底层的东西，没有特殊需要，一般不直接调用。它的操作很简单，只是将内存中的一块数据拷贝到另一个地方，Win9x系统里很频繁地调用它处理数据。在WinNT/2K系统上相关的函数是memcpy，但在WinNT/2K上不同于Windows9x上，很少再调用memcpy来处理数据了，用此函数设断基本上什么也拦不住</p>
+</li>
+<li><p>F12暂停法的堆栈回朔其实说的就是一个怎么样的过程？<br>出现信息框，暂停，打开“调用堆栈”，messagebox a/w 显示调用，F2下断点，重载运行，Alt+F9返回用户，在上面下段</p>
+</li>
+<li><p>假设一个JMP可以跳过错误提示，而这个JMP并没有起到跳过错误的作用，这是什么原因造成的？. ^3 o$ ]3 G: B# D&amp; P6 v<br>JMP上方有跳过JMP的其他跳转或CALL，刚刚遇到的程序就是，哈哈~~<br>有异常处理函数，或者</p>
+</li>
+</ol>
+<p>程序还有其他地方的验证，或者改的地方不是关键地址</p>
+<ol start="21">
+<li><p>当我们遇到一个重启验证时，该从什么地方进行破解才能彻底解决重启验证？  r3 V’ ( H. t4 _’ R$ `* g<br>重启验证最好是寻码，如果是爆破就下退出断点，然后nop<br>补充：重启验证，一般是注册表重启验证，其他ini，dat，key，usb，各种狗</p>
+</li>
+<li><p>字符串搜索时，是否应该输入完整提示信息？为什么？<br>一般情况不要，输入部分关键词会有意外惊喜，不过某些逗比程序会弄满篇字符串迷惑大家…….- u4 T1 r6 H5 z/ b</p>
+</li>
+<li><p>论坛上很多人在求思路，这是怎么回事？- <del>* ; Y9 X% S5 B0 k/ t. `<br>没求过，不知道 （专业装逼十五年，你，值得信赖file:///C:\DOCUME</del>1\ADMINI<del>1\LOCALS</del>1\Temp\ksohtml\wps2D0.tmp.png）<br>补充：求破解思路，或者关键地址，就可以破解软件，这个恒大回答更好</p>
+</li>
+<li><p>当我们按下F12暂停时有几种方法回朔？<br>按K 进堆栈窗口<br>7 ^5 z0 z’ v0 H/ W# x! ?4 D% X; l; |; v</p>
+</li>
+<li><p>暗桩是什么？暗桩什么功能？<br>退出、锁定鼠标键盘、蓝屏黑屏、关机重启、设置开机密码（小学生专用暗桩）、sysprep（我能说我用过？）、格盘，主要功能是防破解</p>
+</li>
+</ol>
+<hr>
+<p>补充：回答很好，我在补充几点<br>自删除，脱壳子或者破解，删除自身，实践过<br>弹出网页，不断弹出网页，遇到过</p>
+<h2 id="释放病毒，脱壳子后释放病毒，威胁破解人，让他系统崩溃，重装系统。"><a href="#释放病毒，脱壳子后释放病毒，威胁破解人，让他系统崩溃，重装系统。" class="headerlink" title="释放病毒，脱壳子后释放病毒，威胁破解人，让他系统崩溃，重装系统。"></a>释放病毒，脱壳子后释放病毒，威胁破解人，让他系统崩溃，重装系统。</h2><ol start="26">
+<li>我们在修改关键CALL返回值的时候，常用的两指令都有谁？分别怎么使用？<br>mov eax,1/0     retn<br>补充：patch代码法，指令太多，知道人自然会用+ c+ e1 T! j- t</li>
+<li>能把OD修改为某某人专版的软件叫什么名字？; a’ E. }/ R$ q* m6 T<br>WinHex，OD，IDA Pro，NotePad，Uedit32<br>补充：</li>
+<li>脱壳后自效验的程序在效验时，他在用什么与什么对比？# M1 e4 ~5 a1 L&amp; O” F/ l: L<br>MD5、SHA1、CRC、版本号、描述、作者<br>补充：base64，rsa，诸多算法<br>文件大小比对等</li>
+<li>对于时间限制软件都有哪些类型？<br>取系统时间和使用期限对比，联网获取时间和使用期限对比，还有限制每次的运行时间，_启动窗口_创建完毕  延迟(2000)  销毁()<br>补充：, e1 P2 W/ I( N1 g; z/ Q* Z</li>
+</ol>
+<p>OD,IDA,PEID,FFI,WINDBG,LORDPE,ImpREC FINAL<br>SEH异常处理<br>PE文件格式<br>API处理函数<br>都必须有深刻理解<br>另外一门高级语言必须会<br>32位汇编<br>E语言<br>VB，<br>最好掌握 c++，或者delphi</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/09/tips/" data-id="ck0ag4lgf000th7thdv48skwb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/07/11/reversing-kr-easy-crack/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          reversing.kr-easy_crack
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/06/shark-reverse-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">shark reverse-1 破解类</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/17/shark-reverse-2/">shark-reverse-2</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/15/C-反汇编与逆向分析学习笔记/">C++反汇编与逆向分析学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/12/easy-KeygenMe/">easy_KeygenMe</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/11/reversing-kr-easy-crack/">reversing.kr-easy_crack</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/09/tips/">tips</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

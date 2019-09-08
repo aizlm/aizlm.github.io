@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>3-bof | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#需要的工具 终端下安装pwn gdb-peda源码中gets()一般都会栈溢出 pwnable.kr 3-bof过程：看题 由于是个小白 所以看到就懵了 没有链接服务器的ssh 但是有让我下载的文件 就下下来看看  bof.c文件:int main(int argc, char* argv[]){    func(0xdeadbeef);    return 0;}首先看主函数 定义了两个变量">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3-bof">
+<meta property="og:url" content="http://yoursite.com/2019/05/07/3-bof/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="#需要的工具 终端下安装pwn gdb-peda源码中gets()一般都会栈溢出 pwnable.kr 3-bof过程：看题 由于是个小白 所以看到就懵了 没有链接服务器的ssh 但是有让我下载的文件 就下下来看看  bof.c文件:int main(int argc, char* argv[]){    func(0xdeadbeef);    return 0;}首先看主函数 定义了两个变量">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2019/05/07/3-bof/3-1.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/07/3-bof/3-2.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/07/3-bof/3-3.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/07/3-bof/3-4.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/07/3-bof/3-5.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/07/3-bof/3-6.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/07/3-bof/3-7.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/07/3-bof/3-8.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/07/3-bof/3-9.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/07/3-bof/3-10.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/07/3-bof/3-11.png">
+<meta property="og:updated_time" content="2019-05-15T13:05:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="3-bof">
+<meta name="twitter:description" content="#需要的工具 终端下安装pwn gdb-peda源码中gets()一般都会栈溢出 pwnable.kr 3-bof过程：看题 由于是个小白 所以看到就懵了 没有链接服务器的ssh 但是有让我下载的文件 就下下来看看  bof.c文件:int main(int argc, char* argv[]){    func(0xdeadbeef);    return 0;}首先看主函数 定义了两个变量">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/07/3-bof/3-1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-3-bof" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/07/3-bof/" class="article-date">
+  <time datetime="2019-05-07T15:27:47.000Z" itemprop="datePublished">2019-05-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      3-bof
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#需要的工具 终端下安装pwn gdb-peda<br>源码中gets()一般都会栈溢出</p>
+<h1 id="pwnable-kr-3-bof"><a href="#pwnable-kr-3-bof" class="headerlink" title="pwnable.kr 3-bof"></a>pwnable.kr 3-bof</h1><h4 id="过程："><a href="#过程：" class="headerlink" title="过程："></a>过程：</h4><p><img src="./3-1.png" alt=" "><br>看题 由于是个小白 所以看到就懵了 没有链接服务器的ssh 但是有让我下载的文件 就下下来看看<br><img src="./3-2.png" alt=" "></p>
+<blockquote>
+<p>bof.c文件:<br>int main(int argc, char* argv[]){<br>    func(0xdeadbeef);<br>    return 0;<br>}<br>首先看主函数 定义了两个变量 引用了func函数 返回值0 那么就去看func函数是怎么样的</p>
+</blockquote>
+<blockquote>
+<p>char overflowme[32];<br>printf(“overflow me : “);<br>首先func函数定义了一个变量key<br>然后定义了一个字符串数组 其中缓冲区为32个字节</p>
+</blockquote>
+<blockquote>
+<p>gets(overflowme);    // smash me!<br>    if(key == 0xcafebabe){<br>        system(“/bin/sh”);<br>    }<br>    else{<br>        printf(“Nah..\n”);<br>    }<br>}<br>输入overflowme 只有输入完足够的值 才能进行下一步if语句判断<br>如果key值和0xcafebabe相等 就能拿到flag了</p>
+</blockquote>
+<blockquote>
+<p>看了源码，我们很容易就发现，这道题它是比对函数调用传入的值和0xcafebabe的大小，如果相等，我们的flag就出来了。但是，这个传入的值确是已经被程序写死了。这就是本道题的矛盾之处。<br>但是我们再往下看，会发现有一个函数gets，我想这个函数是很明显的一个漏洞函数了，因为它读入数据的时候，不检查缓冲区的界限，很容易造成缓冲区溢出漏洞，所以我们一般用fgets函数来代替它。再联系一下题目中的 Nana told me that buffer overflow is one of the most common software vulnerability.,没错了，问题就出在这里。<br>我们可以通过往gets函数中输入足够多的数据，使缓冲区溢出，用我们输入的0xcafebabe覆盖之前压进栈的参数，就get 到 flag 啦～<br>from:五月的天气</p>
+</blockquote>
+<blockquote>
+<p>现在要知道的是需要多少数据压入栈中才能使得key与0xcafebabe相等 所以要改清楚偏移值<br>用gdb指令调试bof文件<br><img src="./3-3.png" alt=" "><br>b main指令查看断点    r指令运行查看断点值0x5655568d    disas func指令进行反汇编<br>可以看到func地址为0x5655562c<br>由0x00000654 &lt;+40&gt;:    cmp    DWORD PTR [ebp+0x8],0xcafebabe → if语句所在的地址为0x56555654 于是打一个断点</p>
+</blockquote>
+<p>运行b *0x56555654 设置0x56555654为断点 运行单步n<br>直到可以输入垃圾值overflowme时 输入比缓冲区个数多的值这里取33个a 使其溢出 从而试探出偏移值<br><img src="./3-4.png" alt=" "><br>此时输入 x /40wx $esp</p>
+<blockquote>
+<p>x /40xw $esp (x:以十六进制显示 w:以4字节为一个单位显示)<br>来查看从断点处起的40字节的内存值，由于esp是我们的程序流指针，其里面保存了程序在func栈中运行时的内存的变化<br><img src="./3-5.png" alt=" "></p>
+</blockquote>
+<p>看到这里有很多重复的61出现 a在内存中显示为\0x61 而A显示为\0x41(我感觉不用去记 输入了那么多相同的值 肯定有这么多重复的 除非倒霉到前或后出现连续的四个输入的值)<br>很明显从第一个\0x61开始到0xdeadbeef 有13组四个字节的地址 则偏移值就为13*4=52<br>所以这里我们只需要先将个数为52个字节数据压入栈中 后将0xdeadbeef压入栈中即可</p>
+<blockquote>
+<p>由于题目中提醒我们最后    Running at : nc pwnable.kr 9000<br>所以我们来写我们的exp<br>→(由于这里的# 和* *都无法显示)<br><img src="./3-6.png" alt=" "><br><img src="./3-7.png" alt=" "></p>
+</blockquote>
+<p>最后在终端中运行我的python文件 得到我们的flag<br><img src="./3-8.png" alt=" "></p>
+<h1 id="第二道溢出题"><a href="#第二道溢出题" class="headerlink" title="第二道溢出题"></a>第二道溢出题</h1><p>src：<a href="https://github/xairy/easy-linux-pwn" target="_blank" rel="noopener">https://github/xairy/easy-linux-pwn</a><br>首先源码:<br><img src="./3-9.png" alt=" "><br>由于又是个溢出的问题</p>
+<blockquote>
+<p>因为cmp中的语句是f.x与一个值的对比 只要想的个就可以得到权限 那么只要得到我们read的函数要填充256个字节给buffer数组 而函数调用的时候会给数组分配一小部分的栈空间 这里就很明显溢出了 紧接着的就给了x 所以我们只需要把钱128个字节填充满 再把0xbeefc0de给压入栈中就可以了</p>
+<blockquote>
+<p>构造payload<br><img src="./3-10.png" alt=" "><br>python overflow.py 运行<br><img src="./3-11.png" alt=" "><br>/bin/sh 是获得所在列表的权限</p>
+</blockquote>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/07/3-bof/" data-id="ck0ag4lfy0004h7thr84yif7n" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/05/07/4-flag/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          4-flag
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/07/栈/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">栈</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/17/shark-reverse-2/">shark-reverse-2</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/15/C-反汇编与逆向分析学习笔记/">C++反汇编与逆向分析学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/12/easy-KeygenMe/">easy_KeygenMe</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/11/reversing-kr-easy-crack/">reversing.kr-easy_crack</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/09/tips/">tips</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

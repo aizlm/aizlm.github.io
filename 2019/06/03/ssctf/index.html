@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>ssctf | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="SSCTF-签到1（Z2dRQGdRMWZxaDBvaHRqcHRfc3d7Z2ZoZ3MjfQ==）   ==是bash64加密的特征 进行bash64解密:得出了bash64解密后的明文 但是这里奇怪的是题目中提示我们要以ssctf{xxxx}为格式去输入flag 然而这里{xxxx}中的数据太少 前面的数据太多 猜测是栅栏加密:  1ggQ@gQ1fqh0ohtjpt_sw&amp;#123;gfh">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ssctf">
+<meta property="og:url" content="http://yoursite.com/2019/06/03/ssctf/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="SSCTF-签到1（Z2dRQGdRMWZxaDBvaHRqcHRfc3d7Z2ZoZ3MjfQ==）   ==是bash64加密的特征 进行bash64解密:得出了bash64解密后的明文 但是这里奇怪的是题目中提示我们要以ssctf{xxxx}为格式去输入flag 然而这里{xxxx}中的数据太少 前面的数据太多 猜测是栅栏加密:  1ggQ@gQ1fqh0ohtjpt_sw&amp;#123;gfh">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2019/06/03/ssctf/ssctf-1.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/03/ssctf/ssctf-2.png">
+<meta property="og:updated_time" content="2019-06-03T06:50:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ssctf">
+<meta name="twitter:description" content="SSCTF-签到1（Z2dRQGdRMWZxaDBvaHRqcHRfc3d7Z2ZoZ3MjfQ==）   ==是bash64加密的特征 进行bash64解密:得出了bash64解密后的明文 但是这里奇怪的是题目中提示我们要以ssctf{xxxx}为格式去输入flag 然而这里{xxxx}中的数据太少 前面的数据太多 猜测是栅栏加密:  1ggQ@gQ1fqh0ohtjpt_sw&amp;#123;gfh">
+<meta name="twitter:image" content="http://yoursite.com/2019/06/03/ssctf/ssctf-1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ssctf" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/03/ssctf/" class="article-date">
+  <time datetime="2019-06-03T06:20:14.000Z" itemprop="datePublished">2019-06-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ssctf
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="SSCTF-签到"><a href="#SSCTF-签到" class="headerlink" title="SSCTF-签到"></a>SSCTF-签到</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">（Z2dRQGdRMWZxaDBvaHRqcHRfc3d7Z2ZoZ3MjfQ==）</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>==是bash64加密的特征 进行bash64解密:<br><img src="./ssctf-1.png" alt=" "><br>得出了bash64解密后的明文 但是这里奇怪的是题目中提示我们要以ssctf{xxxx}为格式去输入flag 然而这里{xxxx}中的数据太少 前面的数据太多 猜测是栅栏加密:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ggQ@gQ1fqh0ohtjpt_sw&#123;gfhgs#&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一共有28个字符 所以可能是4<em>7或者14</em>2加密方式 14<em>2 想到14</em>2后的明文很极端 所以采用4*7:<br>得出栅栏解密后的明文:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(ggqht&#123;g gQht_gs Q10jsf# @fopwh&#125;) ———— (ggqht&#123;ggQht_gsQ10jsf#@fopwh&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>这看起来就很对 只不过这还不是我们要的明文 所以可能还有一种以上的加密方式 这里注意到gg开头 所以猜测是凯撒加密:<br>g——s 有12个字符位<br>所以猜测加密为:ek(x) = (x + 12)  mod 26 则解密为:dk(y) =  (y - 12) mod 26<br>代入得出flag:<br><img src="./ssctf-2.png" alt=" "></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssctf&#123;ssCtf_seC10ver#@rabit&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/03/ssctf/" data-id="ck0ag4lge000rh7th8pvztt2r" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/06/07/加密算法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          加密算法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/06/01/bugku/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">bugku</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/17/shark-reverse-2/">shark-reverse-2</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/15/C-反汇编与逆向分析学习笔记/">C++反汇编与逆向分析学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/12/easy-KeygenMe/">easy_KeygenMe</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/11/reversing-kr-easy-crack/">reversing.kr-easy_crack</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/09/tips/">tips</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

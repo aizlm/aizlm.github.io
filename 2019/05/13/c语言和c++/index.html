@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>c语言和c++ | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="c语言中的输出(打印)语句是printf 就因为这个我找了快一个钟的错误 **** c语言 #include &amp;lt;stdio.h&amp;gt; (头文件)将stdio.h文件中的内容拷贝入include文件中根据c实现文档中对c库函数的说明,确定函数所对应的头文件  int main(void) (标准格式) #部分编辑器void main()也是对的int main()函数返回的类型() 内容包含">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c语言和c++">
+<meta property="og:url" content="http://yoursite.com/2019/05/13/c语言和c++/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="c语言中的输出(打印)语句是printf 就因为这个我找了快一个钟的错误 **** c语言 #include &amp;lt;stdio.h&amp;gt; (头文件)将stdio.h文件中的内容拷贝入include文件中根据c实现文档中对c库函数的说明,确定函数所对应的头文件  int main(void) (标准格式) #部分编辑器void main()也是对的int main()函数返回的类型() 内容包含">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2019/05/13/c语言和c++/c+-1.png">
+<meta property="og:updated_time" content="2019-05-19T02:43:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="c语言和c++">
+<meta name="twitter:description" content="c语言中的输出(打印)语句是printf 就因为这个我找了快一个钟的错误 **** c语言 #include &amp;lt;stdio.h&amp;gt; (头文件)将stdio.h文件中的内容拷贝入include文件中根据c实现文档中对c库函数的说明,确定函数所对应的头文件  int main(void) (标准格式) #部分编辑器void main()也是对的int main()函数返回的类型() 内容包含">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/13/c语言和c++/c+-1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-c语言和c++" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/13/c语言和c++/" class="article-date">
+  <time datetime="2019-05-13T10:31:05.000Z" itemprop="datePublished">2019-05-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      c语言和c++
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>c语言中的输出(打印)语句是printf 就因为这个我找了快一个钟的错误 ****</p>
+<h1 id="c语言"><a href="#c语言" class="headerlink" title="c语言"></a>c语言</h1><ul>
+<li><p>#include &lt;stdio.h&gt; (头文件)<br>将stdio.h文件中的内容拷贝入include文件中<br>根据c实现文档中对c库函数的说明,确定函数所对应的头文件</p>
+</li>
+<li><p>int main(void) (标准格式) #部分编辑器void main()也是对的<br>int main()函数返回的类型<br>() 内容包含一些传入函数的信息,无传入的信息时,()内为void<br>main函数首先调用 其他函数的调用顺序是看其在main函数中的位置</p>
+</li>
+</ul>
+<blockquote>
+<p>语义错误调试办法:</p>
+<ul>
+<li>模拟程序,监听程序状态,就是每一步去跟着代码语句走,过一遍</li>
+<li>在关键点打上输出语句print() 看看有没有出错</li>
+<li>人类的长处 借助debugger调试器 步步运行,检查程序变量的值</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>进制转换:%d %o %x<br>要想显示各进制数前缀0 0x 0X 必须分别使用%#o %#x %#X</p>
+</blockquote>
+<blockquote>
+<p>char类型: 用于存储字符 整数类型<br>计算机使用编码(常用ASCII)来处理字符 ASCII～(0,127)<br>即用特定的整数来表示特定的字符,例如65代表大写的A<br>char grade = ‘A’;</p>
+<blockquote>
+<p>非打印字符(要用再查找 记住几个重要 经常要用的就行)<br>\、&#39;、&quot; 打印 \、’、” 不能直接使用<br>打印Gramps sez,”a \ is a backslash.”<br>printf(“Gramps sez, &quot;a \ is a backslash.&quot;\n”)<br><img src="./c+-1.png" alt=" "></p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>可移植类型的头文件: 确保c语言的类型在各系统中的功能相同</p>
+</blockquote>
+<p>#include &lt;stdiot.h&gt;</p>
+<p>#include &lt;inttypes.h&gt; 定义了PRId32字符串宏 代表打印32位有符号值的合适转换说明(d/l)<br>例子:</p>
+<p>#include &lt;stdio.h&gt;</p>
+<p>#include &lt;inttypes.h&gt;<br>int main(void)<br>{<br>    int32_t me32; // \n<br>    me32 = 445933945;<br>    printf(“First,assume int32_t is int: “);<br>    printf(“me32 = %d\n”,me32);<br>    printf(“Next,let’s ont make any assumptions.\n”)<br>    printf(“Instead,use a &quot;macro&quot; from inttypes.h: “);<br>    printf(“me32 = %” PRId32 “\n”,me32);// \n<br>    return 0;<br>}<br>printf(“me32 = %” “d” “\n,me32);→printf(“me32 = %d\n,me32);</p>
+<ul>
+<li>sizeof(int/char/long) 可查看类型大小<br>#C语言中定义了char类型是1字节,所以char类型的大小一定是1字节.而在char类型为16位、double类型为64位的系统中,sizeof给出的double是4字节.</li>
+<li>系统化命名约定<br>i_前缀表示int类型 i_smart<br>us_表示unsigned short类型 us_versmart</li>
+</ul>
+<blockquote>
+<p>c标准规定了printf当缓冲区满、遇到换行字符或需要输入的时候把缓冲区中的内容发送到屏幕 fflush();函数也可以刷新缓冲区</p>
+</blockquote>
+<blockquote>
+<p>%集合:<br>%a,%A 读入一个浮点值(仅C99有效) 　　<br>%c 读入一个字符 　　<br>%d 读入十进制整数 　　<br>%i 读入十进制，八进制，十六进制整数 　　<br>%o 读入八进制整数 　　<br>%x,%X 读入十六进制整数 　　<br>%s 读入一个字符串，遇空格、制表符或换行符结束。 　　<br>%f,%F,%e,%E,%g,%G 用来输入实数，可以用小数形式或指数形式输入。 　　<br>%p 读入一个指针 　　<br>%u 读入一个无符号十进制整数 　　<br>%n 至此已读入值的等价字符数 　　<br>%[] 扫描字符集合 　　<br>%% 读%符号</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/13/c语言和c++/" data-id="ck0ag4lga000jh7th8qgkpceg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/05/15/easy-linux-pwn/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          easy-linux-pwn
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/11/ELF/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ELF</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/17/shark-reverse-2/">shark-reverse-2</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/15/C-反汇编与逆向分析学习笔记/">C++反汇编与逆向分析学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/12/easy-KeygenMe/">easy_KeygenMe</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/11/reversing-kr-easy-crack/">reversing.kr-easy_crack</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/09/tips/">tips</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

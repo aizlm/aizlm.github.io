@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>7-input | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="int memcmp(const void *buf1,const void *buf2,unsigned int count); #const限定变量不允许改变比较内存区域buf1和buf2的前count个字节 #按字节比较头文件 #include &amp;lt;string.h&amp;gt; 或 #include &amp;lt;memory.h&amp;gt;if buf1&amp;lt;buf2 , 返回值&amp;lt;0if">
+<meta property="og:type" content="article">
+<meta property="og:title" content="7-input">
+<meta property="og:url" content="http://yoursite.com/2019/05/16/7-input/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="int memcmp(const void *buf1,const void *buf2,unsigned int count); #const限定变量不允许改变比较内存区域buf1和buf2的前count个字节 #按字节比较头文件 #include &amp;lt;string.h&amp;gt; 或 #include &amp;lt;memory.h&amp;gt;if buf1&amp;lt;buf2 , 返回值&amp;lt;0if">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-05-20T11:49:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="7-input">
+<meta name="twitter:description" content="int memcmp(const void *buf1,const void *buf2,unsigned int count); #const限定变量不允许改变比较内存区域buf1和buf2的前count个字节 #按字节比较头文件 #include &amp;lt;string.h&amp;gt; 或 #include &amp;lt;memory.h&amp;gt;if buf1&amp;lt;buf2 , 返回值&amp;lt;0if">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-7-input" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/16/7-input/" class="article-date">
+  <time datetime="2019-05-16T12:19:24.000Z" itemprop="datePublished">2019-05-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      7-input
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>int memcmp(const void *buf1,const void *buf2,unsigned int count); #const限定变量不允许改变<br>比较内存区域buf1和buf2的前count个字节 #按字节比较<br>头文件 #include &lt;string.h&gt; 或 #include &lt;memory.h&gt;<br>if buf1&lt;buf2 , 返回值&lt;0<br>if buf1==buf2 , 返回值=0<br>if buf1&gt;buf2 , 返回值&gt;0</p>
+</li>
+<li><p>extern int strcmp(const char *s1,const char *s2); #extern可置于变量或函数前,以表示变量或者函数的定义在别的文件,遇到此变量时,在其他模块中寻找其定义,此外，也可以用来进行链接指定<br>两个字符串自左向右逐个字符相比 按ASCII值大小比较<br>头文件 #include &lt;string.h&gt;<br>设这两个字符串为str1，str2，<br>若str1=str2，则返回零；<br>若str1&lt;str2，则返回负数；<br>若str1&gt;str2，则返回正数。</p>
+</li>
+<li><p>char *getenv(char *envvar) #envvar为环境变量的名称,若该变量存在则会返回指向该内容的指针,格式为envvar=value<br>从环境中取字符串,获取环境变量的值</p>
+</li>
+<li><p>FILE *fopen(const char *path,const char *mode);  #参数 path字符串包含欲打开的文件路径及文件名，参数 mode 字符串则代表着流形态<br>返回值：文件顺利打开后，指向该流的文件指针就会被返回。如果文件打开失败则返回 NULL，并把错误代码存在error中<br>#int fclose( FILE *fp ); 关闭流</p>
+</li>
+<li><p>size_t fread(void *buffer,size_t size,size_t count,FILE *stream); #buffer用于接收数据的内存地址 stream输入流<br>fread是一个函数，它从文件流中读数据，最多读取count个项，每个项size个字节，如果调用成功返回实际读取到的项个数（小于或等于count），如果不成功或读到文件末尾返回 0。</p>
+</li>
+</ul>
+<h1 id="input-pwnable-kr-这题不会啊-后面学的差不多了再回头看看吧"><a href="#input-pwnable-kr-这题不会啊-后面学的差不多了再回头看看吧" class="headerlink" title="input pwnable.kr (这题不会啊 后面学的差不多了再回头看看吧)"></a>input pwnable.kr (这题不会啊 后面学的差不多了再回头看看吧)</h1><p>源码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;sys/socket.h&gt;</span><br><span class="line">#include &lt;arpa/inet.h&gt;</span><br><span class="line"></span><br><span class="line">int main(int argc, char* argv[], char* envp[])&#123;</span><br><span class="line">    printf(&quot;Welcome to pwnable.kr\n&quot;);</span><br><span class="line">    printf(&quot;Let&apos;s see if you know how to give input to program\n&quot;);</span><br><span class="line">    printf(&quot;Just give me correct inputs then you will get the flag :)\n&quot;);</span><br><span class="line"></span><br><span class="line">    // argv</span><br><span class="line">    if(argc != 100) return 0;</span><br><span class="line">    if(strcmp(argv[&apos;A&apos;],&quot;\x00&quot;)) return 0;</span><br><span class="line">    if(strcmp(argv[&apos;B&apos;],&quot;\x20\x0a\x0d&quot;)) return 0;</span><br><span class="line">    printf(&quot;Stage 1 clear!\n&quot;); </span><br><span class="line"></span><br><span class="line">    // stdio</span><br><span class="line">    char buf[4];</span><br><span class="line">    read(0, buf, 4);</span><br><span class="line">    if(memcmp(buf, &quot;\x00\x0a\x00\xff&quot;, 4)) return 0;</span><br><span class="line">    read(2, buf, 4);</span><br><span class="line">        if(memcmp(buf, &quot;\x00\x0a\x02\xff&quot;, 4)) return 0;</span><br><span class="line">    printf(&quot;Stage 2 clear!\n&quot;);</span><br><span class="line">    </span><br><span class="line">    // env</span><br><span class="line">    if(strcmp(&quot;\xca\xfe\xba\xbe&quot;, getenv(&quot;\xde\xad\xbe\xef&quot;))) return 0;</span><br><span class="line">    printf(&quot;Stage 3 clear!\n&quot;);</span><br><span class="line"></span><br><span class="line">    // file</span><br><span class="line">    FILE* fp = fopen(&quot;\x0a&quot;, &quot;r&quot;);</span><br><span class="line">    if(!fp) return 0;</span><br><span class="line">    if( fread(buf, 4, 1, fp)!=1 ) return 0;</span><br><span class="line">    if( memcmp(buf, &quot;\x00\x00\x00\x00&quot;, 4) ) return 0;</span><br><span class="line">    fclose(fp);</span><br><span class="line">    printf(&quot;Stage 4 clear!\n&quot;); </span><br><span class="line"></span><br><span class="line">    // network</span><br><span class="line">    int sd, cd;</span><br><span class="line">    struct sockaddr_in saddr, caddr;</span><br><span class="line">    sd = socket(AF_INET, SOCK_STREAM, 0);</span><br><span class="line">    if(sd == -1)&#123;</span><br><span class="line">        printf(&quot;socket error, tell admin\n&quot;);</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    saddr.sin_family = AF_INET;</span><br><span class="line">    saddr.sin_addr.s_addr = INADDR_ANY;</span><br><span class="line">    saddr.sin_port = htons( atoi(argv[&apos;C&apos;]) );</span><br><span class="line">    if(bind(sd, (struct sockaddr*)&amp;saddr, sizeof(saddr)) &lt; 0)&#123;</span><br><span class="line">        printf(&quot;bind error, use another port\n&quot;);</span><br><span class="line">            return 1;</span><br><span class="line">    &#125;</span><br><span class="line">    listen(sd, 1);</span><br><span class="line">    int c = sizeof(struct sockaddr_in);</span><br><span class="line">    cd = accept(sd, (struct sockaddr *)&amp;caddr, (socklen_t*)&amp;c);</span><br><span class="line">    if(cd &lt; 0)&#123;</span><br><span class="line">        printf(&quot;accept error, tell admin\n&quot;);</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    if( recv(cd, buf, 4, 0) != 4 ) return 0;</span><br><span class="line">    if(memcmp(buf, &quot;\xde\xad\xbe\xef&quot;, 4)) return 0;</span><br><span class="line">    printf(&quot;Stage 5 clear!\n&quot;);</span><br><span class="line"></span><br><span class="line">    // here&apos;s your flag</span><br><span class="line">    system(&quot;/bin/cat flag&quot;);    </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>python解题脚本:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import socket</span><br><span class="line">import time</span><br><span class="line">import subprocess</span><br><span class="line"></span><br><span class="line">stdinr, stdinw = os.pipe()</span><br><span class="line">stderrr, stderrw = os.pipe()</span><br><span class="line"></span><br><span class="line">args = list(&quot;A&quot;*99)</span><br><span class="line">args[ord(&apos;A&apos;) - 1] = &quot;&quot;</span><br><span class="line">args[ord(&apos;B&apos;) - 1] = &quot;\x20\x0a\x0d&quot;</span><br><span class="line">args[ord(&quot;C&quot;) - 1] = &quot;8888&quot;</span><br><span class="line"></span><br><span class="line">os.write(stdinw, &quot;\x00\x0a\x00\xff&quot;)</span><br><span class="line">os.write(stderrw, &quot;\x00\x0a\x02\xff&quot;)</span><br><span class="line"></span><br><span class="line">environ = &#123;&quot;\xde\xad\xbe\xef&quot; : &quot;\xca\xfe\xba\xbe&quot;&#125;</span><br><span class="line"></span><br><span class="line">f = open(&quot;\x0a&quot; , &quot;wb&quot;)</span><br><span class="line">f.write(&quot;\x00&quot;*4)</span><br><span class="line">f.close()</span><br><span class="line"></span><br><span class="line">s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line"></span><br><span class="line">pro = subprocess.Popen([&quot;/home/input2/input&quot;]+args, stdin=stdinr,stderr=stderrr,env=environ)</span><br><span class="line"></span><br><span class="line">time.sleep(2)</span><br><span class="line">s.connect((&quot;127.0.0.1&quot;, 8888))</span><br><span class="line">s.send(&quot;\xde\xad\xbe\xef&quot;)</span><br><span class="line">s.close()</span><br></pre></td></tr></table></figure>
+
+<p>解题wp:<br>1 <a href="https://www.jianshu.com/p/032a754b72d8" target="_blank" rel="noopener">https://www.jianshu.com/p/032a754b72d8</a><br>2 <a href="https://blog.csdn.net/SmalOSnail/article/details/53048109" target="_blank" rel="noopener">https://blog.csdn.net/SmalOSnail/article/details/53048109</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/16/7-input/" data-id="ck0ag4lg4000bh7th7wh9caue" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/05/18/8-leg/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          8-leg
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/16/6-ran/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">6-ran</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/17/shark-reverse-2/">shark-reverse-2</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/15/C-反汇编与逆向分析学习笔记/">C++反汇编与逆向分析学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/12/easy-KeygenMe/">easy_KeygenMe</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/11/reversing-kr-easy-crack/">reversing.kr-easy_crack</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/09/tips/">tips</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

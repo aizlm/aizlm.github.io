@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>reversing.kr-easy_crack | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="easy_CrackMeIDA在win下运行发现是一个注册类的程序 那很明显就是找特征码 不然就是破解进入程序得到flag吧查壳 没有壳 发现是VC++编写的程序：破解就不记录过程了 这里我用的是搜索字符串的方法 因为点击注册会发现有Incorrect Password这样的关键字符 然后找到绕过注册失败的关键跳 NOP掉就行 当然有很多方法 这也是个massagebox也能解决的 然后破解完之后">
+<meta property="og:type" content="article">
+<meta property="og:title" content="reversing.kr-easy_crack">
+<meta property="og:url" content="http://yoursite.com/2019/07/11/reversing-kr-easy-crack/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="easy_CrackMeIDA在win下运行发现是一个注册类的程序 那很明显就是找特征码 不然就是破解进入程序得到flag吧查壳 没有壳 发现是VC++编写的程序：破解就不记录过程了 这里我用的是搜索字符串的方法 因为点击注册会发现有Incorrect Password这样的关键字符 然后找到绕过注册失败的关键跳 NOP掉就行 当然有很多方法 这也是个massagebox也能解决的 然后破解完之后">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2019/07/11/reversing-kr-easy-crack/crack-1.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/11/reversing-kr-easy-crack/crack-2.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/11/reversing-kr-easy-crack/crack-3.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/11/reversing-kr-easy-crack/crack-4.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/11/reversing-kr-easy-crack/crack-5.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/11/reversing-kr-easy-crack/crack-6.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/11/reversing-kr-easy-crack/crack-7.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/11/reversing-kr-easy-crack/crack-8.png">
+<meta property="og:updated_time" content="2019-07-11T11:21:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="reversing.kr-easy_crack">
+<meta name="twitter:description" content="easy_CrackMeIDA在win下运行发现是一个注册类的程序 那很明显就是找特征码 不然就是破解进入程序得到flag吧查壳 没有壳 发现是VC++编写的程序：破解就不记录过程了 这里我用的是搜索字符串的方法 因为点击注册会发现有Incorrect Password这样的关键字符 然后找到绕过注册失败的关键跳 NOP掉就行 当然有很多方法 这也是个massagebox也能解决的 然后破解完之后">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/11/reversing-kr-easy-crack/crack-1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-reversing-kr-easy-crack" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/11/reversing-kr-easy-crack/" class="article-date">
+  <time datetime="2019-07-11T05:35:16.000Z" itemprop="datePublished">2019-07-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      reversing.kr-easy_crack
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="easy-CrackMe"><a href="#easy-CrackMe" class="headerlink" title="easy_CrackMe"></a>easy_CrackMe</h1><h3 id="IDA"><a href="#IDA" class="headerlink" title="IDA"></a>IDA</h3><p>在win下运行发现是一个注册类的程序 那很明显就是找特征码 不然就是破解进入程序得到flag吧<br><img src="./crack-1.png" alt=" "><br>查壳 没有壳 发现是VC++编写的程序：<br><img src="./crack-2.png" alt=" "><br>破解就不记录过程了 这里我用的是搜索字符串的方法 因为点击注册会发现有Incorrect Password这样的关键字符 然后找到绕过注册失败的关键跳 NOP掉就行 当然有很多方法 这也是个massagebox也能解决的 然后破解完之后 啥都没有：<br><img src="./crack-3.png" alt=" "><br>点击之后直接全都结束 真好 瞎忙活<br>由于是个静态分析的问题 那就载入IDA中去反汇编查看源代码吧<br>还是搜索关键词 因为直接去找main函数对我来说是很困难的<br><img src="./crack-4.png" alt=" "><br><img src="./crack-5.png" alt=" "></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">int __cdecl sub_401080(HWND hDlg)</span><br><span class="line">&#123;</span><br><span class="line">CHAR String; // [esp+<span class="number">4</span>h] [ebp<span class="number">-64</span>h]</span><br><span class="line">char v3; // [esp+<span class="number">5</span>h] [ebp<span class="number">-63</span>h]</span><br><span class="line">char v4; // [esp+<span class="number">6</span>h] [ebp<span class="number">-62</span>h]</span><br><span class="line">char v5; // [esp+<span class="number">8</span>h] [ebp<span class="number">-60</span>h]</span><br><span class="line">__int16 v6; // [esp+<span class="number">65</span>h] [ebp<span class="number">-3</span>h]</span><br><span class="line">char v7; // [esp+<span class="number">67</span>h] [ebp<span class="number">-1</span>h]</span><br><span class="line"></span><br><span class="line">String = <span class="number">0</span>;</span><br><span class="line">memset(&amp;v3, <span class="number">0</span>, <span class="number">0x60</span>u);</span><br><span class="line">v6 = <span class="number">0</span>;</span><br><span class="line">v7 = <span class="number">0</span>;</span><br><span class="line">GetDlgItemTextA(hDlg, <span class="number">1000</span>, &amp;String, <span class="number">100</span>);</span><br><span class="line"><span class="keyword">if</span> ( v3 != <span class="number">97</span> || strncmp(&amp;v4, a5y, <span class="number">2</span>u) || strcmp(&amp;v5, aR3versing) || String != <span class="number">69</span> )</span><br><span class="line"><span class="keyword">return</span> MessageBoxA(hDlg, aIncorrectPassw, Caption, <span class="number">0x10</span>u);  //Ea5yR3versing <span class="number">69</span>ascii对应E</span><br><span class="line">MessageBoxA(hDlg, Text, Caption, <span class="number">0x40</span>u);</span><br><span class="line"><span class="keyword">return</span> EndDialog(hDlg, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="OD"><a href="#OD" class="headerlink" title="OD"></a>OD</h3><p>做完IDA 想起来这些字符在OD中也有见过 载入OD重新来一次<br><img src="./crack-6.png" alt=" "><br>搜索关键字符 然后找到绕过登录失败的关键跳 00401135<br><img src="./crack-7.png" alt=" "><br>这里将我们输入的登录码存放在esp+0x8的位置<br>接着紧跟着：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">004010</span>B0  |.  <span class="number">807</span>C24 <span class="number">05</span> <span class="number">61</span>  CMP BYTE PTR SS:[ESP+<span class="number">5</span>],<span class="number">61</span></span><br></pre></td></tr></table></figure>
+
+<p>做了个比较 0x61对应a </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">004010</span>BD  |.  <span class="number">68</span> <span class="number">78604000</span>   PUSH Easy_Cra<span class="number">.00406078</span>                   ;  <span class="number">5</span>y</span><br><span class="line"></span><br><span class="line"><span class="number">004010</span>D1  |.  BE <span class="number">6</span>C604000   MOV ESI,Easy_Cra<span class="number">.0040606</span>C                ;  R3versing</span><br><span class="line"></span><br><span class="line"><span class="number">0040110</span>D  |.  <span class="number">807</span>C24 <span class="number">04</span> <span class="number">45</span>  CMP BYTE PTR SS:[ESP+<span class="number">4</span>],<span class="number">45</span>               ;  <span class="number">0x45</span>=E</span><br></pre></td></tr></table></figure>
+
+<p>真码==Ea5yR3versing<br><img src="./crack-8.png" alt=" "></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/11/reversing-kr-easy-crack/" data-id="ck0ag4lgc000nh7thu6cr48f7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/07/12/easy-KeygenMe/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          easy_KeygenMe
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/09/tips/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">tips</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/17/shark-reverse-2/">shark-reverse-2</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/15/C-反汇编与逆向分析学习笔记/">C++反汇编与逆向分析学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/12/easy-KeygenMe/">easy_KeygenMe</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/11/reversing-kr-easy-crack/">reversing.kr-easy_crack</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/09/tips/">tips</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

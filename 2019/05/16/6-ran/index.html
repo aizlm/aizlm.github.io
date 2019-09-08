@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>6-ran | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="pwnable.kr 6-random ^ 异或符 二进制相同为1 不同为0 rand()函数 本身是一个产生伪随机数的随机函数srand()是随机数生成器的初始化器 在rand()函数使用之前使用一次 就可以每一次都生成不一样的随机数序列需要的头文件 #include &amp;lt;stdlib.h&amp;gt;   链接服务器ssh random@pwnable.kr -p2222 pw:guest源码,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="6-ran">
+<meta property="og:url" content="http://yoursite.com/2019/05/16/6-ran/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="pwnable.kr 6-random ^ 异或符 二进制相同为1 不同为0 rand()函数 本身是一个产生伪随机数的随机函数srand()是随机数生成器的初始化器 在rand()函数使用之前使用一次 就可以每一次都生成不一样的随机数序列需要的头文件 #include &amp;lt;stdlib.h&amp;gt;   链接服务器ssh random@pwnable.kr -p2222 pw:guest源码,">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2019/05/16/6-ran/6-1.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/16/6-ran/6-2.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/16/6-ran/6-3.png">
+<meta property="og:updated_time" content="2019-05-16T10:33:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="6-ran">
+<meta name="twitter:description" content="pwnable.kr 6-random ^ 异或符 二进制相同为1 不同为0 rand()函数 本身是一个产生伪随机数的随机函数srand()是随机数生成器的初始化器 在rand()函数使用之前使用一次 就可以每一次都生成不一样的随机数序列需要的头文件 #include &amp;lt;stdlib.h&amp;gt;   链接服务器ssh random@pwnable.kr -p2222 pw:guest源码,">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/16/6-ran/6-1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-6-ran" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/16/6-ran/" class="article-date">
+  <time datetime="2019-05-16T10:08:49.000Z" itemprop="datePublished">2019-05-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      6-ran
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="pwnable-kr-6-random"><a href="#pwnable-kr-6-random" class="headerlink" title="pwnable.kr 6-random"></a>pwnable.kr 6-random</h1><ul>
+<li>^ 异或符 二进制相同为1 不同为0</li>
+<li>rand()函数 本身是一个产生伪随机数的随机函数<br>srand()是随机数生成器的初始化器 在rand()函数使用之前使用一次 就可以每一次都生成不一样的随机数序列<br>需要的头文件 #include &lt;stdlib.h&gt;</li>
+</ul>
+<blockquote>
+<p>链接服务器ssh <a href="mailto:random@pwnable.kr" target="_blank" rel="noopener">random@pwnable.kr</a> -p2222 pw:guest<br>源码,检查保护机制:<br><img src="./6-1.png" alt=" "><br>这里用了rand()赋值给random 产生随机数序列 不会变的随机数序列 然后我们要输入一个key 使得这两个值的异或 与 0xdeadbeef相等 之后就可以得到flag了<br>首先要将random值得到才可以得出我们需要输入的值是多少<br>编写c程序:<br><img src="./6-2.png" alt=" "><br>得出random值 以及将其与0xdeadbeef异或运算后的值就是需要输入的key值<br>在服务器终端中运行random可执行文件 得到flag<br><img src="./6-3.png" alt=" "></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/16/6-ran/" data-id="ck0ag4lg20008h7thp4mxckwg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/05/16/7-input/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          7-input
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/16/linux指令/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">linux指令</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/17/shark-reverse-2/">shark-reverse-2</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/15/C-反汇编与逆向分析学习笔记/">C++反汇编与逆向分析学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/12/easy-KeygenMe/">easy_KeygenMe</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/11/reversing-kr-easy-crack/">reversing.kr-easy_crack</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/09/tips/">tips</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
