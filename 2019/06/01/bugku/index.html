@@ -1,40 +1,917 @@
-<!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>bugku | Aizlm_blog</title><meta name="description" content="bugku"><meta name="keywords" content><meta name="author" content="aizlm_Lin"><meta name="copyright" content="aizlm_Lin"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="canonical" href="http://yoursite.com/2019/06/01/bugku/"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="bugku"><meta name="twitter:description" content="bugku"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/Photo/avatar.png"><meta property="og:type" content="article"><meta property="og:title" content="bugku"><meta property="og:url" content="http://yoursite.com/2019/06/01/bugku/"><meta property="og:site_name" content="Aizlm_blog"><meta property="og:description" content="bugku"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/Photo/avatar.png"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="prev" title="ssctf" href="http://yoursite.com/2019/06/03/ssctf/"><link rel="next" title="iscc-reverse" href="http://yoursite.com/2019/05/31/iscc-reverse/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: undefined,
-  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
-  highlight_copy: 'false',
-  highlight_lang: 'true',
-  highlight_shrink: 'false',
-  copy: {
-    success: 'Copy successfully',
-    error: 'Copy error',
-    noSupport: 'The browser does not support'
-  },
-  bookmark: {
-    title: 'Bookmark',
-    message_prev: 'Press',
-    message_next: 'to bookmark this page'
-  },
-  runtime_unit: 'days'
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <title>bugku | Aizlm_blog</title>
+  <meta name="keywords" content>
+  <meta name="description" content="bugku | Aizlm_blog">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="常用api：https://www.52pojie.cn/thread-99656-1-1.html 一般取文本框内容的函数有GetWindowText,GetDlgItemText  Classical CrackMePeid : Microsoft Visual C# v7.0 / Basic .NET  –&amp;gt;UENURntFYTV5X0RvX05ldF9DcjRjazNyfQ== B">
+<meta property="og:type" content="article">
+<meta property="og:title" content="i春秋">
+<meta property="og:url" content="http://yoursite.com/2019/09/17/i春秋/index.html">
+<meta property="og:site_name" content="Aizlm_blog">
+<meta property="og:description" content="常用api：https://www.52pojie.cn/thread-99656-1-1.html 一般取文本框内容的函数有GetWindowText,GetDlgItemText  Classical CrackMePeid : Microsoft Visual C# v7.0 / Basic .NET  –&amp;gt;UENURntFYTV5X0RvX05ldF9DcjRjazNyfQ== B">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2019/09/17/i春秋/i-1.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/17/i春秋/c01-1.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/17/i春秋/c01-2.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/17/i春秋/c01-3.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/17/i春秋/jctf01-1.png">
+<meta property="og:updated_time" content="2019-09-27T03:03:37.842Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="i春秋">
+<meta name="twitter:description" content="常用api：https://www.52pojie.cn/thread-99656-1-1.html 一般取文本框内容的函数有GetWindowText,GetDlgItemText  Classical CrackMePeid : Microsoft Visual C# v7.0 / Basic .NET  –&amp;gt;UENURntFYTV5X0RvX05ldF9DcjRjazNyfQ== B">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/17/i春秋/i-1.png">
 
-  
-}</script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div class="auto_open" id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#baby-bugku"><span class="toc-number">1.</span> <span class="toc-text">baby-bugku</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一次独立做出来一道题-掩藏不住的兴奋"><span class="toc-number">1.0.1.</span> <span class="toc-text">第一次独立做出来一道题 掩藏不住的兴奋</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#easy-vb-bugku"><span class="toc-number">2.</span> <span class="toc-text">easy_vb-bugku</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#re1-exe"><span class="toc-number">3.</span> <span class="toc-text">re1.exe</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#consoleApplication4"><span class="toc-number">4.</span> <span class="toc-text">consoleApplication4</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#逆向入门-admin-exe"><span class="toc-number">5.</span> <span class="toc-text">逆向入门-admin.exe</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#love"><span class="toc-number">6.</span> <span class="toc-text">love</span></a></li></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/Photo/post.png)"><div id="page-header"><span class="pull-left"> <a class="blog_title" id="site-name" href="/">Aizlm_blog</a></span><div class="open toggle-menu pull-right"><div class="menu-icon-first"></div><div class="menu-icon-second"></div><div class="menu-icon-third"></div></div><div class="menu_mask"></div><span class="pull-right menus"><div class="mobile_author_icon"><img class="lozad avatar_img" src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/Photo/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'"></div><div class="mobile_post_data"><div class="mobile_data_item text-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">Articles</div><div class="length_num">34</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><script>document.body.addEventListener('touchstart', function(){ });</script></div></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title"><div class="posttitle">bugku</div></div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> Created 2019-06-01<span class="post-meta__separator">|</span><i class="fa fa-history" aria-hidden="true"></i> Updated 2019-06-09</time></div></div></div><div class="layout layout_post" id="content-inner">   <article id="post"><div class="article-container" id="post-content"><h1 id="baby-bugku"><a href="#baby-bugku" class="headerlink" title="baby-bugku"></a>baby-bugku</h1><h3 id="第一次独立做出来一道题-掩藏不住的兴奋"><a href="#第一次独立做出来一道题-掩藏不住的兴奋" class="headerlink" title="第一次独立做出来一道题 掩藏不住的兴奋"></a>第一次独立做出来一道题 掩藏不住的兴奋</h3><p>首先下载我们的zip文件 解压 得到可执行程序baby.exe<br>扔进ida中反汇编 f5搜寻伪代码 用尽所有的办法得到足够多的信息<br><img alt=" " data-src="/2019/06/01/bugku/ba-1.png" class="lozad"><br><img alt=" " data-src="/2019/06/01/bugku/ba-2.png" class="lozad"><br><img alt=" " data-src="/2019/06/01/bugku/ba-3.png" class="lozad"><br>shift+f12:<br><img alt=" " data-src="/2019/06/01/bugku/ba-4.png" class="lozad"></p>
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js?v=1.0.1"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<script src="/js/iconfont.js?v=1.0.1"></script>
+
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+  <input class="theme_blog_path" value>
+</div>
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg" />
+</a>
+<div class="author">
+    <span>aizlm_Lin</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="rss" href="/atom.xml" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-rss"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="github" href="https://github.com/yelog" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="facebook" href="https://www.facebook.com/faker.tops" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-facebook"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+    
+        
+        <a title="instagram" href="https://www.facebook.com/faker.tops" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-instagram"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="reddit" href="https://www.reddit.com/user/yelog/" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-reddit"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="weibo" href="http://weibo.com/u/2307534817" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-weibo"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="jianshu" href="https://www.jianshu.com/u/ff56736de7cf" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-jianshu"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="zhihu" href="https://www.zhihu.com/people/jaytp/activities" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-zhihu"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+        <a title="oschina" href="https://my.oschina.net/yelog" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-oschina"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+        <a title="email" href="mailto:jaytp@qq.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-qq"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="kugou" href="https://www.kugou.com/" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-kugou"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="neteasemusic" href="https://music.163.com/#/user/home?id=88151013" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-neteasemusic"></use>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active">全部文章<small>(34)</small></div></li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="34">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode==13){return false;}">
+        <input class="search" type="text" placeholder="Search..." autocomplete="off"id="local-search-input" >
+        <i class="cross"></i>
+        <span>
+            <label for="tagswitch">Tags:</label>
+            <input id="tagswitch" type="checkbox" style="display: none" />
+            <i id="tagsWitchIcon"></i>
+        </span>
+    </form>
+    <div class="tags-list">
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class=""
+           href="/2019/05/20/10-shell/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="10-shell">10-shell</span>
+            <span class="post-date" title="2019-05-20 19:26:31">2019/05/20</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/05/07/1-fd/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="1-fd">1-fd</span>
+            <span class="post-date" title="2019-05-07 23:08:25">2019/05/07</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/05/22/14-cmd1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="14-cmd1">14-cmd1</span>
+            <span class="post-date" title="2019-05-22 20:21:20">2019/05/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/05/07/2-col/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="2-col">2-col</span>
+            <span class="post-date" title="2019-05-07 23:11:46">2019/05/07</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/06/19/2019神盾杯逆向和密码学/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="2019神盾杯逆向和密码学">2019神盾杯逆向和密码学</span>
+            <span class="post-date" title="2019-06-19 17:39:35">2019/06/19</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/05/07/3-bof/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="3-bof">3-bof</span>
+            <span class="post-date" title="2019-05-07 23:27:47">2019/05/07</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/05/07/4-flag/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="4-flag">4-flag</span>
+            <span class="post-date" title="2019-05-07 23:32:02">2019/05/07</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/05/16/6-ran/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="6-ran">6-ran</span>
+            <span class="post-date" title="2019-05-16 18:08:49">2019/05/16</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/05/16/7-input/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="7-input">7-input</span>
+            <span class="post-date" title="2019-05-16 20:19:24">2019/05/16</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/05/11/5-pass/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="5-pass">5-pass</span>
+            <span class="post-date" title="2019-05-11 10:11:03">2019/05/11</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/05/18/8-leg/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="8-leg">8-leg</span>
+            <span class="post-date" title="2019-05-18 15:29:37">2019/05/18</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/05/18/9-mistake/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="9-mistake">9-mistake</span>
+            <span class="post-date" title="2019-05-18 16:37:06">2019/05/18</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/05/11/ELF/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ELF">ELF</span>
+            <span class="post-date" title="2019-05-11 22:47:47">2019/05/11</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/07/15/C-反汇编与逆向分析学习笔记/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="C++反汇编与逆向分析学习笔记">C++反汇编与逆向分析学习笔记</span>
+            <span class="post-date" title="2019-07-15 14:34:11">2019/07/15</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/06/01/bugku/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="bugku">bugku</span>
+            <span class="post-date" title="2019-06-01 18:52:38">2019/06/01</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/05/18/XCTF/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="XCTF">XCTF</span>
+            <span class="post-date" title="2019-05-18 20:30:44">2019/05/18</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/05/07/cryp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="cryp">cryp</span>
+            <span class="post-date" title="2019-05-07 23:34:04">2019/05/07</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/05/13/c语言和c++/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="c语言和c++">c语言和c++</span>
+            <span class="post-date" title="2019-05-13 18:31:05">2019/05/13</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/05/10/c/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="c">c</span>
+            <span class="post-date" title="2019-05-10 17:25:17">2019/05/10</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/07/12/easy-KeygenMe/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="easy_KeygenMe">easy_KeygenMe</span>
+            <span class="post-date" title="2019-07-12 21:24:05">2019/07/12</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/05/15/easy-linux-pwn/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="easy-linux-pwn">easy-linux-pwn</span>
+            <span class="post-date" title="2019-05-15 21:15:38">2019/05/15</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/05/31/iscc-reverse/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="iscc-reverse">iscc-reverse</span>
+            <span class="post-date" title="2019-05-31 20:27:28">2019/05/31</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/09/17/i春秋/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="i春秋">i春秋</span>
+            <span class="post-date" title="2019-09-17 19:51:51">2019/09/17</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/05/11/linux二进制/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="linux二进制">linux二进制</span>
+            <span class="post-date" title="2019-05-11 20:43:45">2019/05/11</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/05/16/linux指令/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="linux指令">linux指令</span>
+            <span class="post-date" title="2019-05-16 09:33:42">2019/05/16</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/05/30/reverse-xctf/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="reverse-xctf">reverse-xctf</span>
+            <span class="post-date" title="2019-05-30 21:43:14">2019/05/30</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/07/11/reversing-kr-easy-crack/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="reversing.kr-easy_crack">reversing.kr-easy_crack</span>
+            <span class="post-date" title="2019-07-11 13:35:16">2019/07/11</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/07/17/shark-reverse-2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="shark-reverse-2">shark-reverse-2</span>
+            <span class="post-date" title="2019-07-17 13:44:36">2019/07/17</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/07/06/shark-reverse-1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="shark reverse-1 破解类">shark reverse-1 破解类</span>
+            <span class="post-date" title="2019-07-06 23:08:24">2019/07/06</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/06/03/ssctf/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ssctf">ssctf</span>
+            <span class="post-date" title="2019-06-03 14:20:14">2019/06/03</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/07/09/tips/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="tips">tips</span>
+            <span class="post-date" title="2019-07-09 14:40:47">2019/07/09</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/06/07/加密算法/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="加密算法">加密算法</span>
+            <span class="post-date" title="2019-06-07 20:02:49">2019/06/07</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/05/07/栈/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="栈">栈</span>
+            <span class="post-date" title="2019-05-07 23:17:40">2019/05/07</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/09/17/黑盾杯wp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="黑盾杯wp">黑盾杯wp</span>
+            <span class="post-date" title="2019-09-17 10:40:16">2019/09/17</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-bugku" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">bugku</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2019-06-09 16:47:26'>2019-06-01 18:52</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#baby-bugku"><span class="toc-text">baby-bugku</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一次独立做出来一道题-掩藏不住的兴奋"><span class="toc-text">第一次独立做出来一道题 掩藏不住的兴奋</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#easy-vb-bugku"><span class="toc-text">easy_vb-bugku</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#re1-exe"><span class="toc-text">re1.exe</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#consoleApplication4"><span class="toc-text">consoleApplication4</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#逆向入门-admin-exe"><span class="toc-text">逆向入门-admin.exe</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#love"><span class="toc-text">love</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="baby-bugku"><a href="#baby-bugku" class="headerlink" title="baby-bugku"></a>baby-bugku</h1><h3 id="第一次独立做出来一道题-掩藏不住的兴奋"><a href="#第一次独立做出来一道题-掩藏不住的兴奋" class="headerlink" title="第一次独立做出来一道题 掩藏不住的兴奋"></a>第一次独立做出来一道题 掩藏不住的兴奋</h3><p>首先下载我们的zip文件 解压 得到可执行程序baby.exe<br>扔进ida中反汇编 f5搜寻伪代码 用尽所有的办法得到足够多的信息<br><img src="/2019/06/01/bugku/ba-1.png" alt=" "><br><img src="/2019/06/01/bugku/ba-2.png" alt=" "><br><img src="/2019/06/01/bugku/ba-3.png" alt=" "><br>shift+f12:<br><img src="/2019/06/01/bugku/ba-4.png" alt=" "></p>
 <blockquote>
-<p>发现有很多mov了很多的东西进栈 字符串窗口和函数print出来的Hi~ this is a babyre 并不是flag 那么就将mov的十六进制数转为字符 也在OD中查询这些字符串 以防止将程序将flag用作代码运行(这里字符串窗口没有 要么用作代码运行 要么没有存入内存中) 搜索时 用binary strings转化这些十六进制位:<br><img alt=" " data-src="/2019/06/01/bugku/ba-5.png" class="lozad"><br><img alt=" " data-src="/2019/06/01/bugku/ba-6.png" class="lozad"><br>输入flag:flag{Re_1s_S0_C0OL}<br>correct!</p>
+<p>发现有很多mov了很多的东西进栈 字符串窗口和函数print出来的Hi~ this is a babyre 并不是flag 那么就将mov的十六进制数转为字符 也在OD中查询这些字符串 以防止将程序将flag用作代码运行(这里字符串窗口没有 要么用作代码运行 要么没有存入内存中) 搜索时 用binary strings转化这些十六进制位:<br><img src="/2019/06/01/bugku/ba-5.png" alt=" "><br><img src="/2019/06/01/bugku/ba-6.png" alt=" "><br>输入flag:flag{Re_1s_S0_C0OL}<br>correct!</p>
 </blockquote>
-<h1 id="easy-vb-bugku"><a href="#easy-vb-bugku" class="headerlink" title="easy_vb-bugku"></a>easy_vb-bugku</h1><p>这题在ida中只显示了一个函数 所以没什么头绪 strings窗口中没有可疑的字符串<br>OD的应用还在学习当中<br>通过网上查找 这题是相当的简单 通过OD搜索被引用的字符串 查找定位到:<br><img alt=" " data-src="/2019/06/01/bugku/vb-1.png" class="lozad"><br>得出原来题目的flag:MCTF{<em>N3t_Rev_1s_E4ay</em>}<br>然而在bugku中输入不正确 题目提示flag{xxxx} 所以替换掉后 输入:<br>flag{<em>N3t_Rev_1s_E4ay</em>}<br>correct!</p>
-<h1 id="re1-exe"><a href="#re1-exe" class="headerlink" title="re1.exe"></a>re1.exe</h1><p>这题是xctf做过的原题<br>按照以前的思路 打开运行文件 只有叫我输入flag 就没其他的信息了<br><img alt=" " data-src="/2019/06/01/bugku/re-0.png" class="lozad"><br>所以用ida打开 查看源码 发现若v5与v9(自己输入的)相等的话 就得到flag 说明内存中有flag的值<br>在hex窗口中发现flag:<br><img alt=" " data-src="/2019/06/01/bugku/re-2.png" class="lozad"><br>还有在文本编辑器中可以找到 “/“查询字符模式<br><img alt=" " data-src="/2019/06/01/bugku/re-1.png" class="lozad"><br>flag: DUTCTF{Welc0met0DUTCTF}</p>
+<h1 id="easy-vb-bugku"><a href="#easy-vb-bugku" class="headerlink" title="easy_vb-bugku"></a>easy_vb-bugku</h1><p>这题在ida中只显示了一个函数 所以没什么头绪 strings窗口中没有可疑的字符串<br>OD的应用还在学习当中<br>通过网上查找 这题是相当的简单 通过OD搜索被引用的字符串 查找定位到:<br><img src="/2019/06/01/bugku/vb-1.png" alt=" "><br>得出原来题目的flag:MCTF{<em>N3t_Rev_1s_E4ay</em>}<br>然而在bugku中输入不正确 题目提示flag{xxxx} 所以替换掉后 输入:<br>flag{<em>N3t_Rev_1s_E4ay</em>}<br>correct!</p>
+<h1 id="re1-exe"><a href="#re1-exe" class="headerlink" title="re1.exe"></a>re1.exe</h1><p>这题是xctf做过的原题<br>按照以前的思路 打开运行文件 只有叫我输入flag 就没其他的信息了<br><img src="/2019/06/01/bugku/re-0.png" alt=" "><br>所以用ida打开 查看源码 发现若v5与v9(自己输入的)相等的话 就得到flag 说明内存中有flag的值<br>在hex窗口中发现flag:<br><img src="/2019/06/01/bugku/re-2.png" alt=" "><br>还有在文本编辑器中可以找到 “/“查询字符模式<br><img src="/2019/06/01/bugku/re-1.png" alt=" "><br>flag: DUTCTF{Welc0met0DUTCTF}</p>
 <h1 id="consoleApplication4"><a href="#consoleApplication4" class="headerlink" title="consoleApplication4"></a>consoleApplication4</h1><p>这题攻防世界2-game原题<br>思路:可以选择把游戏玩通关 12345678、87654321 得到flag    | |    利用ida得到源码会发现有三个条件 写出脚本得到flag</p>
-<h1 id="逆向入门-admin-exe"><a href="#逆向入门-admin-exe" class="headerlink" title="逆向入门-admin.exe"></a>逆向入门-admin.exe</h1><p>首先在win7中打不开应用程序 我以为是我版本问题 查了网上 基本都是这样子的 那就没啥信息了<br>然后将程序扔入ida中 看了没有函数 以为加壳了 查了PEID 显示不是一个PE文件<br><img alt=" " data-src="/2019/06/01/bugku/admin-1.png" class="lozad"><br>查了资料是说它不是一个可移植性的可执行文件 简单的说就是在微软操作系统下是打不开的 那就当作没加壳 加了也没啥用 本来就不可执行 加了感觉用处不大<br>然后查看hex views 和strings window:<br><img alt=" " data-src="/2019/06/01/bugku/admin-2.png" class="lozad"><br><img alt=" " data-src="/2019/06/01/bugku/admin-3.png" class="lozad"><br>啥都没有 找别的途径 看一下这个程序文本编辑下的内容 从terminal中打开:<br><img alt=" " data-src="/2019/06/01/bugku/admin-4.png" class="lozad"><br>发现了这是一个被bash64加密过后的图片 经过解密会得到这么一个图片:<br><img alt=" " data-src="/2019/06/01/bugku/admin-5.png" class="lozad"><br>扫码:<br><img alt=" " data-src="/2019/06/01/bugku/admin-6.png" class="lozad"><br>bugku{inde_9882ihsd8-0}</p>
+<h1 id="逆向入门-admin-exe"><a href="#逆向入门-admin-exe" class="headerlink" title="逆向入门-admin.exe"></a>逆向入门-admin.exe</h1><p>首先在win7中打不开应用程序 我以为是我版本问题 查了网上 基本都是这样子的 那就没啥信息了<br>然后将程序扔入ida中 看了没有函数 以为加壳了 查了PEID 显示不是一个PE文件<br><img src="/2019/06/01/bugku/admin-1.png" alt=" "><br>查了资料是说它不是一个可移植性的可执行文件 简单的说就是在微软操作系统下是打不开的 那就当作没加壳 加了也没啥用 本来就不可执行 加了感觉用处不大<br>然后查看hex views 和strings window:<br><img src="/2019/06/01/bugku/admin-2.png" alt=" "><br><img src="/2019/06/01/bugku/admin-3.png" alt=" "><br>啥都没有 找别的途径 看一下这个程序文本编辑下的内容 从terminal中打开:<br><img src="/2019/06/01/bugku/admin-4.png" alt=" "><br>发现了这是一个被bash64加密过后的图片 经过解密会得到这么一个图片:<br><img src="/2019/06/01/bugku/admin-5.png" alt=" "><br>扫码:<br><img src="/2019/06/01/bugku/admin-6.png" alt=" "><br>bugku{inde_9882ihsd8-0}</p>
 <h1 id="love"><a href="#love" class="headerlink" title="love"></a>love</h1><p>这几天经历了mac上安装gdb的失败 一度认为我是个白痴 直到后面意识到是文件的问题 然后就自闭了<br>首先这题打开源码:</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">__int64 __cdecl main_0()</span><br><span class="line">&#123;</span><br><span class="line">int v0; <span class="comment">// eax</span></span><br><span class="line"><span class="keyword">const</span> char *v1; <span class="comment">// eax</span></span><br><span class="line">size_t v2; <span class="comment">// eax</span></span><br><span class="line">int v3; <span class="comment">// edx</span></span><br><span class="line">__int64 v4; <span class="comment">// ST08_8</span></span><br><span class="line">signed int j; <span class="comment">// [esp+DCh] [ebp-ACh]</span></span><br><span class="line">signed int i; <span class="comment">// [esp+E8h] [ebp-A0h]</span></span><br><span class="line">signed int v8; <span class="comment">// [esp+E8h] [ebp-A0h]</span></span><br><span class="line">char Dest[<span class="number">108</span>]; <span class="comment">// [esp+F4h] [ebp-94h]</span></span><br><span class="line">char Str; <span class="comment">// [esp+160h] [ebp-28h]</span></span><br><span class="line">char v11; <span class="comment">// [esp+17Ch] [ebp-Ch]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; <span class="number">100</span>; ++i )</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span> ( i &gt;= <span class="number">0x64</span> )</span><br><span class="line">j____report_rangecheckfailure();</span><br><span class="line">Dest[i] = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">sub_41132F(<span class="string">"please enter the flag:"</span>);</span><br><span class="line">sub_411375(<span class="string">"%20s"</span>, &amp;Str);</span><br><span class="line">v0 = j_strlen(&amp;Str);</span><br><span class="line">v1 = sub_4110BE(&amp;Str, v0, &amp;v11);</span><br><span class="line">strncpy(Dest, v1, <span class="number">0x28</span>u);</span><br><span class="line">v8 = j_strlen(Dest);</span><br><span class="line"><span class="keyword">for</span> ( j = <span class="number">0</span>; j &lt; v8; ++j )</span><br><span class="line">Dest[j] += j;</span><br><span class="line">v2 = j_strlen(Dest);</span><br><span class="line"><span class="keyword">if</span> ( !strncmp(Dest, Str2, v2) )</span><br><span class="line">sub_41132F(<span class="string">"rigth flag!\n"</span>);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">sub_41132F(<span class="string">"wrong flag!\n"</span>);</span><br><span class="line">HIDWORD(v4) = v3;</span><br><span class="line">LODWORD(v4) = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">return</span> v4;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img alt=" " data-src="/2019/06/01/bugku/love-1.png" class="lozad"><br><img alt=" " data-src="/2019/06/01/bugku/love-2.png" class="lozad"><br><img alt=" " data-src="/2019/06/01/bugku/love-3.png" class="lozad"><br>在ida中所得到的信息 在源码中看到有对最后要比较的Dest进行加密 这里是先将Str加密后赋值给v1 后再复制给Dest 在strings window中看到有进行base64加密 进入sub_4110BE函数跟进后 确认是base64加密</p>
+<p><img src="/2019/06/01/bugku/love-1.png" alt=" "><br><img src="/2019/06/01/bugku/love-2.png" alt=" "><br><img src="/2019/06/01/bugku/love-3.png" alt=" "><br>在ida中所得到的信息 在源码中看到有对最后要比较的Dest进行加密 这里是先将Str加密后赋值给v1 后再复制给Dest 在strings window中看到有进行base64加密 进入sub_4110BE函数跟进后 确认是base64加密</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ( j = <span class="number">0</span>; j &lt; v8; ++j )</span><br><span class="line">Dest[j] += j;</span><br></pre></td></tr></table></figure>
 
-<p>再往下看源码 for语句中将Dest数组中的字符串移位了 所以在脚本中先将加密后的字符复位在进行base64解密就可以了<br><img alt=" " data-src="/2019/06/01/bugku/love-4.png" class="lozad"><br>flag{i_l0ve_you}</p>
-</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">aizlm_Lin</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://yoursite.com/2019/06/01/bugku/">http://yoursite.com/2019/06/01/bugku/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/Photo/avatar.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-buttom"><i class="fa fa-qrcode"></i> Donate<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lozad post-qr-code__img" src="/img/wechat.jpg"><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lozad post-qr-code__img" src="/img/alipay.jpg"><div class="post-qr-code__desc">支付寶</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull-left"><a href="/2019/06/03/ssctf/"><img class="prev_cover lozad" data-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="onerror=null;src='/img/404.jpg'"><div class="label">Previous Post</div><div class="prev_info"><span>ssctf</span></div></a></div><div class="next-post pull-right"><a href="/2019/05/31/iscc-reverse/"><img class="next_cover lozad" data-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="onerror=null;src='/img/404.jpg'"><div class="label">Next Post</div><div class="next_info"><span>iscc-reverse</span></div></a></div></nav></div></div><footer><div id="footer"><div class="copyright">&copy;2018 - 2019 By aizlm_Lin</div><div class="framework-info"><span>Driven </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme </span><a href="https://github.com/jerryc127/hexo-theme-butterfly"><span>Butterfly</span></a></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><section class="rightside" id="rightside"><a id="to_comment" href="#post-comment"><i class="scroll_to_comment fa fa-comments"></i></a><i class="fa fa-book" id="readmode" title="Read Mode"> </i><i class="fa fa-plus" id="font_plus" title="Increase font size"></i><i class="fa fa-minus" id="font_minus" title="Decrease font size"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="Traditional Chinese and Simplified Chinese Conversion">繁</a><i class="nightshift fa fa-moon-o" id="nightshift" title="Dark Mode"></i></section><div class=" " id="post_bottom"><div id="post_bottom_items"><a id="mobile_to_comment" href="#post-comment"><i class="mobile_scroll_to_comment fa fa-comments"></i></a><i class="fa fa-list" id="mobile_toc"></i><div id="toc_mobile"><div class="toc_mobile_headline">Catalog</div><ol class="toc_mobile_items"><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#baby-bugku"><span class="toc_mobile_items-number">1.</span> <span class="toc_mobile_items-text">baby-bugku</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#第一次独立做出来一道题-掩藏不住的兴奋"><span class="toc_mobile_items-number">1.0.1.</span> <span class="toc_mobile_items-text">第一次独立做出来一道题 掩藏不住的兴奋</span></a></li></ol></li></ol><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#easy-vb-bugku"><span class="toc_mobile_items-number">2.</span> <span class="toc_mobile_items-text">easy_vb-bugku</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#re1-exe"><span class="toc_mobile_items-number">3.</span> <span class="toc_mobile_items-text">re1.exe</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#consoleApplication4"><span class="toc_mobile_items-number">4.</span> <span class="toc_mobile_items-text">consoleApplication4</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#逆向入门-admin-exe"><span class="toc_mobile_items-number">5.</span> <span class="toc_mobile_items-text">逆向入门-admin.exe</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#love"><span class="toc_mobile_items-number">6.</span> <span class="toc_mobile_items-text">love</span></a></li></div></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/nightshift.js"></script><script src="/js/tw_cn.js"></script><script>translateInitilization()
+<p>再往下看源码 for语句中将Dest数组中的字符串移位了 所以在脚本中先将加密后的字符复位在进行base64解密就可以了<br><img src="/2019/06/01/bugku/love-4.png" alt=" "><br>flag{i_l0ve_you}</p>
 
-</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@1.2.2/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script><script>const observer = lozad(); // lazy loads elements with default selector as '.lozad'
-observer.observe();</script></body></html>
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a href="javascript:void(0)" class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>bugku</p>
+    
+    <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="aizlm_Lin">aizlm_Lin</a></p>
+    <p><span class="copy-title">发布时间:</span>2019-06-01, 18:52:38</p>
+    <p><span class="copy-title">最后更新:</span>2019-06-09, 16:47:26</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/06/01/bugku/" title="bugku">http://yoursite.com/2019/06/01/bugku/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">©2016-2019 Yelog</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class="" id="rocket" href="javascript:void(0)"></a>
+    </div>
+</div>
+<div class="acParent"></div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.0.1" ></script>
+
+<script src="/js/script.js?v=1.0.1" ></script>
+<script>
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': [],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 492px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
