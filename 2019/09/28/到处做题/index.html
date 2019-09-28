@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>到处做题 | Aizlm_blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="aizlm_Lin">
+  <meta name="keywords" content>
+  <meta name="description" content>
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/images/fav-1.png">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/bg-2.png)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/ava-1.png"></a></div>
+    <span>2019-09-28</span>
+    <h2>到处做题</h2>
+    
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h2 id="农大实验室审核-reverse-key"><a href="#农大实验室审核-reverse-key" class="headerlink" title="农大实验室审核-reverse-key"></a>农大实验室审核-reverse-key</h2><p> ~/Downloads &gt; file key<br>key: ELF 64-bit LSB shared object x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/l, BuildID[sha1]=ea6b8edd23277bfd7f05c6624191ba08ea905db0, for GNU/Linux 3.2.0, not stripped</p>
+<p>elf文件 载入IDA 通过string窗口直接找到主函数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> __<span class="function">cdecl <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> **argv, <span class="keyword">const</span> <span class="keyword">char</span> **envp)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> v3; <span class="comment">// eax@5</span></span><br><span class="line">  <span class="keyword">size_t</span> v4; <span class="comment">// rbx@12</span></span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">int</span> v5; <span class="comment">// eax@13</span></span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">char</span> *v6; <span class="comment">// rsi@17</span></span><br><span class="line">  <span class="keyword">char</span> *v7; <span class="comment">// rax@19</span></span><br><span class="line">  <span class="keyword">size_t</span> v8; <span class="comment">// rbx@21</span></span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">char</span> **v10; <span class="comment">// [sp+0h] [bp-6B0h]@1</span></span><br><span class="line">  <span class="keyword">char</span> v11[<span class="number">1280</span>]; <span class="comment">// [sp+10h] [bp-6A0h]@18</span></span><br><span class="line">  <span class="keyword">char</span> v12[<span class="number">16</span>]; <span class="comment">// [sp+510h] [bp-1A0h]@13</span></span><br><span class="line">  <span class="keyword">char</span> s[<span class="number">256</span>]; <span class="comment">// [sp+520h] [bp-190h]@1</span></span><br><span class="line">  <span class="keyword">char</span> v14; <span class="comment">// [sp+620h] [bp-90h]@1</span></span><br><span class="line">  <span class="keyword">int</span> v15; <span class="comment">// [sp+67Ch] [bp-34h]@18</span></span><br><span class="line">  FILE *v16; <span class="comment">// [sp+680h] [bp-30h]@17</span></span><br><span class="line">  FILE *stream; <span class="comment">// [sp+688h] [bp-28h]@13</span></span><br><span class="line">  <span class="keyword">char</span> *v18; <span class="comment">// [sp+690h] [bp-20h]@1</span></span><br><span class="line">  <span class="keyword">int</span> j; <span class="comment">// [sp+698h] [bp-18h]@19</span></span><br><span class="line">  <span class="keyword">int</span> i; <span class="comment">// [sp+69Ch] [bp-14h]@4</span></span><br><span class="line"></span><br><span class="line">  v10 = argv;</span><br><span class="line">  MD5Init(&amp;v14, argv, envp);</span><br><span class="line">  v18 = <span class="number">0L</span>L;</span><br><span class="line">  __isoc99_scanf(&amp;unk_3270, s);</span><br><span class="line">  getchar();</span><br><span class="line">  <span class="keyword">if</span> ( <span class="built_in">strlen</span>(s) &gt; <span class="number">0x11</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"error"</span>);</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> ( i = <span class="number">0</span>; ; ++i )</span><br><span class="line">  &#123;</span><br><span class="line">    v4 = i;</span><br><span class="line">    <span class="keyword">if</span> ( v4 &gt; <span class="built_in">strlen</span>(s) )</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    v3 = (<span class="keyword">unsigned</span> __int8)s[i];</span><br><span class="line">    <span class="keyword">switch</span> ( v3 )</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'U'</span>:</span><br><span class="line">        s[i] = <span class="string">'u'</span>;		<span class="comment">//变换字符		'd0_y0U_kn0v_th0se'  --&gt; flag&#123;d0_y0U_kn0v_th0se&#125;</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'v'</span>:</span><br><span class="line">        s[i] = <span class="string">'w'</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'0'</span>:</span><br><span class="line">        s[i] = <span class="string">'o'</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  v5 = <span class="built_in">strlen</span>(s);</span><br><span class="line">  MD5Update(&amp;v14, s, v5);		<span class="comment">//md5加密  'do_you_know_those'</span></span><br><span class="line">  MD5Final(&amp;v14, v12);</span><br><span class="line">  stream = fopen(<span class="string">"1.txt"</span>, <span class="string">"w"</span>);</span><br><span class="line">  <span class="keyword">if</span> ( stream )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt;= <span class="number">15</span>; ++i )</span><br><span class="line">      <span class="built_in">fprintf</span>(stream, <span class="string">"%02x"</span>, (<span class="keyword">unsigned</span> __int8)v12[i], v10);</span><br><span class="line">  &#125;</span><br><span class="line">  fclose(stream);</span><br><span class="line">  v6 = <span class="string">"r"</span>;</span><br><span class="line">  v16 = fopen(<span class="string">"1.txt"</span>, <span class="string">"r"</span>);</span><br><span class="line">  <span class="keyword">if</span> ( v16 )</span><br><span class="line">  &#123;</span><br><span class="line">    v6 = (<span class="keyword">const</span> <span class="keyword">char</span> *)<span class="number">1024</span>;</span><br><span class="line">    fgets(v11, <span class="number">1024</span>, v16);</span><br><span class="line">    v15 = <span class="built_in">strlen</span>(v11);</span><br><span class="line">    v11[v15 - <span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  LODWORD(v7) = base64_encode(v11, v6);		<span class="comment">//base64		'f2a0cef3b8d80f8cc0a0154e9f92337'</span></span><br><span class="line">  v18 = v7;</span><br><span class="line">  <span class="keyword">for</span> ( j = <span class="number">0</span>; ; ++j )</span><br><span class="line">  &#123;</span><br><span class="line">    v8 = j;</span><br><span class="line">    <span class="keyword">if</span> ( v8 &gt;= <span class="built_in">strlen</span>(v18) )</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    v18[j] ^= <span class="number">4u</span>;			<span class="comment">//抑或		'ZjJhMGNlZjNiOGQ4MGY4Y2MwYTAxNTRlOWY5MjMzNw=='</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">puts</span>(<span class="string">"here is a key : ^nNlICJh^nJmKCU0IC]0]6Is]PE|JPVhKS]1InI~Js99"</span>);</span><br><span class="line">  <span class="built_in">free</span>(v18);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="农大实验室审核-reverse-maze"><a href="#农大实验室审核-reverse-maze" class="headerlink" title="农大实验室审核-reverse-maze"></a>农大实验室审核-reverse-maze</h2><p>迷宫问题 载入IDA：</p>
+<p>在string窗口发现 ‘##….######.##…#.##.##.#.#….##.###..####……####.#.##.####…##….#########.###+#####…..##’</p>
+<p>通过此字符串找到走迷宫的函数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sub_4118F0</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">char</span> v1; <span class="comment">// [sp+Ch] [bp-E4h]@1</span></span><br><span class="line">  <span class="keyword">int</span> i; <span class="comment">// [sp+D0h] [bp-20h]@1</span></span><br><span class="line">  <span class="keyword">int</span> v3; <span class="comment">// [sp+DCh] [bp-14h]@1</span></span><br><span class="line">  <span class="keyword">int</span> v4; <span class="comment">// [sp+E8h] [bp-8h]@1</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">memset</span>(&amp;v1, <span class="number">0xCC</span>u, <span class="number">0xE4</span>u);</span><br><span class="line">  sub_411221((<span class="keyword">int</span>)&amp;unk_41C008);</span><br><span class="line">  v4 = <span class="number">4</span>;</span><br><span class="line">  v3 = <span class="number">5</span>;</span><br><span class="line">  <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; <span class="number">26</span>; ++i )</span><br><span class="line">  &#123;</span><br><span class="line">    v4 += dword_41A068[dword_41A1E0[i]];</span><br><span class="line">    v3 += dword_41A078[dword_41A1E0[i]];</span><br><span class="line">    <span class="keyword">if</span> ( v4 &gt; <span class="number">9</span></span><br><span class="line">      || v4 &lt; <span class="number">0</span></span><br><span class="line">      || v3 &gt; <span class="number">9</span></span><br><span class="line">      || v3 &lt; <span class="number">0</span>			<span class="comment">//行列为正方形 10～10</span></span><br><span class="line">      || *(&amp;byte_41A000[<span class="number">10</span> * v4] + v3) == <span class="string">'#'</span></span><br><span class="line">      || *(&amp;byte_41A000[<span class="number">10</span> * v4] + v3) == <span class="string">'+'</span> )		<span class="comment">//起始或者终点是+</span></span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sub_41122B();</span><br><span class="line">&#125;</span><br><span class="line">-----------------------------------------------------------------------------------</span><br><span class="line"><span class="comment">// 主函数判断中有上面的走迷宫函数</span></span><br><span class="line"><span class="keyword">if</span> ( sub_411316(Str) &amp;&amp; sub_411267() )</span><br><span class="line">&#123;</span><br><span class="line">   sub_41104B((<span class="keyword">int</span>)<span class="string">"Correct!\nFlag is your input\n"</span>, v1);</span><br><span class="line">   system(<span class="string">"pause"</span>);</span><br><span class="line">···</span><br><span class="line">-----------------------------------------------------------------------------------</span><br><span class="line"><span class="keyword">int</span> __<span class="function">cdecl <span class="title">sub_411760</span><span class="params">(<span class="keyword">char</span> *Str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">char</span> v2; <span class="comment">// [sp+Ch] [bp-D8h]@1</span></span><br><span class="line">  <span class="keyword">int</span> i; <span class="comment">// [sp+D0h] [bp-14h]@5</span></span><br><span class="line">  <span class="keyword">size_t</span> v4; <span class="comment">// [sp+DCh] [bp-8h]@1</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">memset</span>(&amp;v2, <span class="number">0xCC</span>u, <span class="number">0xD8</span>u);</span><br><span class="line">  sub_411221((<span class="keyword">int</span>)&amp;unk_41C008);</span><br><span class="line">  v4 = j_strlen(Str);</span><br><span class="line">  <span class="keyword">if</span> ( v4 == <span class="string">' '</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">strncmp</span>(Str, <span class="string">"Flag&#123;"</span>, <span class="number">5u</span>);</span><br><span class="line">    <span class="keyword">if</span> ( !sub_41122B() &amp;&amp; Str[<span class="number">31</span>] == <span class="string">'&#125;'</span> )</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; <span class="number">26</span>; ++i )</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">switch</span> ( Str[i + <span class="number">5</span>] )</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="keyword">case</span> <span class="string">'A'</span>:</span><br><span class="line">            dword_41A1E0[i] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">case</span> <span class="string">'D'</span>:</span><br><span class="line">            dword_41A1E0[i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">case</span> <span class="string">'W'</span>:</span><br><span class="line">            dword_41A1E0[i] = <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">if</span> ( Str[i + <span class="number">5</span>] != <span class="string">'S'</span> )</span><br><span class="line">              <span class="keyword">return</span> sub_41122B();</span><br><span class="line">            dword_41A1E0[i] = <span class="number">3</span>;</span><br><span class="line">            <span class="keyword">break</span>;								<span class="comment">//明显上下左右 wsad</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sub_41122B();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>迷宫（有点丑）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">##....####</span><br><span class="line">##.##...#.</span><br><span class="line">##.##.#.#.</span><br><span class="line">...##.###.</span><br><span class="line">.####.....</span><br><span class="line">.####.#.##</span><br><span class="line">.####...##</span><br><span class="line">....######</span><br><span class="line">###.###+##</span><br><span class="line">###.....##</span><br></pre></td></tr></table></figure>
+
+<p>Flag{WWWWAAASSSAASSSSDDDSSDDDDW}</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="#">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>没有更新的文章</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/09/27/i春秋-crypto/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>i春秋-crypto</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">Aizlm_blog</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/ava-1.png" alt="aizlm_Lin"></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>aizlm_Lin</p>
+          <span class="tagline">不爱学习的小胖子</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>页面</span>
+        <ul>
+          <li><a href="/guestbook">留言</a></li>
+        <li><a href="/about">关于</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>友链</span>
+        <ul>
+          <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
