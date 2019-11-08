@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Roarctf2019 | Aizlm_blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="aizlm_Lin">
+  <meta name="keywords" content>
+  <meta name="description" content>
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/images/fav-1.png">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/bg-2.png)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/ava-1.png"></a></div>
+    <span>2019-10-16</span>
+    <h2>Roarctf2019</h2>
+    
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h1 id="crypto"><a href="#crypto" class="headerlink" title="crypto"></a>crypto</h1><h2 id="babyrsa"><a href="#babyrsa" class="headerlink" title="babyrsa"></a>babyrsa</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sympy</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> long_to_bytes</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">egcd</span><span class="params">(a,b)</span>:</span></span><br><span class="line"> <span class="keyword">if</span> a==<span class="number">0</span>:</span><br><span class="line">  <span class="keyword">return</span> (b,<span class="number">0</span>,<span class="number">1</span>)</span><br><span class="line"> <span class="keyword">else</span>:</span><br><span class="line">  g,y,x=egcd(b%a,a)</span><br><span class="line">  <span class="keyword">return</span>(g,x-(b//a)*y,y)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">modinv</span><span class="params">(a,m)</span>:</span></span><br><span class="line"> g,x,y=egcd(a,m)</span><br><span class="line"> <span class="keyword">if</span> g!=<span class="number">1</span>:</span><br><span class="line">  <span class="keyword">raise</span> Exception(<span class="string">"error"</span>)</span><br><span class="line"> <span class="keyword">else</span>:</span><br><span class="line">  <span class="keyword">return</span> x%m</span><br><span class="line"></span><br><span class="line">a1=<span class="number">21856963452461630437348278434191434000066076750419027493852463513469865262064340836613831066602300959772632397773487317560339056658299954464169264467234407</span></span><br><span class="line">b1=<span class="number">21856963452461630437348278434191434000066076750419027493852463513469865262064340836613831066602300959772632397773487317560339056658299954464169264467140596</span></span><br><span class="line">a2=<span class="number">16466113115839228119767887899308820025749260933863446888224167169857612178664139545726340867406790754560227516013796269941438076818194617030304851858418927</span></span><br><span class="line">b2=<span class="number">16466113115839228119767887899308820025749260933863446888224167169857612178664139545726340867406790754560227516013796269941438076818194617030304851858351026</span></span><br><span class="line">n=<span class="number">85492663786275292159831603391083876175149354309327673008716627650718160585639723100793347534649628330416631255660901307533909900431413447524262332232659153047067908693481947121069070451562822417357656432171870951184673132554213690123308042697361969986360375060954702920656364144154145812838558365334172935931441424096270206140691814662318562696925767991937369782627908408239087358033165410020690152067715711112732252038588432896758405898709010342467882264362733</span></span><br><span class="line">c=<span class="number">75700883021669577739329316795450706204502635802310731477156998834710820770245219468703245302009998932067080383977560299708060476222089630209972629755965140317526034680452483360917378812244365884527186056341888615564335560765053550155758362271622330017433403027261127561225585912484777829588501213961110690451987625502701331485141639684356427316905122995759825241133872734362716041819819948645662803292418802204430874521342108413623635150475963121220095236776428</span></span><br><span class="line">p=<span class="number">1</span></span><br><span class="line">q=<span class="number">1</span></span><br><span class="line">i=<span class="number">1</span></span><br><span class="line">l=<span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(b1+<span class="number">1</span>,a1<span class="number">-1</span>):</span><br><span class="line"> p *= modinv(i,a1)</span><br><span class="line"> p %=a1</span><br><span class="line"> p=sympy.nextprime(p)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"p="</span></span><br><span class="line"><span class="keyword">print</span> p</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(b2+<span class="number">1</span>,a2<span class="number">-1</span>):</span><br><span class="line"> q *=modinv(i,a2)</span><br><span class="line"> q %=a2</span><br><span class="line"> q=sympy.nextprime(q)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"q="</span></span><br><span class="line"><span class="keyword">print</span> q</span><br><span class="line">r=n/q/p</span><br><span class="line"><span class="keyword">print</span> <span class="string">"r="</span></span><br><span class="line"><span class="keyword">print</span> r</span><br><span class="line">fn=(p<span class="number">-1</span>)*(q<span class="number">-1</span>)*(r<span class="number">-1</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"fn="</span></span><br><span class="line"><span class="keyword">print</span> fn</span><br><span class="line">e=<span class="number">4097</span></span><br><span class="line">d=modinv(e,fn)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"d="</span></span><br><span class="line"><span class="keyword">print</span> d</span><br><span class="line">m=pow(c,d,n)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"m="</span></span><br><span class="line"><span class="keyword">print</span> m</span><br><span class="line"><span class="keyword">print</span> long_to_bytes(m)</span><br></pre></td></tr></table></figure>
+
+<h1 id="RE"><a href="#RE" class="headerlink" title="RE"></a>RE</h1><h2 id="polyre"><a href="#polyre" class="headerlink" title="polyre"></a>polyre</h2><p>去控制流平坦化 <a href="https://github.com/cq674350529/deflat" target="_blank" rel="noopener">https://github.com/cq674350529/deflat</a> <a href="https://virtualenvwrapper.readthedocs.io/en/latest/" target="_blank" rel="noopener">https://virtualenvwrapper.readthedocs.io/en/latest/</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line">__int64 __<span class="function">fastcall <span class="title">main</span><span class="params">(__int64 a1, <span class="keyword">char</span> **a2, <span class="keyword">char</span> **a3)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  v10 = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">memset</span>(s, <span class="number">0</span>, <span class="number">0x30</span>uLL);</span><br><span class="line">  <span class="built_in">memset</span>(s1, <span class="number">0</span>, <span class="number">0x30</span>uLL);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"Input:"</span>, <span class="number">0L</span>L);</span><br><span class="line">  v11 = s;</span><br><span class="line">  <span class="keyword">if</span> ( dword_603058 &gt;= <span class="number">10</span> &amp;&amp; (((_BYTE)dword_603054 - <span class="number">1</span>) * (_BYTE)dword_603054 &amp; <span class="number">1</span>) != <span class="number">0</span> )</span><br><span class="line">    <span class="keyword">goto</span> LABEL_43;</span><br><span class="line">  <span class="keyword">while</span> ( <span class="number">1</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    __isoc99_scanf(<span class="string">"%s"</span>, v11);</span><br><span class="line">    v6 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> ( dword_603058 &lt; <span class="number">10</span> || (((_BYTE)dword_603054 - <span class="number">1</span>) * (_BYTE)dword_603054 &amp; <span class="number">1</span>) == <span class="number">0</span> )</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">LABEL_43:</span><br><span class="line">    __isoc99_scanf(<span class="string">"%s"</span>, v11);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span> ( <span class="number">1</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">      v12 = v6;</span><br><span class="line">    <span class="keyword">while</span> ( dword_603058 &gt;= <span class="number">10</span> &amp;&amp; (((_BYTE)dword_603054 - <span class="number">1</span>) * (_BYTE)dword_603054 &amp; <span class="number">1</span>) != <span class="number">0</span> );</span><br><span class="line">    v13 = v12 &lt; <span class="number">64</span>;</span><br><span class="line">    <span class="keyword">while</span> ( dword_603058 &gt;= <span class="number">10</span> &amp;&amp; (((_BYTE)dword_603054 - <span class="number">1</span>) * (_BYTE)dword_603054 &amp; <span class="number">1</span>) != <span class="number">0</span> )</span><br><span class="line">      ;</span><br><span class="line">    <span class="keyword">if</span> ( !v13 )</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    v14 = s[v6];</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">      v15 = v14;</span><br><span class="line">    <span class="keyword">while</span> ( dword_603058 &gt;= <span class="number">10</span> &amp;&amp; (((_BYTE)dword_603054 - <span class="number">1</span>) * (_BYTE)dword_603054 &amp; <span class="number">1</span>) != <span class="number">0</span> );</span><br><span class="line">    <span class="keyword">if</span> ( v15 == <span class="number">10</span> )</span><br><span class="line">    &#123;</span><br><span class="line">      v16 = &amp;s[v6];</span><br><span class="line">      *v16 = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    v17 = v6 + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">      v6 = v17;</span><br><span class="line">    <span class="keyword">while</span> ( dword_603058 &gt;= <span class="number">10</span> &amp;&amp; (((_BYTE)dword_603054 - <span class="number">1</span>) * (_BYTE)dword_603054 &amp; <span class="number">1</span>) != <span class="number">0</span> );</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> ( i = <span class="number">0</span>; ; ++i )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">      v18 = i;</span><br><span class="line">    <span class="keyword">while</span> ( dword_603058 &gt;= <span class="number">10</span> &amp;&amp; (((_BYTE)dword_603054 - <span class="number">1</span>) * (_BYTE)dword_603054 &amp; <span class="number">1</span>) != <span class="number">0</span> );</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">      v19 = v18 &lt; <span class="number">6</span>;</span><br><span class="line">    <span class="keyword">while</span> ( dword_603058 &gt;= <span class="number">10</span> &amp;&amp; (((_BYTE)dword_603054 - <span class="number">1</span>) * (_BYTE)dword_603054 &amp; <span class="number">1</span>) != <span class="number">0</span> );</span><br><span class="line">    <span class="keyword">if</span> ( !v19 )</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">      v20 = s;</span><br><span class="line">    <span class="keyword">while</span> ( dword_603058 &gt;= <span class="number">10</span> &amp;&amp; (((_BYTE)dword_603054 - <span class="number">1</span>) * (_BYTE)dword_603054 &amp; <span class="number">1</span>) != <span class="number">0</span> );</span><br><span class="line">    v4 = *(_QWORD *)&amp;v20[<span class="number">8</span> * i];		<span class="comment">// 以8个为一组</span></span><br><span class="line">    v7 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> ( <span class="number">1</span> )</span><br><span class="line">    &#123;</span><br><span class="line">      v21 = v7;</span><br><span class="line">      <span class="keyword">do</span></span><br><span class="line">        v22 = v21 &lt; <span class="number">64</span>;</span><br><span class="line">      <span class="keyword">while</span> ( dword_603058 &gt;= <span class="number">10</span> &amp;&amp; (((_BYTE)dword_603054 - <span class="number">1</span>) * (_BYTE)dword_603054 &amp; <span class="number">1</span>) != <span class="number">0</span> );</span><br><span class="line">      <span class="keyword">if</span> ( !v22 )</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      v23 = v4;</span><br><span class="line">      v24 = v4 &lt; <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">if</span> ( v4 &gt;= <span class="number">0</span> )		<span class="comment">// 判断正负</span></span><br><span class="line">      &#123;</span><br><span class="line">        v27 = v4;</span><br><span class="line">        <span class="keyword">do</span></span><br><span class="line">          v28 = <span class="number">2</span> * v27;		<span class="comment">// 若是正数 则*2</span></span><br><span class="line">        <span class="keyword">while</span> ( dword_603058 &gt;= <span class="number">10</span> &amp;&amp; (((_BYTE)dword_603054 - <span class="number">1</span>) * (_BYTE)dword_603054 &amp; <span class="number">1</span>) != <span class="number">0</span> );</span><br><span class="line">        v4 = v28;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">      &#123;</span><br><span class="line">        v25 = <span class="number">2</span> * v4;</span><br><span class="line">        <span class="keyword">do</span></span><br><span class="line">          v26 = v25;</span><br><span class="line">        <span class="keyword">while</span> ( dword_603058 &gt;= <span class="number">10</span> &amp;&amp; (((_BYTE)dword_603054 - <span class="number">1</span>) * (_BYTE)dword_603054 &amp; <span class="number">1</span>) != <span class="number">0</span> );</span><br><span class="line">        v4 = v26 ^ <span class="number">0xB0004B7679FA26B3</span>LL;		<span class="comment">//若为负数 则*2后 ^0xB0004B7679FA26B3LL 可能存在溢出</span></span><br><span class="line">      &#125;</span><br><span class="line">      v29 = v7;</span><br><span class="line">      <span class="keyword">do</span></span><br><span class="line">        v7 = v29 + <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">while</span> ( dword_603058 &gt;= <span class="number">10</span> &amp;&amp; (((_BYTE)dword_603054 - <span class="number">1</span>) * (_BYTE)dword_603054 &amp; <span class="number">1</span>) != <span class="number">0</span> );</span><br><span class="line">    &#125;</span><br><span class="line">    v30 = <span class="number">8</span> * i;</span><br><span class="line">    v31 = &amp;s1[<span class="number">8</span> * i];</span><br><span class="line">    <span class="keyword">if</span> ( dword_603058 &gt;= <span class="number">10</span> &amp;&amp; (((_BYTE)dword_603054 - <span class="number">1</span>) * (_BYTE)dword_603054 &amp; <span class="number">1</span>) != <span class="number">0</span> )</span><br><span class="line">LABEL_55:</span><br><span class="line">      *(_QWORD *)v31 = v4;		<span class="comment">//将 s 赋给 s1</span></span><br><span class="line">    *(_QWORD *)v31 = v4;</span><br><span class="line">    <span class="keyword">if</span> ( dword_603058 &gt;= <span class="number">10</span> &amp;&amp; (((_BYTE)dword_603054 - <span class="number">1</span>) * (_BYTE)dword_603054 &amp; <span class="number">1</span>) != <span class="number">0</span> )</span><br><span class="line">      <span class="keyword">goto</span> LABEL_55;</span><br><span class="line">    v32 = i + <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">do</span></span><br><span class="line">    v33 = <span class="built_in">memcmp</span>(s1, &amp;unk_402170, <span class="number">0x30</span>uLL); 	<span class="comment">//与unk_402170对比</span></span><br><span class="line">  <span class="keyword">while</span> ( dword_603058 &gt;= <span class="number">10</span> &amp;&amp; (((_BYTE)dword_603054 - <span class="number">1</span>) * (_BYTE)dword_603054 &amp; <span class="number">1</span>) != <span class="number">0</span> );</span><br><span class="line">  v34 = v33 != <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span> ( dword_603058 &gt;= <span class="number">10</span> &amp;&amp; (((_BYTE)dword_603054 - <span class="number">1</span>) * (_BYTE)dword_603054 &amp; <span class="number">1</span>) != <span class="number">0</span> )</span><br><span class="line">    ;</span><br><span class="line">  <span class="keyword">if</span> ( v34 )</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"Wrong!"</span>);</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"Correct!"</span>);</span><br><span class="line">  <span class="keyword">return</span> v10;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">origin = [<span class="number">0xbc8ff26d43536296</span>,<span class="number">0x520100780530ee16</span>,<span class="number">0x4dc0b5ea935f08ec</span>,<span class="number">0x342b90afd853f450</span>,<span class="number">0x8b250ebcaa2c3681</span>,<span class="number">0x55759f81a2c68ae4</span>]</span><br><span class="line">key = <span class="number">0xB0004B7679FA26B3</span></span><br><span class="line">data = <span class="string">""</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> value <span class="keyword">in</span> origin:</span><br><span class="line"> <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">64</span>):</span><br><span class="line">  tail = value &amp; <span class="number">1</span></span><br><span class="line">  <span class="keyword">if</span> tail == <span class="number">1</span>:</span><br><span class="line">   value = value ^key</span><br><span class="line">  value = value // <span class="number">2</span></span><br><span class="line">  <span class="keyword">if</span> tail == <span class="number">1</span>:</span><br><span class="line">   value = value + <span class="number">0x8000000000000000</span> 	<span class="comment"># *2溢出 加上中位数还原</span></span><br><span class="line"> print(hex(value))</span><br><span class="line"><span class="comment">#0x6666367b67616c66</span></span><br><span class="line"><span class="comment">#0x63362d3039333932</span></span><br><span class="line"><span class="comment">#0x2d363563342d3032</span></span><br><span class="line"><span class="comment">#0x3539612d30376162</span></span><br><span class="line"><span class="comment">#0x6631643365383537</span></span><br><span class="line"><span class="comment">#0x7d38</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># '&#125;8f1d3e85759a-07ab-65c4-02c6-09392ff6&#123;galf'[::-1]</span></span><br></pre></td></tr></table></figure>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/10/18/Buuctf/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>Buuctf</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/10/14/杭电ctf/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>杭电ctf</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">Aizlm_blog</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/ava-1.png" alt="aizlm_Lin"></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>aizlm_Lin</p>
+          <span class="tagline">不爱学习的小胖子</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>页面</span>
+        <ul>
+          <li><a href="/guestbook">留言</a></li>
+        <li><a href="/about">关于</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>友链</span>
+        <ul>
+          <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

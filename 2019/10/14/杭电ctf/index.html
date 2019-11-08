@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>杭电ctf | Aizlm_blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="aizlm_Lin">
+  <meta name="keywords" content>
+  <meta name="description" content>
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/images/fav-1.png">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/bg-2.png)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/ava-1.png"></a></div>
+    <span>2019-10-14</span>
+    <h2>杭电ctf</h2>
+    
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h2 id="Beat-our-dice-game-and-get-the-flag"><a href="#Beat-our-dice-game-and-get-the-flag" class="headerlink" title="Beat our dice game and get the flag"></a>Beat our dice game and get the flag</h2><p>查壳：VC++ 界面是掷骰子 顺序要是3-1-3-3-7（居然有7 ？？？？）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ida 定位目标函数</span></span><br><span class="line">v89 = <span class="number">6</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ( isDebuggerPresent() )</span><br><span class="line">  v90 = <span class="number">66</span>;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  v90 = <span class="number">16</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ( v86 == <span class="number">3</span> )</span><br><span class="line">&#123;</span><br><span class="line">  v10 = <span class="built_in">std</span>::<span class="keyword">operator</span>&lt;&lt;&lt;<span class="built_in">std</span>::char_traits&lt;<span class="keyword">char</span>&gt;&gt;((<span class="keyword">int</span>)&amp;<span class="built_in">std</span>::<span class="built_in">cout</span>, <span class="string">"[*] You rolled a three! Good!"</span>);</span><br><span class="line">  v89 *= <span class="number">2</span>;</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">string</span>::<span class="keyword">operator</span>=((<span class="built_in">std</span>::<span class="built_in">string</span> *)&amp;v88, &amp;byte_444240); <span class="comment">//v88=[0x13,0x21,0x38,0x15,0x3D,0x33,0x57,0x47,0x2D,0x27,0x6A,0x73,0x44,0x05,0x26,0x59,0x5C,0x79,0x17,0x44,0x45,0x77,0x1A,0x75,0x49,0x7D,0x05,0x4A,0x78,0x74,0x6A,0x70,0x42,0x02,0x71,0x05,0x0F,0x22,0x08]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ( v86 == <span class="number">1</span> )</span><br><span class="line">&#123;</span><br><span class="line">  v18 = <span class="built_in">std</span>::<span class="keyword">operator</span>&lt;&lt;&lt;<span class="built_in">std</span>::char_traits&lt;<span class="keyword">char</span>&gt;&gt;((<span class="keyword">int</span>)&amp;<span class="built_in">std</span>::<span class="built_in">cout</span>, <span class="string">"[*] You rolled a one! Very nice!"</span>);</span><br><span class="line">  v89 += <span class="number">4</span>;</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">string</span>::<span class="keyword">operator</span>=((<span class="built_in">std</span>::<span class="built_in">string</span> *)&amp;v91, &amp;byte_444309);<span class="comment">//v91=[0x02,0x37,0x0F,0x35,0x0F,0x3C,0x15,0x07,0x3C,0x30,0x2A,0x30,0x55,0x12,0x37,0x15,0x1E,0x35,0x01,0x51]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ( v86 == <span class="number">3</span> )</span><br><span class="line">&#123;</span><br><span class="line">  v26 = <span class="built_in">std</span>::<span class="keyword">operator</span>&lt;&lt;&lt;<span class="built_in">std</span>::char_traits&lt;<span class="keyword">char</span>&gt;&gt;((<span class="keyword">int</span>)&amp;<span class="built_in">std</span>::<span class="built_in">cout</span>, <span class="string">"[*] You rolled a three! Awesome!"</span>);</span><br><span class="line">  v89 *= <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ( v86 == <span class="number">3</span> )</span><br><span class="line">&#123;</span><br><span class="line">  v34 = <span class="built_in">std</span>::<span class="keyword">operator</span>&lt;&lt;&lt;<span class="built_in">std</span>::char_traits&lt;<span class="keyword">char</span>&gt;&gt;((<span class="keyword">int</span>)&amp;<span class="built_in">std</span>::<span class="built_in">cout</span>,<span class="string">"[*] You rolled another three! Almost there now!"</span>);</span><br><span class="line">  v89 += <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">for</span> ( i = <span class="number">0</span>; ; ++i )   		<span class="comment">// encrypt 1</span></span><br><span class="line">  &#123;</span><br><span class="line">    v36 = <span class="built_in">std</span>::<span class="built_in">string</span>::size((<span class="built_in">std</span>::<span class="built_in">string</span> *)&amp;v91);</span><br><span class="line">    <span class="keyword">if</span> ( i &gt;= v36 )</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    v37 = (_BYTE *)<span class="built_in">std</span>::<span class="built_in">string</span>::<span class="keyword">operator</span>[]((<span class="built_in">std</span>::<span class="built_in">string</span> *)&amp;v91, i);</span><br><span class="line">    *v37 ^= v90;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ( v86 == <span class="number">7</span> )</span><br><span class="line">&#123;</span><br><span class="line">  v67 = <span class="number">1</span>;</span><br><span class="line">  v43 = <span class="built_in">std</span>::<span class="keyword">operator</span>&lt;&lt;&lt;<span class="built_in">std</span>::char_traits&lt;<span class="keyword">char</span>&gt;&gt;((<span class="keyword">int</span>)&amp;<span class="built_in">std</span>::<span class="built_in">cout</span>,<span class="string">"[*] You rolled a seven, with a six sided dice! How awesome are you?!"</span>);</span><br><span class="line">  v89 *= <span class="number">2</span>;</span><br><span class="line"><span class="comment">/*v89 *= 50;</span></span><br><span class="line"><span class="comment">  v89 /= 50;</span></span><br><span class="line"><span class="comment">  v89 += 65;</span></span><br><span class="line"><span class="comment">  v89 -= 65;</span></span><br><span class="line"><span class="comment">  v89 *= 42;</span></span><br><span class="line"><span class="comment">  v89 /= 42;*/</span> <span class="comment">//混淆</span></span><br><span class="line">  <span class="keyword">for</span> ( i = <span class="number">0</span>; ; ++i )</span><br><span class="line">  &#123;</span><br><span class="line">    v67 = <span class="number">1</span>;</span><br><span class="line">    v50 = <span class="built_in">std</span>::<span class="built_in">string</span>::size((<span class="built_in">std</span>::<span class="built_in">string</span> *)&amp;v91);</span><br><span class="line">    <span class="keyword">if</span> ( i &gt;= v50 )</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    v51 = (_BYTE *)<span class="built_in">std</span>::<span class="built_in">string</span>::<span class="keyword">operator</span>[]((<span class="built_in">std</span>::<span class="built_in">string</span> *)&amp;v91, i);</span><br><span class="line">    *v51 ^= v89;</span><br><span class="line">  &#125;</span><br><span class="line">  i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> ( j = <span class="number">0</span>; ; ++j )</span><br><span class="line">  &#123;</span><br><span class="line">    v67 = <span class="number">1</span>;</span><br><span class="line">    v52 = <span class="built_in">std</span>::<span class="built_in">string</span>::size((<span class="built_in">std</span>::<span class="built_in">string</span> *)&amp;v88);</span><br><span class="line">    <span class="keyword">if</span> ( j &gt;= v52 )</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    v64 = (_BYTE *)<span class="built_in">std</span>::<span class="built_in">string</span>::<span class="keyword">operator</span>[]((<span class="built_in">std</span>::<span class="built_in">string</span> *)&amp;v88, j);</span><br><span class="line">    v53 = (_BYTE *)<span class="built_in">std</span>::<span class="built_in">string</span>::<span class="keyword">operator</span>[]((<span class="built_in">std</span>::<span class="built_in">string</span> *)&amp;v91, i);</span><br><span class="line">    *v64 ^= *v53;</span><br><span class="line">    ++i;</span><br><span class="line">    v54 = <span class="built_in">std</span>::<span class="built_in">string</span>::length((<span class="built_in">std</span>::<span class="built_in">string</span> *)&amp;v91);</span><br><span class="line">    <span class="keyword">if</span> ( i &gt;= v54 )</span><br><span class="line">      i = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">v88=[<span class="number">0x13</span>,<span class="number">0x21</span>,<span class="number">0x38</span>,<span class="number">0x15</span>,<span class="number">0x3D</span>,<span class="number">0x33</span>,<span class="number">0x57</span>,<span class="number">0x47</span>,<span class="number">0x2D</span>,<span class="number">0x27</span>,<span class="number">0x6A</span>,<span class="number">0x73</span>,<span class="number">0x44</span>,<span class="number">0x05</span>,<span class="number">0x26</span>,<span class="number">0x59</span>,<span class="number">0x5C</span>,<span class="number">0x79</span>,<span class="number">0x17</span>,<span class="number">0x44</span>,<span class="number">0x45</span>,<span class="number">0x77</span>,<span class="number">0x1A</span>,<span class="number">0x75</span>,<span class="number">0x49</span>,<span class="number">0x7D</span>,<span class="number">0x05</span>,<span class="number">0x4A</span>,<span class="number">0x78</span>,<span class="number">0x74</span>,<span class="number">0x6A</span>,<span class="number">0x70</span>,<span class="number">0x42</span>,<span class="number">0x02</span>,<span class="number">0x71</span>,<span class="number">0x05</span>,<span class="number">0x0F</span>,<span class="number">0x22</span>,<span class="number">0x08</span>]</span><br><span class="line"></span><br><span class="line">v91=[<span class="number">0x02</span>,<span class="number">0x37</span>,<span class="number">0x0F</span>,<span class="number">0x35</span>,<span class="number">0x0F</span>,<span class="number">0x3C</span>,<span class="number">0x15</span>,<span class="number">0x07</span>,<span class="number">0x3C</span>,<span class="number">0x30</span>,<span class="number">0x2A</span>,<span class="number">0x30</span>,<span class="number">0x55</span>,<span class="number">0x12</span>,<span class="number">0x37</span>,<span class="number">0x15</span>,<span class="number">0x1E</span>,<span class="number">0x35</span>,<span class="number">0x01</span>,<span class="number">0x51</span>]</span><br><span class="line"></span><br><span class="line">v89 = ((((<span class="number">6</span>*<span class="number">2</span>)+<span class="number">4</span>)*<span class="number">3</span>)+<span class="number">2</span>)*<span class="number">2</span></span><br><span class="line">v90 = <span class="number">16</span></span><br><span class="line"></span><br><span class="line">flag = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(v91)):</span><br><span class="line">  v91[i] ^= v90</span><br><span class="line">  v91[i] ^= v89</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> range(len(v88)):</span><br><span class="line">  flag.append(v91[j % len(v91)] ^ v88[j])</span><br><span class="line">  print(chr(flag[j])),</span><br><span class="line"><span class="comment">#output.replace(' ','')</span></span><br></pre></td></tr></table></figure>
+
+<p>用OD 使每个跳转失效 4029f1打印flag：</p>
+<p><img src="/2019/10/14/杭电ctf/dice01-1.png" alt=" "></p>
+<h2 id="从所给文件中找flag"><a href="#从所给文件中找flag" class="headerlink" title="从所给文件中找flag"></a>从所给文件中找flag</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//下载下来无后缀文件 头部7z 解压缩后为64bit-elf</span></span><br><span class="line"><span class="keyword">if</span> ( v5 != <span class="number">3</span> )</span><br><span class="line">  <span class="keyword">if</span> ( time(<span class="number">0L</span>L) - v11 &gt; <span class="number">2</span> )</span><br><span class="line">  <span class="keyword">if</span> ( v10 != <span class="number">1</span> )</span><br><span class="line">  <span class="keyword">if</span> ( time(<span class="number">0L</span>L) - v11 &gt; <span class="number">2</span> )</span><br><span class="line">  <span class="keyword">if</span> ( v9 != <span class="number">3</span> )</span><br><span class="line">  <span class="keyword">if</span> ( time(<span class="number">0L</span>L) - v11 &gt; <span class="number">2</span> )</span><br><span class="line">  <span class="keyword">if</span> ( v8 != <span class="number">3</span> )</span><br><span class="line">  <span class="keyword">if</span> ( time(<span class="number">0L</span>L) - v11 &gt; <span class="number">2</span> )</span><br><span class="line">  <span class="keyword">if</span> ( v7 != <span class="number">7</span> )		<span class="comment">//阻碍到达sub_4006b6的if</span></span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> ( time(<span class="number">0L</span>L) - v11 &lt;= <span class="number">2</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"You rolled as I said! I'll give you the flag."</span>);</span><br><span class="line">    sub_4006B6();</span><br><span class="line">    result = <span class="number">0L</span>L;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">.text:<span class="number">00000000004010</span>D5                 mov     edi, offset aYouRolledAsISa ; <span class="string">"You rolled as I said! I'll give you the"</span>...</span><br><span class="line">.text:<span class="number">00000000004010</span>DA                 call    _puts</span><br><span class="line">.text:<span class="number">00000000004010</span>DF                 call    sub_4006B6		<span class="comment">//获得flag的函数</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1--通过改变每个if的跳转 使之最后指向sub_4006b6</span></span><br><span class="line">pwndbg&gt; <span class="built_in">set</span> $eflags=(+<span class="number">-0x40</span>) <span class="comment">//从而使跳转按照自己预期进行</span></span><br><span class="line">pwndbg&gt; i b</span><br><span class="line">Num     Type           Disp Enb Address            What</span><br><span class="line"><span class="number">1</span>       breakpoint     keep y   <span class="number">0x00000000004006b6</span> </span><br><span class="line">	breakpoint already hit <span class="number">1</span> time</span><br><span class="line"><span class="number">4</span>       breakpoint     keep y   <span class="number">0x0000000000400ff7</span> </span><br><span class="line">	breakpoint already hit <span class="number">1</span> time</span><br><span class="line"><span class="number">5</span>       breakpoint     keep y   <span class="number">0x0000000000401019</span> </span><br><span class="line">	breakpoint already hit <span class="number">1</span> time</span><br><span class="line"><span class="number">6</span>       breakpoint     keep y   <span class="number">0x0000000000401033</span> </span><br><span class="line">	breakpoint already hit <span class="number">1</span> time</span><br><span class="line"><span class="number">7</span>       breakpoint     keep y   <span class="number">0x0000000000401055</span> </span><br><span class="line">	breakpoint already hit <span class="number">1</span> time</span><br><span class="line"><span class="number">8</span>       breakpoint     keep y   <span class="number">0x000000000040106f</span> </span><br><span class="line">	breakpoint already hit <span class="number">1</span> time</span><br><span class="line"><span class="number">10</span>      breakpoint     keep y   <span class="number">0x00000000004010a4</span> </span><br><span class="line">	breakpoint already hit <span class="number">1</span> time</span><br><span class="line"><span class="number">11</span>      breakpoint     keep y   <span class="number">0x000000000040108d</span> </span><br><span class="line">	breakpoint already hit <span class="number">1</span> time</span><br><span class="line"><span class="number">12</span>      breakpoint     keep y   <span class="number">0x00000000004010c2</span> </span><br><span class="line">	breakpoint already hit <span class="number">1</span> time</span><br><span class="line"><span class="number">13</span>      breakpoint     keep y   <span class="number">0x0000000000400fdd</span> </span><br><span class="line">	breakpoint already hit <span class="number">1</span> time</span><br><span class="line"><span class="number">14</span>      breakpoint     keep y   <span class="number">0x0000000000400fbb</span> </span><br><span class="line">	breakpoint already hit <span class="number">1</span> time</span><br><span class="line"><span class="number">15</span>      breakpoint     keep y   <span class="number">0x00000000004010d5</span> </span><br><span class="line">	breakpoint already hit <span class="number">1</span> time</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 2--想法是将if的跳转地址或者函数的返回地址修改成sub_4006b6的地址 暂时还没搜到怎么实现</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">s =[<span class="number">0x41</span>,<span class="number">0x53</span>,<span class="number">0x49</span>,<span class="number">0x53</span>,<span class="number">0x7b</span>,<span class="number">0x31</span>,<span class="number">0x66</span>,<span class="number">0x63</span>,<span class="number">0x31</span>,<span class="number">0x30</span>,<span class="number">0x38</span>,<span class="number">0x39</span>,<span class="number">0x65</span>,<span class="number">0x33</span>,<span class="number">0x32</span>,<span class="number">0x38</span>,<span class="number">0x65</span>,<span class="number">0x61</span>,<span class="number">0x66</span>,<span class="number">0x37</span>,<span class="number">0x33</span>,<span class="number">0x37</span>,<span class="number">0x63</span>,<span class="number">0x38</span>,<span class="number">0x38</span>,<span class="number">0x32</span>,<span class="number">0x63</span>,<span class="number">0x61</span>,<span class="number">0x30</span>,<span class="number">0x62</span>,<span class="number">0x31</span>,<span class="number">0x30</span>,<span class="number">0x66</span>,<span class="number">0x63</span>,<span class="number">0x66</span>,<span class="number">0x65</span>,<span class="number">0x36</span>,<span class="number">0x7d</span>]</span><br><span class="line">flag = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">  flag += chr(i)</span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
+
+<p>##</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/10/16/Roarctf2019/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>Roarctf2019</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/10/14/RSA/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>RSA</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">Aizlm_blog</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/ava-1.png" alt="aizlm_Lin"></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>aizlm_Lin</p>
+          <span class="tagline">不爱学习的小胖子</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>页面</span>
+        <ul>
+          <li><a href="/guestbook">留言</a></li>
+        <li><a href="/about">关于</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>友链</span>
+        <ul>
+          <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
