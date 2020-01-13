@@ -60,6 +60,17 @@
       <div>
         <p>打包Jar包：jar -cvf *.jar .class</p>
 <p>static成员变量置于数据区 类中所有方法都可访问 共用</p>
+<h3 id="java-lang-NullPointerException报错的几种情况："><a href="#java-lang-NullPointerException报错的几种情况：" class="headerlink" title="java.lang.NullPointerException报错的几种情况："></a>java.lang.NullPointerException报错的几种情况：</h3><p>1.字符串变量未初始化；</p>
+<p>2.接口类型的对象没有用具体的类初始化，比如：</p>
+<p>　　List stuList ；这种情况就会报空指针异常；</p>
+<p>　　List stuList = new ArrayList()；初始化后就不会报错了。</p>
+<p>3.当一个对象的值为空时，而你没有判断为空的情况，也会报空指针异常；</p>
+<p>　　所以要在代码前加个判断，比如：</p>
+<p>　　　　if(ObjId != null)；</p>
+<p>　　String类型对象可以做个如下判断：</p>
+<p>　　　　if（objectStr ！==null &amp;&amp; ！“”.equals（objectStr））</p>
+<p>　　当然还可以多做个一个判断，是否不为空字符串：</p>
+<p>　　　　if（objectStr ！==null &amp;&amp; ！“”.equals（objectStr.trim()））</p>
 
       </div>
     </div>

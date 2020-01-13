@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Android_Learning | Aizlm_blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="aizlm_Lin">
+  <meta name="keywords" content>
+  <meta name="description" content>
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/images/fav-1.png">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/bg-2.png)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/ava-1.png"></a></div>
+    <span>2019-12-28</span>
+    <h2>Android_Learning</h2>
+    
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>运行时需要配置NDK</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">res/Strings.xml:</span><br><span class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span> <span class="attr">name</span>=<span class="string">"app_name"</span>&gt;</span>HelloWorld<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line">  引用方式：</span><br><span class="line">  	在代码中通过R.String.hello_world</span><br><span class="line">  	在xml中通过@String/hello_world</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dependencies闭包</span><br><span class="line">依赖方式：</span><br><span class="line">本地依赖对本地的Jar包或目录添加依赖关系</span><br><span class="line">库依赖对项目中库模块添加依赖关系</span><br><span class="line">远程依赖对jcenter库上的开源项目添加依赖关系</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">使用Android的日志工具log</span><br><span class="line">Log.v()、Log.d()、Log.i()、Log.w()、Log.e()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">所有的活动都要在AndroidManifest.xml中注册才能生效</span><br><span class="line"></span><br><span class="line">新建的活动app-src-main-java-com.example.activitytest New-Activity-Empty Activity</span><br><span class="line">Generate Layout File自动创建对应的布局文件</span><br><span class="line">Launcher Activity自动将FirstActivity设置为当前项目的主活动</span><br><span class="line">Backwards Compatibility表示项目启用向下兼容</span><br><span class="line"></span><br><span class="line">在app/main/AndroidManifest.xml下，在activity标签中配置主活动</span><br><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".name"</span> <span class="attr">android:label</span>=<span class="string">"my firstActivity"</span>&gt;</span> </span><br><span class="line"><span class="comment">&lt;!--label指定标题栏中的信息，处于最顶部--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span>&gt;</span>	</span><br><span class="line">		<span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">创建和加载布局 app-src-New-Directory 属性默认</span><br><span class="line">创建一个button</span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> </span></span><br><span class="line"><span class="tag">	<span class="attr">android:id</span>=<span class="string">"@+id/button_1"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span> //和父布局相同宽度</span></span><br><span class="line"><span class="tag">	<span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span> //可容纳字符大小的高度</span></span><br><span class="line"><span class="tag">	<span class="attr">android:text</span>=<span class="string">"name"</span></span></span><br><span class="line"><span class="tag">/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Toast点击Button回显短暂时间的提示框</span></span><br><span class="line">.java:</span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">		setContentView(R.layout.first_layout);	<span class="comment">//获取到布局文件中定义的元素</span></span><br><span class="line">		Button button1 = (Button) findViewById(R.id.button_1); </span><br><span class="line">		button1.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">      	Toast.makeText(FirstActivity.<span class="keyword">this</span>, <span class="string">"xx"</span>,  Toast.LENGTH_SHORT).show();</span><br><span class="line">      &#125;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--&gt;菜单menu的创建和加载</span></span><br><span class="line"><span class="comment">在app-res创建目录Menu，创建Menu resource file&lt;--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">menu</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">item</span></span></span><br><span class="line"><span class="tag">  		<span class="attr">android:id</span>=<span class="string">"@+id/add_item"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">android:title</span>=<span class="string">"Add"</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">item</span></span></span><br><span class="line"><span class="tag">      <span class="attr">android:id</span>=<span class="string">"@+id/remove_item"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">android:title</span>=<span class="string">"Remove"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">menu</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--&gt;在FirstActivity中重写onCreateOptionsMenu()显示菜单</span></span><br><span class="line"><span class="comment">以及onOptionsItemSelected()定义菜单响应事件&lt;--&gt;</span></span><br><span class="line">public boolean onCreateOptionsMenu(Menu menu) &#123;</span><br><span class="line">	getMenuInflater().inflate(R.menu.main, menu);</span><br><span class="line">  return true;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public boolean onOptionsItemSelected(MenuItem item) &#123;</span><br><span class="line">	switch(item.getItemId()) &#123;</span><br><span class="line">		case R.id.add_item:</span><br><span class="line">			Toast.makeText(this, "show content", Toast.LENGTH_SHORT).show()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="遇到的错误以及解决措施"><a href="#遇到的错误以及解决措施" class="headerlink" title="遇到的错误以及解决措施"></a>遇到的错误以及解决措施</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cannot resolve symbol &quot;xx&quot;</span><br><span class="line">ALT+ENTER-import class</span><br></pre></td></tr></table></figure>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="#">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>没有更新的文章</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/12/04/x # code = [&#39;x1f&#39;, &#39;x12&#39;, &#39;x1d&#39;, &#39;(&#39;, &#39;0&#39;, &#39;4&#39;, &#39;x01&#39;, &#39;x06&#39;, &#39;x14&#39;, &#39;4&#39;,&#39;,&#39;, &#39;x1b&#39;, &#39;U&#39;, &#39;&#39;, &#39;o&#39;, &#39;6&#39;, &#39;&#39;, &#39;/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3></h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">Aizlm_blog</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/ava-1.png" alt="aizlm_Lin"></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>aizlm_Lin</p>
+          <span class="tagline">不爱学习的小胖子</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>页面</span>
+        <ul>
+          <li><a href="/guestbook">留言</a></li>
+        <li><a href="/about">关于</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>友链</span>
+        <ul>
+          <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
