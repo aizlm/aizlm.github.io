@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>leetcode-exercise | Aizlm_blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="aizlm_Lin">
+  <meta name="keywords" content>
+  <meta name="description" content>
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/images/fav-1.png">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/bg-2.png)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/ava-1.png"></a></div>
+    <span>2020-04-17</span>
+    <h2>leetcode-exercise</h2>
+    
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、删除最外层括号</span><br><span class="line">思路：</span><br><span class="line">左括号入栈时，入栈后，要是len(stack)&gt;<span class="number">1</span>，则输出到结果，否则写入栈中</span><br><span class="line">右括号出栈时，出栈后，要是len(stack)==<span class="number">0</span>，找到原语，否则存入结果</span><br><span class="line"></span><br><span class="line">stack = []</span><br><span class="line">result = <span class="string">''</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> S:</span><br><span class="line">  <span class="keyword">if</span> i==<span class="string">"("</span>:</span><br><span class="line">    stack.append(i)</span><br><span class="line">    <span class="keyword">if</span> len(stack)&gt;<span class="number">1</span>:</span><br><span class="line">      result+=<span class="string">'('</span></span><br><span class="line">  <span class="keyword">else</span>:</span><br><span class="line">    stack.pop()</span><br><span class="line">    <span class="keyword">if</span> len(stack)!=<span class="number">0</span>:</span><br><span class="line">      result+=<span class="string">')'</span></span><br><span class="line">  <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.myapplication;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.util.Base64;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"><span class="keyword">import</span> android.view.View$OnClickListener;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.widget.Button;</span><br><span class="line"><span class="keyword">import</span> android.widget.EditText;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    String e;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MainActivity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">check</span><span class="params">(String arg4)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(arg4.length() == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        arg4 = Base64.encodeToString(arg4.getBytes(), <span class="number">0</span>).toLowerCase();</span><br><span class="line">        <span class="keyword">this</span>.e = arg4;</span><br><span class="line">        <span class="keyword">if</span>(arg4.substring(<span class="number">3</span>, <span class="number">9</span>).equals(<span class="string">"dqy1ba"</span>)) &#123;		 <span class="comment">//转小写并arge[3:10]='dqy1ba'</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">check2</span><span class="params">(String arg2, String arg3)</span> </span>&#123;</span><br><span class="line">        arg3 = MainActivity.str2HexStr(arg3);</span><br><span class="line">        StringBuilder v0 = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        v0.append(arg3);</span><br><span class="line">        v0.append(arg2); </span><br><span class="line">      <span class="comment">//[0x57,0x31, 0xd,0x79, 0x8,0x71,0x40,0x22,0x43,0x35,0x53,0x23,0x41,0x73]</span></span><br><span class="line">      <span class="comment">//57 31      d798714022433553234173</span></span><br><span class="line">      <span class="comment">//[0x76,0x73,    ,0x64,0x71,0x79,0x31,0x62,0x61]</span></span><br><span class="line">      <span class="comment">//[0x31,0x66,0x6b,    ,]</span></span><br><span class="line">      <span class="comment">//   dqy1ba</span></span><br><span class="line">      </span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.checkcode(v0.toString()).equals(<span class="string">"5731d798714022433553234173"</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      s = <span class="string">"5731d798714022433553234173"</span></span><br><span class="line">      l = []</span><br><span class="line">      <span class="function"><span class="keyword">for</span> i in <span class="title">range</span><span class="params">(s)</span>:</span></span><br><span class="line"><span class="function">          l.<span class="title">append</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">        return 0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">checkcode</span><span class="params">(String arg10)</span> </span>&#123;</span><br><span class="line">        String[] v0 = <span class="keyword">new</span> String[<span class="number">15</span>];</span><br><span class="line">        <span class="keyword">int</span> v1 = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> v2 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> v3 = <span class="number">14</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            v0[<span class="number">0</span>] = arg10.substring(<span class="number">0</span>, v1);</span><br><span class="line">            v0[<span class="number">1</span>] = arg10.substring(v1, <span class="number">4</span>);</span><br><span class="line">            v0[v1] = arg10.substring(<span class="number">4</span>, <span class="number">6</span>);</span><br><span class="line">            v0[<span class="number">3</span>] = arg10.substring(<span class="number">6</span>, <span class="number">8</span>);</span><br><span class="line">            v0[<span class="number">4</span>] = arg10.substring(<span class="number">8</span>, <span class="number">10</span>);</span><br><span class="line">            v0[<span class="number">5</span>] = arg10.substring(<span class="number">10</span>, <span class="number">12</span>);</span><br><span class="line">            v0[<span class="number">6</span>] = arg10.substring(<span class="number">12</span>, v3);</span><br><span class="line">            v0[<span class="number">7</span>] = arg10.substring(v3, <span class="number">16</span>);</span><br><span class="line">            v0[<span class="number">8</span>] = arg10.substring(<span class="number">16</span>, <span class="number">18</span>);</span><br><span class="line">            v0[<span class="number">9</span>] = arg10.substring(<span class="number">18</span>, <span class="number">20</span>);</span><br><span class="line">            v0[<span class="number">10</span>] = arg10.substring(<span class="number">20</span>, <span class="number">22</span>);</span><br><span class="line">            v0[<span class="number">11</span>] = arg10.substring(<span class="number">22</span>, <span class="number">24</span>);</span><br><span class="line">            v0[<span class="number">12</span>] = arg10.substring(<span class="number">24</span>, <span class="number">26</span>);</span><br><span class="line">            v0[<span class="number">13</span>] = arg10.substring(<span class="number">26</span>, <span class="number">28</span>);</span><br><span class="line">            v0[v3] = arg10.substring(<span class="number">28</span>, <span class="number">30</span>);</span><br><span class="line">            goto label_55;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span>(Exception ) &#123;</span><br><span class="line">        label_55:</span><br><span class="line">            arg10 = <span class="string">""</span>;</span><br><span class="line">            String v1_1 = arg10;</span><br><span class="line">            <span class="keyword">while</span>(v2 &lt; v3) &#123;</span><br><span class="line">                <span class="keyword">if</span>(v2 == <span class="number">0</span>) &#123;</span><br><span class="line">                    v1_1 = MainActivity.xor(v0[v2], v0[v2 + <span class="number">1</span>]);</span><br><span class="line">                    arg10 = arg10 + v1_1;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    v1_1 = MainActivity.xor(v1_1, v0[v2]);</span><br><span class="line">                    arg10 = arg10 + v1_1;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                ++v2;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> arg10;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle arg5)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(arg5);</span><br><span class="line">        <span class="keyword">this</span>.setContentView(<span class="number">2131296284</span>);</span><br><span class="line">        View v5 = <span class="keyword">this</span>.findViewById(<span class="number">2131165317</span>);</span><br><span class="line">        View v0 = <span class="keyword">this</span>.findViewById(<span class="number">2131165218</span>);</span><br><span class="line">        View v1 = <span class="keyword">this</span>.findViewById(<span class="number">2131165318</span>);</span><br><span class="line">        View v2 = <span class="keyword">this</span>.findViewById(<span class="number">2131165219</span>);</span><br><span class="line">        ((Button)v0).setOnClickListener(<span class="keyword">new</span> View$OnClickListener(((EditText)v5)) &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View arg3)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(MainActivity.<span class="keyword">this</span>.check(<span class="keyword">this</span>.val$editText.getText().toString())) &#123;</span><br><span class="line">                    Toast.makeText(MainActivity.<span class="keyword">this</span>.getApplicationContext(), <span class="string">"用户名正确！"</span>, <span class="number">1</span>).show();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    Toast.makeText(MainActivity.<span class="keyword">this</span>.getApplicationContext(), <span class="string">"用户名错误！！"</span>, <span class="number">1</span>).show();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        ((Button)v2).setOnClickListener(<span class="keyword">new</span> View$OnClickListener(((EditText)v1)) &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View arg3)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(MainActivity.<span class="keyword">this</span>.check2(<span class="keyword">this</span>.val$editText1.getText().toString(), MainActivity.<span class="keyword">this</span>.e)) &#123;</span><br><span class="line">                    Toast.makeText(MainActivity.<span class="keyword">this</span>.getApplicationContext(), <span class="string">"success!!"</span>, <span class="number">1</span>).show();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    Toast.makeText(MainActivity.<span class="keyword">this</span>.getApplicationContext(), <span class="string">"defeated!"</span>, <span class="number">1</span>).show();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">str2HexStr</span><span class="params">(String arg4)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">char</span>[] v0 = <span class="string">"0123456789abcdef"</span>.toCharArray();</span><br><span class="line">        StringBuilder v1 = <span class="keyword">new</span> StringBuilder(<span class="string">""</span>);</span><br><span class="line">        <span class="keyword">byte</span>[] v4 = arg4.getBytes();</span><br><span class="line">        <span class="keyword">int</span> v2;</span><br><span class="line">        <span class="keyword">for</span>(v2 = <span class="number">0</span>; v2 &lt; v4.length; ++v2) &#123;</span><br><span class="line">            v1.append(v0[(v4[v2] &amp; <span class="number">240</span>) &gt;&gt; <span class="number">4</span>]);</span><br><span class="line">            v1.append(v0[v4[v2] &amp; <span class="number">15</span>]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> v1.toString().trim();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">xor</span><span class="params">(String arg5, String arg6)</span> </span>&#123;</span><br><span class="line">        arg5 = Integer.toBinaryString(Integer.valueOf(arg5, <span class="number">16</span>).intValue());</span><br><span class="line">        arg6 = Integer.toBinaryString(Integer.valueOf(arg6, <span class="number">16</span>).intValue());</span><br><span class="line">        String v1 = <span class="string">"0"</span>;</span><br><span class="line">        <span class="keyword">int</span> v2 = <span class="number">8</span>;</span><br><span class="line">        <span class="keyword">if</span>(arg5.length() != v2) &#123;</span><br><span class="line">            <span class="keyword">int</span> v0;</span><br><span class="line">            <span class="keyword">for</span>(v0 = arg5.length(); v0 &lt; v2; ++v0) &#123;</span><br><span class="line">                arg5 = v1 + arg5;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(arg6.length() != v2) &#123;</span><br><span class="line">            <span class="keyword">for</span>(v0 = arg6.length(); v0 &lt; v2; ++v0) &#123;</span><br><span class="line">                arg6 = v1 + arg6;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        v0 = <span class="number">0</span>;</span><br><span class="line">        String v2_1 = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">while</span>(v0 &lt; arg5.length()) &#123;</span><br><span class="line">            v2_1 = arg6.charAt(v0) == arg5.charAt(v0) ? v2_1 + v1 : v2_1 + <span class="string">"1"</span>;</span><br><span class="line">            ++v0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Log.e(<span class="string">"code"</span>, v2_1);</span><br><span class="line">        <span class="keyword">return</span> Integer.toHexString(Integer.parseInt(v2_1, <span class="number">2</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="#">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>没有更新的文章</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/04/16/operating-system/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>operating system</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">Aizlm_blog</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/ava-1.png" alt="aizlm_Lin"></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>aizlm_Lin</p>
+          <span class="tagline">不爱学习的小胖子</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>页面</span>
+        <ul>
+          <li><a href="/guestbook">留言</a></li>
+        <li><a href="/about">关于</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>友链</span>
+        <ul>
+          <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
