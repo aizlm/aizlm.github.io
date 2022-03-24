@@ -43,9 +43,9 @@
     <link href="https://aizlm.github.io/2022/03/20/%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/"/>
     <id>https://aizlm.github.io/2022/03/20/%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</id>
     <published>2022-03-20T06:19:08.000Z</published>
-    <updated>2022-03-23T11:59:53.639Z</updated>
+    <updated>2022-03-24T13:41:26.276Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="默认配置威胁"><a href="#默认配置威胁" class="headerlink" title="默认配置威胁"></a>默认配置威胁</h1><h2 id="数据备份"><a href="#数据备份" class="headerlink" title="数据备份"></a>数据备份</h2><p>简单说一下，感觉比较简单。</p><ul><li><pre><code class="xml">&lt;application     android:allowBackup=&quot;true&quot;&gt;&lt;/application&gt;<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>1、首先将app中存储的数据给备份下来（    adb backup -f allowBackup.ab -noapk com.mwr.example.sieve），解压用abe2、然后在其他手机（或者重新安装）把备份的数据给还原回去（    adb restore allowBackup.ab），这时候之前手机设置的密码就被绕过了（实际上就是把数据库扔到这边）</code></pre></li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="默认配置威胁"><a href="#默认配置威胁" class="headerlink" title="默认配置威胁"></a>默认配置威胁</h1><h2 id="数据备份"><a href="#数据备份" class="headerlink" title="数据备份"></a>数据备份</h2><p>简单说一下，感觉比较简单。</p><p>配置：</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">application</span> </span></span><br><span class="line"><span class="tag"><span class="attr">android:allowBackup</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br></pre></td></tr></table></figure><p>1、首先将app中存储的数据给备份下来（<br>adb backup -f allowBackup.ab -noapk com.mwr.example.sieve），解压用abe<br>2、然后在其他手机（或者重新安装）把备份的数据给还原回去（<br>adb restore allowBackup.ab），这时候之前手机设置的密码就被绕过了（实际上就是把数据库扔到这边）</p><p>…待学习WebView</p>]]></content>
     
     
       

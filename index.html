@@ -31,18 +31,11 @@
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>【1】题目来源：<a target="_blank" rel="noopener" href="https://www.kanxue.com/chm.htm?id=14147&amp;pid=node1001296">https://www.kanxue.com/chm.htm?id=14147&amp;pid=node1001296</a></p>
 <p>【2】双进程守护：<a target="_blank" rel="noopener" href="https://blog.csdn.net/huaxun66/article/details/53158162">https://blog.csdn.net/huaxun66/article/details/53158162</a></p>
 </div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2022/03/20/%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/">默认配置漏洞分析</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2022-03-20</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/android%E6%BC%8F%E6%B4%9E/">android漏洞</a></span><div class="content"><h1 id="默认配置威胁"><a href="#默认配置威胁" class="headerlink" title="默认配置威胁"></a>默认配置威胁</h1><h2 id="数据备份"><a href="#数据备份" class="headerlink" title="数据备份"></a>数据备份</h2><p>简单说一下，感觉比较简单。</p>
-<ul>
-<li><pre><code class="xml">&lt;application 
-    android:allowBackup=&quot;true&quot;&gt;
-&lt;/application&gt;
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-1、首先将app中存储的数据给备份下来（    
-adb backup -f allowBackup.ab -noapk com.mwr.example.sieve），解压用abe
-2、然后在其他手机（或者重新安装）把备份的数据给还原回去（    
-adb restore allowBackup.ab），这时候之前手机设置的密码就被绕过了（实际上就是把数据库扔到这边）
-</code></pre>
-</li>
-</ul>
+<p>配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">application</span> </span></span><br><span class="line"><span class="tag">	<span class="attr">android:allowBackup</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>1、首先将app中存储的数据给备份下来（<br>adb backup -f allowBackup.ab -noapk com.mwr.example.sieve），解压用abe<br>2、然后在其他手机（或者重新安装）把备份的数据给还原回去（<br>adb restore allowBackup.ab），这时候之前手机设置的密码就被绕过了（实际上就是把数据库扔到这边）</p>
+<p>…待学习WebView</p>
 </div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2022/03/19/%E7%9C%8B%E9%9B%AACM1/">看雪CM1</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2022-03-19</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E6%9C%89%E7%A9%BA%E6%9D%A5%E4%B8%80%E9%81%93/">有空来一道</a></span><div class="content"><h2 id="CM（crackme）"><a href="#CM（crackme）" class="headerlink" title="CM（crackme）"></a>CM（crackme）</h2><ul>
 <li>静态Java层分析：先是进入经过个跳转到RegActivity，按钮监听，在native层，接下来分析so。</li>
 </ul>
