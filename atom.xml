@@ -6,7 +6,7 @@
   <link href="https://aizlm.github.io/atom.xml" rel="self"/>
   
   <link href="https://aizlm.github.io/"/>
-  <updated>2022-03-24T13:42:08.396Z</updated>
+  <updated>2022-03-24T13:48:23.027Z</updated>
   <id>https://aizlm.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>frida的认知</title>
+    <link href="https://aizlm.github.io/2022/03/24/frida%E7%9A%84%E8%AE%A4%E7%9F%A5/"/>
+    <id>https://aizlm.github.io/2022/03/24/frida%E7%9A%84%E8%AE%A4%E7%9F%A5/</id>
+    <published>2022-03-24T13:44:53.000Z</published>
+    <updated>2022-03-24T13:48:23.027Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="frida的认知"><a href="#frida的认知" class="headerlink" title="frida的认知"></a>frida的认知</h1><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>【1】<a href="https://bbs.pediy.com/thread-227232.htm">https://bbs.pediy.com/thread-227232.htm</a></p><p>【2】<a href="https://github.com/r0ysue/AndroidSecurityStudy/blob/master/FRIDA/A02/README.md">https://github.com/r0ysue/AndroidSecurityStudy/blob/master/FRIDA/A02/README.md</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;frida的认知&quot;&gt;&lt;a href=&quot;#frida的认知&quot; class=&quot;headerlink&quot; title=&quot;frida的认知&quot;&gt;&lt;/a&gt;frida的认知&lt;/h1&gt;&lt;h1 id=&quot;参考文献&quot;&gt;&lt;a href=&quot;#参考文献&quot; class=&quot;headerlink&quot; </summary>
+      
+    
+    
+    
+    
+    <category term="快乐学习Android逆向知识" scheme="https://aizlm.github.io/tags/%E5%BF%AB%E4%B9%90%E5%AD%A6%E4%B9%A0Android%E9%80%86%E5%90%91%E7%9F%A5%E8%AF%86/"/>
+    
+  </entry>
   
   <entry>
     <title>看雪CM2</title>
