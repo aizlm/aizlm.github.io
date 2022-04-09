@@ -6,7 +6,7 @@
   <link href="https://aizlm.github.io/atom.xml" rel="self"/>
   
   <link href="https://aizlm.github.io/"/>
-  <updated>2022-04-09T08:02:56.120Z</updated>
+  <updated>2022-04-09T08:51:15.783Z</updated>
   <id>https://aizlm.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://aizlm.github.io/2022/04/08/%E4%BB%8E0%E5%BC%80%E5%A7%8B%EF%BC%81/"/>
     <id>https://aizlm.github.io/2022/04/08/%E4%BB%8E0%E5%BC%80%E5%A7%8B%EF%BC%81/</id>
     <published>2022-04-08T13:19:19.000Z</published>
-    <updated>2022-04-09T08:02:56.120Z</updated>
+    <updated>2022-04-09T08:51:15.783Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="重新学习Android应用开发"><a href="#重新学习Android应用开发" class="headerlink" title="重新学习Android应用开发"></a>重新学习Android应用开发</h1><p>写着一篇主要是发现了自己虽然能理解流程，但很慢且不能看到流程马上想到如何实现，这不好，所以重新开始。主要记录开发中学习到的新的知识点，干巴爹！</p><ul><li>问题：xml布局文件的内容如何转变为View对象？</li></ul><p>aapt（Android Asset Packaging Tool）将布局文件资源编译压缩紧凑后，打包到.apk文件中。</p><p>Activity的子类的onCreate(Bundle)方法调用setContentView(…)方法时， Activity的子类使用LayoutInflater类实例化布局文件中定义的每一个View对象。</p><img src="/2022/04/08/%E4%BB%8E0%E5%BC%80%E5%A7%8B%EF%BC%81/image-20220408212807086.png"><p>利用ClassLoader加载实例，ClassLoader中的双亲委派机制也很重要！</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="重新学习Android应用开发"><a href="#重新学习Android应用开发" class="headerlink" title="重新学习Android应用开发"></a>重新学习Android应用开发</h1><p>写着一篇主要是发现了自己虽然能理解流程，但很慢且不能看到流程马上想到如何实现，这不好，所以重新开始。主要记录开发中学习到的新的知识点，干巴爹！</p><ul><li>问题：xml布局文件的内容如何转变为View对象？</li></ul><p>aapt（Android Asset Packaging Tool）将布局文件资源编译压缩紧凑后，打包到.apk文件中。</p><p>Activity的子类的onCreate(Bundle)方法调用setContentView(…)方法时， Activity的子类使用LayoutInflater类实例化布局文件中定义的每一个View对象。</p><img src="/2022/04/08/%E4%BB%8E0%E5%BC%80%E5%A7%8B%EF%BC%81/image-20220408212807086.png"><p>利用ClassLoader加载实例，ClassLoader中的双亲委派机制也很重要！</p><ul><li>Activity生命周期以及对应内存、用户可见、前台关系？</li></ul><img src="/2022/04/08/%E4%BB%8E0%E5%BC%80%E5%A7%8B%EF%BC%81/image-20220409161849607.png"><img src="/2022/04/08/%E4%BB%8E0%E5%BC%80%E5%A7%8B%EF%BC%81/image-20220409161928532.png"><ul><li>旋转时，app会先销毁实例，走完一个Activity的生命周期，再调用Activity的onCreate、onStart、onResume方法，将app的当前Activity显示到前台中。</li></ul>]]></content>
     
     
       
