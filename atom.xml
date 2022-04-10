@@ -6,7 +6,7 @@
   <link href="https://aizlm.github.io/atom.xml" rel="self"/>
   
   <link href="https://aizlm.github.io/"/>
-  <updated>2022-04-10T14:10:32.494Z</updated>
+  <updated>2022-04-10T14:41:00.118Z</updated>
   <id>https://aizlm.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://aizlm.github.io/2022/04/10/2021KCTF4%E5%81%B6%E9%81%87%E6%A3%8B%E7%97%B4/"/>
     <id>https://aizlm.github.io/2022/04/10/2021KCTF4%E5%81%B6%E9%81%87%E6%A3%8B%E7%97%B4/</id>
     <published>2022-04-10T14:01:55.000Z</published>
-    <updated>2022-04-10T14:10:32.494Z</updated>
+    <updated>2022-04-10T14:41:00.118Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="第四题-偶遇棋痴"><a href="#第四题-偶遇棋痴" class="headerlink" title="第四题 偶遇棋痴"></a>第四题 偶遇棋痴</h1><ul><li>Java层：</li></ul><img src="/2022/04/10/2021KCTF4%E5%81%B6%E9%81%87%E6%A3%8B%E7%97%B4/image-20220410220304084.png"><ul><li>native静态分析：静态注册</li></ul><img src="/2022/04/10/2021KCTF4%E5%81%B6%E9%81%87%E6%A3%8B%E7%97%B4/image-20220410220342932.png"><p>目标是返回1，所以需要到LABEL_11得到v3&#x3D;1然后return掉。</p><img src="/2022/04/10/2021KCTF4%E5%81%B6%E9%81%87%E6%A3%8B%E7%97%B4/image-20220410220538797.png"><p>输入字符位数14，然后到第二个箭头时，v5是30，获取一下v15，再看v15经过sub_39614()变成了什么，最后到LABEL_11。</p><img src="/2022/04/10/2021KCTF4%E5%81%B6%E9%81%87%E6%A3%8B%E7%97%B4/image-20220410220838527.png">]]></content>
+    <content type="html"><![CDATA[<h1 id="第四题-偶遇棋痴"><a href="#第四题-偶遇棋痴" class="headerlink" title="第四题 偶遇棋痴"></a>第四题 偶遇棋痴</h1><ul><li>Java层：</li></ul><img src="/2022/04/10/2021KCTF4%E5%81%B6%E9%81%87%E6%A3%8B%E7%97%B4/image-20220410220304084.png"><ul><li>native静态分析：静态注册</li></ul><img src="/2022/04/10/2021KCTF4%E5%81%B6%E9%81%87%E6%A3%8B%E7%97%B4/image-20220410220342932.png"><p>目标是返回1，所以需要到LABEL_11得到v3&#x3D;1然后return掉。</p><img src="/2022/04/10/2021KCTF4%E5%81%B6%E9%81%87%E6%A3%8B%E7%97%B4/image-20220410220538797.png"><p>输入字符位数14，然后到第二个箭头时，v5是30，获取一下v15，再看v15经过sub_39614()变成了什么，最后到LABEL_11。</p><img src="/2022/04/10/2021KCTF4%E5%81%B6%E9%81%87%E6%A3%8B%E7%97%B4/image-20220410220838527.png"><h1 id="IDA函数映射"><a href="#IDA函数映射" class="headerlink" title="IDA函数映射"></a>IDA函数映射</h1><ul><li>_aeabi_memclr8：memset</li><li></li></ul>]]></content>
     
     
       
