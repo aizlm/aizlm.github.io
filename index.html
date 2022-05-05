@@ -9,73 +9,7 @@
   },
   hexoVersion: '6.1.0'
 } </script><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="Aizlm‘s_Blog" type="application/atom+xml">
-</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="false"><div class="author-info"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Aizlm</div><div class="author-info__description text-center">为了兴趣而学</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">15</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">8</span></a></div></div></div><nav class="no-bg" id="nav"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Aizlm‘s_Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a></span><span class="pull-right"></span></div><div id="site-info"><div id="site-title">Aizlm‘s_Blog</div><div id="site-sub-title">瞎学日记</div></div></nav><div id="content-outer"><div class="layout" id="content-inner"><div class="recent-post-item article-container"><a class="article-title" href="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/">jenkins自动部署</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2022-05-05</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0%E6%8D%8F/">后端学习捏</a></span><div class="content"><h1 id="Jenkins一键部署"><a href="#Jenkins一键部署" class="headerlink" title="Jenkins一键部署"></a>Jenkins一键部署</h1><h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>见【1】</p>
-<p>tomcat搭建在9999端口，jenkins在webapp目录下。</p>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ul>
-<li>所需发布jar包的远程服务器配置：</li>
-</ul>
-<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151102665.png">
-
-<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151129152.png">
-
-<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151148876.png" alt="image-20220505151148876">
-
-<h2 id="基础使用："><a href="#基础使用：" class="headerlink" title="基础使用："></a>基础使用：</h2><img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151217319.png">
-
-<p>URL：构建时会将SVN上该路径下的所有代码拉下来，然后进行构建</p>
-<p>Credentials：身份，即SVN上所有具有读操作权限用户，可在&#x2F;opt&#x2F;svn&#x2F;jnu-data-security&#x2F;conf下查看相关权限</p>
-<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151252599.png">
-
-<p>根据pom.xml下载相应jar依赖，可能会报错，显示在该目录下没有这个pom.xml文件，先构建一次，将上述svn路径下的代码拉下来，然后就可以识别了。</p>
-<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151321848.png">
-
-<p>只有构建成功时触发这里的操作，Name填入上面远程配置时所填入的名称；</p>
-<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151343442.png" alt="image-20220505151343442">
-
-<p>主要操作：</p>
-<p>（上传文件到指定服务器）</p>
-<p>source files：创建该任务下的相对路径，任务路径为&#x2F;home&#x2F;.jenkins&#x2F;workspace&#x2F;auto_build；</p>
-<p>Remove prefix：上传到目标服务器时去除文件夹路径；</p>
-<p>Remote directory：上面服务器配置可访问目录为&#x2F;，这里填入相对于&#x2F;下的相对路径；</p>
-<p>（执行指定服务器操作）</p>
-<p>Exec command：if过程确保已关闭之前所启动的gateway进程，nohup启动gateway（注意需要传入jar包的路径，建议填入绝对路径）；</p>
-<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151431230.png">
-
-<p>需要添加相应操作的传输任务时，选择添加。</p>
-<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151459704.png">
-
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
-<li>这里的jenkins默认项目路径为&#x2F;root&#x2F;.jenkins，可在&#x2F;etc&#x2F;profile下进行修改，source后重新启动tomcat即可生效：</li>
-</ul>
-<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151525351.png">
-
-<ul>
-<li>svn指定版本进行构建：</li>
-</ul>
-<p>在配置的svn后连接 @+版本号即可；</p>
-<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151546138.png">
-
-
-
-<h2 id="查看结果"><a href="#查看结果" class="headerlink" title="查看结果"></a>查看结果</h2><p>查看构建历史：</p>
-<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151631726.png">
-
-<p>查看控制台输出：</p>
-<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151654516.png">
-
-<p>结果：</p>
-<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151723675.png">
-
-<p>验证 ps -aux | grep jar：</p>
-<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151745085.png">
-
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ul>
-<li>【1】Jenkins linux搭建：<a target="_blank" rel="noopener" href="https://blog.csdn.net/ju_362204801/article/details/120496060">https://blog.csdn.net/ju_362204801/article/details/120496060</a><ul>
-<li>【1】：安装插件失败解决方案：<a target="_blank" rel="noopener" href="https://caoju.blog.csdn.net/article/details/120498306">https://caoju.blog.csdn.net/article/details/120498306</a></li>
-</ul>
-</li>
-</ul>
-</div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2022/04/27/ES%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">ES使用（无原理）</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2022-04-27</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0%E6%8D%8F/">后端学习捏</a></span><div class="content"><h1 id="ELK"><a href="#ELK" class="headerlink" title="ELK"></a>ELK</h1><h2 id="ElasticSearch"><a href="#ElasticSearch" class="headerlink" title="ElasticSearch"></a>ElasticSearch</h2><p>文档型数据库，非关系型数据库结构：</p>
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="false"><div class="author-info"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Aizlm</div><div class="author-info__description text-center">为了兴趣而学</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">15</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">8</span></a></div></div></div><nav class="no-bg" id="nav"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Aizlm‘s_Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a></span><span class="pull-right"></span></div><div id="site-info"><div id="site-title">Aizlm‘s_Blog</div><div id="site-sub-title">瞎学日记</div></div></nav><div id="content-outer"><div class="layout" id="content-inner"><div class="recent-post-item article-container"><a class="article-title" href="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/">jenkins自动部署</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2022-05-05</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0%E6%8D%8F/">后端学习捏</a></span><div class="content">Here's something encrypted, password is required to continue reading.</div><a class="more" href="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/#more">Read more</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2022/04/27/ES%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">ES使用（无原理）</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2022-04-27</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0%E6%8D%8F/">后端学习捏</a></span><div class="content"><h1 id="ELK"><a href="#ELK" class="headerlink" title="ELK"></a>ELK</h1><h2 id="ElasticSearch"><a href="#ElasticSearch" class="headerlink" title="ElasticSearch"></a>ElasticSearch</h2><p>文档型数据库，非关系型数据库结构：</p>
 <img src="/2022/04/27/ES%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/146a779da01f53e7f7a8d53132d3c7cf.png">
 
 <p>倒序排序：</p>
