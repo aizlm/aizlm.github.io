@@ -14,23 +14,23 @@
 <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ul>
 <li>所需发布jar包的远程服务器配置：</li>
 </ul>
-<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/blogs\source\_posts\jenkins自动部署\image-20220505151102665.png">
+<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151102665.png">
 
-<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/blogs\source\_posts\jenkins自动部署\image-20220505151129152.png">
+<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151129152.png">
 
-<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/blogs\source\_posts\jenkins自动部署\image-20220505151148876.png" alt="image-20220505151148876">
+<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151148876.png" alt="image-20220505151148876">
 
-<h2 id="基础使用："><a href="#基础使用：" class="headerlink" title="基础使用："></a>基础使用：</h2><img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/blogs\source\_posts\jenkins自动部署\image-20220505151217319.png">
+<h2 id="基础使用："><a href="#基础使用：" class="headerlink" title="基础使用："></a>基础使用：</h2><img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151217319.png">
 
 <p>URL：构建时会将SVN上该路径下的所有代码拉下来，然后进行构建</p>
 <p>Credentials：身份，即SVN上所有具有读操作权限用户，可在&#x2F;opt&#x2F;svn&#x2F;jnu-data-security&#x2F;conf下查看相关权限</p>
-<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/blogs\source\_posts\jenkins自动部署\image-20220505151252599.png">
+<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151252599.png">
 
 <p>根据pom.xml下载相应jar依赖，可能会报错，显示在该目录下没有这个pom.xml文件，先构建一次，将上述svn路径下的代码拉下来，然后就可以识别了。</p>
-<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/blogs\source\_posts\jenkins自动部署\image-20220505151321848.png">
+<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151321848.png">
 
 <p>只有构建成功时触发这里的操作，Name填入上面远程配置时所填入的名称；</p>
-<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/blogs\source\_posts\jenkins自动部署\image-20220505151343442.png" alt="image-20220505151343442">
+<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151343442.png" alt="image-20220505151343442">
 
 <p>主要操作：</p>
 <p>（上传文件到指定服务器）</p>
@@ -39,35 +39,35 @@
 <p>Remote directory：上面服务器配置可访问目录为&#x2F;，这里填入相对于&#x2F;下的相对路径；</p>
 <p>（执行指定服务器操作）</p>
 <p>Exec command：if过程确保已关闭之前所启动的gateway进程，nohup启动gateway（注意需要传入jar包的路径，建议填入绝对路径）；</p>
-<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/blogs\source\_posts\jenkins自动部署\image-20220505151431230.png">
+<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151431230.png">
 
 <p>需要添加相应操作的传输任务时，选择添加。</p>
-<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/blogs\source\_posts\jenkins自动部署\image-20220505151459704.png">
+<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151459704.png">
 
 <h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
 <li>这里的jenkins默认项目路径为&#x2F;root&#x2F;.jenkins，可在&#x2F;etc&#x2F;profile下进行修改，source后重新启动tomcat即可生效：</li>
 </ul>
-<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/blogs\source\_posts\jenkins自动部署\image-20220505151525351.png">
+<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151525351.png">
 
 <ul>
 <li>svn指定版本进行构建：</li>
 </ul>
 <p>在配置的svn后连接 @+版本号即可；</p>
-<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/blogs\source\_posts\jenkins自动部署\image-20220505151546138.png">
+<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151546138.png">
 
 
 
 <h2 id="查看结果"><a href="#查看结果" class="headerlink" title="查看结果"></a>查看结果</h2><p>查看构建历史：</p>
-<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/blogs\source\_posts\jenkins自动部署\image-20220505151631726.png">
+<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151631726.png">
 
 <p>查看控制台输出：</p>
-<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/blogs\source\_posts\jenkins自动部署\image-20220505151654516.png">
+<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151654516.png">
 
 <p>结果：</p>
-<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/blogs\source\_posts\jenkins自动部署\image-20220505151723675.png">
+<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151723675.png">
 
 <p>验证 ps -aux | grep jar：</p>
-<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/blogs\source\_posts\jenkins自动部署\image-20220505151745085.png">
+<img src="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/image-20220505151745085.png">
 
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ul>
 <li>【1】Jenkins linux搭建：<a target="_blank" rel="noopener" href="https://blog.csdn.net/ju_362204801/article/details/120496060">https://blog.csdn.net/ju_362204801/article/details/120496060</a><ul>
