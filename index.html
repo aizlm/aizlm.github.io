@@ -22,10 +22,11 @@
 </ul>
 </li>
 </ul>
-<h2 id="flink-amp-WordCount"><a href="#flink-amp-WordCount" class="headerlink" title="flink &amp; WordCount"></a>flink &amp; WordCount</h2><ul>
+<h2 id="flink-amp-WordCount"><a href="#flink-amp-WordCount" class="headerlink" title="flink &amp; WordCount"></a>flink &amp; WordCount</h2><h3 id="Batch（弃用DataSet）"><a href="#Batch（弃用DataSet）" class="headerlink" title="Batch（弃用DataSet）"></a>Batch（弃用DataSet）</h3><ul>
 <li>目录结构</li>
 </ul>
-<p><img src="/2022/05/07/flink%E5%AD%A6%E4%B9%A0/blogs\source_posts\flink学习\image-20220507095140469.png" alt="image-20220507095140469"></p>
+<img src="/2022/05/07/flink%E5%AD%A6%E4%B9%A0/image-20220507095140469.png">
+
 <ul>
 <li>批处理代码</li>
 </ul>
@@ -35,6 +36,18 @@
 <li>结果</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(java,1)</span><br><span class="line">(flink,1)</span><br><span class="line">(world,1)</span><br><span class="line">(hello,3)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h3><ul>
+<li>有界流处理</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">StreamExecutionEnvironment</span> <span class="variable">env</span> <span class="operator">=</span> StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line">DataStreamSource&lt;String&gt; wordDataStreamSource = env.readTextFile(<span class="string">&quot;input/words.txt&quot;</span>);</span><br><span class="line">SingleOutputStreamOperator&lt;Tuple2&lt;String, Long&gt;&gt; wordAndOneTuple = wordDataStreamSource.flatMap((String line, Collector&lt;Tuple2&lt;String, Long&gt;&gt; out) -&gt; &#123;</span><br><span class="line">    String[] words = line.split(<span class="string">&quot; &quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (String word : words) &#123;</span><br><span class="line">        out.collect(Tuple2.of(word, <span class="number">1L</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).returns(Types.TUPLE(Types.STRING, Types.LONG));</span><br><span class="line">KeyedStream&lt;Tuple2&lt;String, Long&gt;, String&gt; wordAndOneKeyedStream = wordAndOneTuple.keyBy(data -&gt; data.f0);</span><br><span class="line">SingleOutputStreamOperator&lt;Tuple2&lt;String, Long&gt;&gt; sum = wordAndOneKeyedStream.sum(<span class="number">1</span>);</span><br><span class="line">sum.print();</span><br><span class="line"><span class="comment">// 流处理会不断等待输入流，启动执行</span></span><br><span class="line">env.execute();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>结果</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1&gt; (java,1)</span><br><span class="line">2&gt; (hello,1)</span><br><span class="line">3&gt; (world,1)</span><br><span class="line">2&gt; (hello,2)</span><br><span class="line">4&gt; (flink,1)</span><br><span class="line">2&gt; (hello,3)</span><br></pre></td></tr></table></figure>
 
 </div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/">jenkins自动部署</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2022-05-05</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0%E6%8D%8F/">后端学习捏</a></span><div class="content">Here's something encrypted, password is required to continue reading.</div><a class="more" href="/2022/05/05/jenkins%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/#more">Read more</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2022/04/27/ES%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">ES使用（无原理）</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2022-04-27</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0%E6%8D%8F/">后端学习捏</a></span><div class="content"><h1 id="ELK"><a href="#ELK" class="headerlink" title="ELK"></a>ELK</h1><h2 id="ElasticSearch"><a href="#ElasticSearch" class="headerlink" title="ElasticSearch"></a>ElasticSearch</h2><p>文档型数据库，非关系型数据库结构：</p>
 <img src="/2022/04/27/ES%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/146a779da01f53e7f7a8d53132d3c7cf.png">
