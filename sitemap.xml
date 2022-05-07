@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://aizlm.github.io/2022/05/07/flink%E5%AD%A6%E4%B9%A0/</loc>
+    
+    <lastmod>2022-05-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://aizlm.github.io/2022/04/13/%E5%8C%BA%E5%9D%97%E9%93%BE%E8%AE%A4%E7%9F%A5/</loc>
     
     <lastmod>2022-05-06</lastmod>
@@ -148,7 +157,7 @@
 
   <url>
     <loc>https://aizlm.github.io/</loc>
-    <lastmod>2022-05-06</lastmod>
+    <lastmod>2022-05-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -156,56 +165,56 @@
   
   <url>
     <loc>https://aizlm.github.io/tags/%E6%9C%89%E7%A9%BA%E6%9D%A5%E4%B8%80%E9%81%93/</loc>
-    <lastmod>2022-05-06</lastmod>
+    <lastmod>2022-05-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://aizlm.github.io/tags/Android%E9%80%86%E5%90%91%E7%9F%A5%E8%AF%86/</loc>
-    <lastmod>2022-05-06</lastmod>
+    <lastmod>2022-05-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://aizlm.github.io/tags/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0%E6%8D%8F/</loc>
-    <lastmod>2022-05-06</lastmod>
+    <lastmod>2022-05-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://aizlm.github.io/tags/android%E6%BC%8F%E6%B4%9E/</loc>
-    <lastmod>2022-05-06</lastmod>
+    <lastmod>2022-05-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://aizlm.github.io/tags/web%E5%AD%A6%E4%B9%A0%E6%8D%8F/</loc>
-    <lastmod>2022-05-06</lastmod>
+    <lastmod>2022-05-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://aizlm.github.io/tags/Android%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</loc>
-    <lastmod>2022-05-06</lastmod>
+    <lastmod>2022-05-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://aizlm.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/</loc>
-    <lastmod>2022-05-06</lastmod>
+    <lastmod>2022-05-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://aizlm.github.io/tags/Android%E8%B0%83%E8%AF%95%E9%85%8D%E7%BD%AE/</loc>
-    <lastmod>2022-05-06</lastmod>
+    <lastmod>2022-05-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
