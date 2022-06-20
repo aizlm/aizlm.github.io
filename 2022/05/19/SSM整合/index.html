@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="SSM整合"><meta name="keywords" content="后端学习捏"><meta name="author" content="Aizlm"><meta name="copyright" content="Aizlm"><title>SSM整合 | Aizlm‘s_Blog</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.9.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  hexoVersion: '6.1.0'
+} </script><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="Aizlm‘s_Blog" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SSM%E6%95%B4%E5%90%88"><span class="toc-number">1.</span> <span class="toc-text">SSM整合</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9D%91"><span class="toc-number">2.</span> <span class="toc-text">坑</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">3.</span> <span class="toc-text">参考文献</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Aizlm</div><div class="author-info__description text-center">为了兴趣而学</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">22</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">10</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Aizlm‘s_Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">SSM整合</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2022-05-19</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h1 id="SSM整合"><a href="#SSM整合" class="headerlink" title="SSM整合"></a>SSM整合</h1><ul>
+<li>mapper.xml：与数据库进行交互。<ul>
+<li>配置需要包含数据库连接池，数据源（哪个数据库）</li>
+<li>SqlSessionFactory绑定mybatis.xml（数据具体操作），然后SqlSession对象从SqlSessionFactory中获取</li>
+<li>配置MapperScannerConfigurer对象，指定mapper类扫描路径</li>
+</ul>
+</li>
+<li>service.xml：只配置了包扫描，指定需要扫描到Spring 的Service层所在的包路径</li>
+<li>mvc.xml：配置了Spring MVC扫描的包路径和注解驱动</li>
+<li>web.xml：配置了项目启动时加载的信息<ul>
+<li>配置文件加载context-param-&gt;contextConfigLocation</li>
+<li>Spring容器加载监听器ContextLoaderListener</li>
+<li>SpringMVC前端控制器DispatcherServlet</li>
+</ul>
+</li>
+</ul>
+<p>spring容器的创建：在web.xml声明了监听器ContextLoadListenter，。功能是创建spring容器对象WebApplicationContext，在创建WebApplicationContext对象时读取spring配置文件。读取文件的时候，遇到bean标签或者注解，就能创建service,dao等对象，放到容器中。</p>
+<p>springMVC容器：在web.xml声明了中央调度器DispatcherServlet。在这个servlet的init方法中，创建了容器对象WebApplicationContext在创建WebApplicationContext对象，读取springmvc配置文件，读取文件的时候，遇到@Controller注解，创建控制器controller对象，放到容器中。</p>
+<p>servlet(jsp) -&gt; tomcat -&gt; mybatis -&gt; spring -&gt; springmvc -&gt; springboot -&gt; </p>
+<h1 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h1><p>在Idea中，xml配置引入外部bean需要以下配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">import</span> <span class="attr">resource</span>=<span class="string">&quot;spring-dao.xml&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>【1】项目来源：</p>
+<p>【2】SSM纯注解开发：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_53805188/article/details/124103988">https://blog.csdn.net/weixin_53805188/article/details/124103988</a></p>
+<p>【3】<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_54703880/article/details/122637877?utm_source=app&amp;app_version=5.1.1">https://blog.csdn.net/m0_54703880/article/details/122637877?utm_source=app&amp;app_version=5.1.1</a></p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Aizlm</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://aizlm.github.io/2022/05/19/SSM整合/">https://aizlm.github.io/2022/05/19/SSM整合/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0%E6%8D%8F/">后端学习捏</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2022/06/03/Springboot-%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/"><i class="fa fa-chevron-left">  </i><span>Springboot-自动配置原理解析</span></a></div><div class="next-post pull-right"><a href="/2022/05/07/flink%E5%AD%A6%E4%B9%A0/"><span>flink学习</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2022 By Aizlm</div><div class="framework-info"><span>Driven - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/lib/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.0"></script><script src="/js/fancybox.js?version=1.9.0"></script><script src="/js/sidebar.js?version=1.9.0"></script><script src="/js/copy.js?version=1.9.0"></script><script src="/js/fireworks.js?version=1.9.0"></script><script src="/js/transition.js?version=1.9.0"></script><script src="/js/scroll.js?version=1.9.0"></script><script src="/js/head.js?version=1.9.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>
