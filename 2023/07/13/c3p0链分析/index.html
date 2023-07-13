@@ -28,17 +28,17 @@
 <h3 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h3><h4 id="反序列化"><a href="#反序列化" class="headerlink" title="反序列化"></a>反序列化</h4><ol>
 <li>sink点：Class.forName出现在<code>com.mchange.v2.naming.ReferenceableUtils#referenceToObject</code>，第二个属性为true时，会触发加载静态代码块中的内容</li>
 </ol>
-<img src="/2023/07/13/c3p0%E9%93%BE%E5%88%86%E6%9E%90/bbblog\source\_posts\c3p0链分析\image-20230713104428141.png" alt="image-20230713104428141" style="zoom:67%;">
+<img src="/2023/07/13/c3p0%E9%93%BE%E5%88%86%E6%9E%90/image-20230713104428141.png" alt="image-20230713104428141" style="zoom:67%;">
 
 <ol start="2">
 <li>source：<code>com.mchange.v2.c3p0.impl.PoolBackedDataSourceBase#readObject</code>，需要满足readObject的类实现<code>IndirectlySerialized</code>接口，看了下对应的实现类<code>com.mchange.v2.naming.ReferenceIndirector.ReferenceSerialized</code></li>
 </ol>
-<img src="/2023/07/13/c3p0%E9%93%BE%E5%88%86%E6%9E%90/bbblog\source\_posts\c3p0链分析\image-20230713110208964.png" alt="image-20230713110208964" style="zoom:80%;">
+<img src="/2023/07/13/c3p0%E9%93%BE%E5%88%86%E6%9E%90/image-20230713110208964.png" alt="image-20230713110208964" style="zoom:80%;">
 
 <ol start="3">
 <li>通过ReferenceSerialized类的getObject方法连接到sink触发的方法</li>
 </ol>
-<img src="/2023/07/13/c3p0%E9%93%BE%E5%88%86%E6%9E%90/bbblog\source\_posts\c3p0链分析\image-20230713112424065.png" alt="image-20230713112424065" style="zoom:80%;">
+<img src="/2023/07/13/c3p0%E9%93%BE%E5%88%86%E6%9E%90/image-20230713112424065.png" alt="image-20230713112424065" style="zoom:80%;">
 
 <ul>
 <li>总结：sink的触发限制条件是传入的类要是IndirectlySerialized的实现类</li>
@@ -46,22 +46,22 @@
 <h4 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h4><ol>
 <li>writeObject的类<code>ConnectionPoolDataSource</code>本身没有实现Serializable序列化接口，抛出NotSerializableException异常的过程中将<code>connectionPoolDataSource</code>进行封装</li>
 </ol>
-<img src="/2023/07/13/c3p0%E9%93%BE%E5%88%86%E6%9E%90/bbblog\source\_posts\c3p0链分析\image-20230713135150907.png" alt="image-20230713135150907" style="zoom:80%;">
+<img src="/2023/07/13/c3p0%E9%93%BE%E5%88%86%E6%9E%90/image-20230713135150907.png" alt="image-20230713135150907" style="zoom:80%;">
 
-<img src="/2023/07/13/c3p0%E9%93%BE%E5%88%86%E6%9E%90/bbblog\source\_posts\c3p0链分析\image-20230713135332316.png" alt="image-20230713135332316" style="zoom:80%;">
+<img src="/2023/07/13/c3p0%E9%93%BE%E5%88%86%E6%9E%90/image-20230713135332316.png" alt="image-20230713135332316" style="zoom:80%;">
 
-<img src="/2023/07/13/c3p0%E9%93%BE%E5%88%86%E6%9E%90/bbblog\source\_posts\c3p0链分析\image-20230713135342744.png" alt="image-20230713135342744" style="zoom:80%;">
+<img src="/2023/07/13/c3p0%E9%93%BE%E5%88%86%E6%9E%90/image-20230713135342744.png" alt="image-20230713135342744" style="zoom:80%;">
 
 <ol start="2">
 <li><code>com.mchange.v2.naming.ReferenceIndirector#indirectForm</code>将<code>connectionPoolDataSource</code>转为Referenceable实例，最终包装成<code>ReferenceSerialized</code>对象</li>
 </ol>
-<img src="/2023/07/13/c3p0%E9%93%BE%E5%88%86%E6%9E%90/bbblog\source\_posts\c3p0链分析\image-20230713135539433.png" alt="image-20230713135539433" style="zoom:80%;">
+<img src="/2023/07/13/c3p0%E9%93%BE%E5%88%86%E6%9E%90/image-20230713135539433.png" alt="image-20230713135539433" style="zoom:80%;">
 
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
 <li>反序列化过程中，需要满足传入的类要是IndirectlySerialized的实现类，这一点在writeObject的异常封装类中可以满足</li>
 <li>序列化过程中，类需要实现<code>ConnectionPoolDataSource</code>和<code>Referenceable</code>，最终通过其中的reference实例写入恶意的url进行加载类实例</li>
 </ol>
-<img src="/2023/07/13/c3p0%E9%93%BE%E5%88%86%E6%9E%90/bbblog\source\_posts\c3p0链分析\image-20230713140056783.png" alt="image-20230713140056783" style="zoom:80%;">
+<img src="/2023/07/13/c3p0%E9%93%BE%E5%88%86%E6%9E%90/image-20230713140056783.png" alt="image-20230713140056783" style="zoom:80%;">
 
 
 
